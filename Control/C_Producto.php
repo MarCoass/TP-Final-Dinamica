@@ -62,6 +62,7 @@ class C_Producto
     public function alta($param)
     {
         $resp = false;
+        $param['idproducto'] = null;
         $obj = $this->cargarObjeto($param);
         if ($obj != null and $obj->insertar()) {
             $resp = true;

@@ -63,6 +63,7 @@ class C_Menu
     public function alta($param)
     {
         $resp = false;
+        $param['idmenu'] = null;
         $obj = $this->cargarObjeto($param);
         if ($obj != null and $obj->insertar()) {
             $resp = true;

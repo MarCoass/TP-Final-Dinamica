@@ -62,6 +62,7 @@ class C_Compraitem
     public function alta($param)
     {
         $resp = false;
+        $param['idcompraitem'] = null;
         $obj = $this->cargarObjeto($param);
         if ($obj != null and $obj->insertar()) {
             $resp = true;
