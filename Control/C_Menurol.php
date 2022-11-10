@@ -61,6 +61,7 @@ class C_Menurol
     public function alta($param)
     {
         $resp = false;
+        $param['idmenurol'] = null;
         $obj = $this->cargarObjeto($param);
         if ($obj != null and $obj->insertar()) {
             $resp = true;

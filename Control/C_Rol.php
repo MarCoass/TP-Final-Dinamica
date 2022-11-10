@@ -60,6 +60,7 @@ class C_Rol
     public function alta($param)
     {
         $resp = false;
+        $param['idrol'] = null;
         $obj = $this->cargarObjeto($param);
         if ($obj != null and $obj->insertar()) {
             $resp = true;

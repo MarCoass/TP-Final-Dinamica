@@ -63,6 +63,7 @@ class C_Compraestado
     public function alta($param)
     {
         $resp = false;
+        $param['idcompraestado'] = null;
         $obj = $this->cargarObjeto($param);
         if ($obj != null and $obj->insertar()) {
             $resp = true;

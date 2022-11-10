@@ -63,6 +63,7 @@ class C_Usuario
     public function alta($param)
     {
         $resp = false;
+        $param['idusuario'] = null;
         $obj = $this->cargarObjeto($param);
         if ($obj != null and $obj->insertar()) {
             $resp = true;
