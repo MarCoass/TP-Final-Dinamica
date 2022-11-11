@@ -27,7 +27,7 @@ class Menu
         $this->setMedescripcion($medescripcion);
         $this->setIdpadre($idpadre);
         $this->setMedeshabilitado($medeshabilitado);
-        $this->setScript($medeshabilitado);
+        $this->setScript($script);
     }
 
     public function getIdmenu(){

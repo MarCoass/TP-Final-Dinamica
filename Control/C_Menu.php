@@ -3,7 +3,6 @@ include_once '../Modelo/Menu.php';
 
 class C_Menu
 {
-
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
      * @param array $param
@@ -14,13 +13,21 @@ class C_Menu
         $obj = null;
         if (array_key_exists('idmenu', $param)) {
 
+            if (isset($param['idpadre'])){
+                $padre = new Menu();
+                $padre->buscar(['idmenu' => $param['idpadre']]);
+            } else {
+                $padre = null;
+            }
+
             $obj = new Menu();
             $obj->cargar(
                 $param['idMenu'],
                 $param['menombre'],
                 $param['medescripcion'],
-                $param['idpadre'],
+                $padre,
                 $param['medeshabilitado'],
+                $param['script']
             );
         }
         return $obj;
@@ -37,7 +44,7 @@ class C_Menu
         $obj = null;
         if (isset($param['idMenu'])) {
             $obj = new Menu();
-            $obj->cargar($param['idMenu'], null, null, null, null);
+            $obj->cargar($param['idMenu'], null, null, null, null, null);
         }
         return $obj;
     }
@@ -123,6 +130,8 @@ class C_Menu
                     $where.=" and idpadre ='".$param['idpadre']."'";
             if  (isset($param['medeshabilitado']))
                     $where.=" and medeshabilitado ='".$param['medeshabilitado']."'";
+            if  (isset($param['script']))
+                    $where.=" and script ='".$param['script']."'";
         }
         $obj = new Menu();
         $arreglo =  $obj->listar($where);  

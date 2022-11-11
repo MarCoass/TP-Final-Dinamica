@@ -1,5 +1,5 @@
 <?php
-include_once("/xampp/htdocs/TPInvestigacion/configuracion.php"); ?>
+include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php"); ?>
 <html lang="en">
 
 <head>
@@ -42,5 +42,5 @@ include_once("/xampp/htdocs/TPInvestigacion/configuracion.php"); ?>
 <body background="../Assets/Img/fondo.png">
 
     <header id="navbar ">
-                <a class="navbar-brand text-light fs-5" href="/TPInvestigacion/Vista/Index.php"><img src="/TPInvestigacion/Vista/Assets/Img/logo simple.png" width="70px" class="mb-1"></a>
+                <?php include_once ('Menu.php')?>
     </header>
