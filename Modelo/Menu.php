@@ -7,6 +7,7 @@ class Menu
     private $medescripcion;
     private $idpadre; 
     private $medeshabilitado;
+    private $script;
     private $mensaje;
 
     public function __construct()
@@ -16,15 +17,17 @@ class Menu
         $this->medescripcion = "";
         $this->idpadre = '';
         $this->medeshabilitado = "";
+        $this->script = "";
     }
 
-    public function cargar($idmenu, $menombre, $medescripcion, $idpadre, $medeshabilitado)
+    public function cargar($idmenu, $menombre, $medescripcion, $idpadre, $medeshabilitado, $script)
     {
         $this->setIdmenu($idmenu);
         $this->setMenombre($menombre);
         $this->setMedescripcion($medescripcion);
         $this->setIdpadre($idpadre);
         $this->setMedeshabilitado($medeshabilitado);
+        $this->setScript($medeshabilitado);
     }
 
     public function getIdmenu(){
@@ -67,6 +70,14 @@ class Menu
         $this->medeshabilitado = $medeshabilitado;
     }
 
+    public function getScript(){
+        return $this->script;
+    }
+
+    public function setScript($script){
+        $this->script = $script;
+    }
+
     public function getMensaje(){
         return $this->mensaje;
     }
@@ -77,10 +88,11 @@ class Menu
 
     public function __toString()
     {
-        return "idmenu: " . $this->getidmenu() .
-            "\nmenombre: " . $this->getmenombre() .
+        return "idmenu: " . $this->getIdmenu() .
+            "\nmenombre: " . $this->getMenombre() .
             "\nmedescripcion: " . $this->getMedescripcion() .
-            "\nDueño: " . $this->getidpadre();
+            "\npadre: " . $this->getIdpadre() . 
+            "\nscriot: " . $this->getScript();
     }
 
     //Funciones BD
@@ -90,22 +102,23 @@ class Menu
     {
         $base = new BaseDatos();
         $resp = false;
-        $sql = "SELECT * FROM Menu WHERE idmenu = '" . $idmenu . "'";
+        $sql = "SELECT * FROM menu WHERE idmenu = '" . $idmenu . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row2 = $base->Registro()) {
-                    $this->setidmenu($row2['idmenu']);
-                    $this->setmenombre($row2['menombre']);
-                    $this->setmedescripcion($row2['medescripcion']);
-                    $this->setidpadre($row2['idpadre']);
+                    $this->setIdmenu($row2['idmenu']);
+                    $this->setMenombre($row2['menombre']);
+                    $this->setMedescripcion($row2['medescripcion']);
+                    $this->setIdpadre($row2['idpadre']);
                     $this->setMedeshabilitado($row2['medeshabilitado']);
+                    $this->setScript($row2['script']);
                     $resp = true;
                 }
             } else {
-                $this->setmedeshabilitado($base->getError());
+                $this->setMensaje($base->getError());
             }
         } else {
-            $this->setmedeshabilitado($base->getError());
+            $this->setMensaje($base->getError());
         }
         return $resp;
     }
@@ -115,7 +128,7 @@ class Menu
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from Menu";
+        $sql =  "select * from menu";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }
@@ -128,10 +141,10 @@ class Menu
                     $array[] = $objMenu;
                 }
             } else {
-                $this->setmedeshabilitado($base->getError());
+                $this->setMensaje($base->getError());
             }
         } else {
-            $this->setmedeshabilitado($base->getError());
+            $this->setMensaje($base->getError());
         }
 
         return $array;
@@ -143,23 +156,24 @@ class Menu
         $base = new BaseDatos();
         $resp = false;
         //Asigno los datos a variables
-        $idmenu = $this->getidmenu();
-        $menombre = $this->getmenombre();
+        $idmenu = $this->getIdmenu();
+        $menombre = $this->getMenombre();
         $medescripcion = $this->getMedescripcion();
-        $idpadre = $this->getidpadre();
+        $idpadre = $this->getIdpadre();
         $medeshabilitado = $this->getMedeshabilitado();
+        $script = $this->getScript();
 
 
         //Creo la consulta 
-        $sql = "INSERT INTO Menu (idmenu, menombre, medescripcion, idpadre, medeshabilitado) VALUES ('{$idmenu}', '{$menombre}', '{$medescripcion}', '{$idpadre}', '{$medeshabilitado}')";
+        $sql = "INSERT INTO menu (idmenu, menombre, medescripcion, idpadre, medeshabilitado, script) VALUES ('{$idmenu}', '{$menombre}', '{$medescripcion}', '{$idpadre}', '{$medeshabilitado}', '{$script}')";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
             } else {
-                $this->setmedeshabilitado($base->getError());
+                $this->setMensaje($base->getError());
             }
         } else {
-            $this->setmedeshabilitado($base->getError());
+            $this->setMensaje($base->getError());
         }
         return $resp;
     }
@@ -169,21 +183,22 @@ class Menu
     {
         $base = new BaseDatos();
         $resp = false;
-        $idmenu = $this->getidmenu();
-        $menombre = $this->getmenombre();
+        $idmenu = $this->getIdmenu();
+        $menombre = $this->getMenombre();
         $medescripcion = $this->getMedescripcion();
-        $idpadre = $this->getidpadre();
+        $idpadre = $this->getIdpadre();
         $medeshabilitado = $this->getMedeshabilitado();
+        $script = $this->getScript();
 
-        $sql = "UPDATE Menu SET menombre = '{$menombre}', medescripcion = '{$medescripcion}', idpadre = '{$idpadre}', medeshabilitado = '{$medeshabilitado}' WHERE idmenu = '{$idmenu}'";
+        $sql = "UPDATE menu SET menombre = '{$menombre}', medescripcion = '{$medescripcion}', idpadre = '{$idpadre}', medeshabilitado = '{$medeshabilitado}', script = '{$script}' WHERE idmenu = '{$idmenu}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
             } else {
-                $this->setmedeshabilitado($base->getError());
+                $this->setMensaje($base->getError());
             }
         } else {
-            $this->setmedeshabilitado($base->getError());
+            $this->setMensaje($base->getError());
         }
         return $resp;
     }
@@ -193,18 +208,19 @@ class Menu
     {
         $base = new BaseDatos();
         $rta = false;
-        $consulta = "DELETE FROM Menu WHERE idmenu = " . $this->getidmenu();
+        $consulta = "DELETE FROM menu WHERE idmenu = " . $this->getIdmenu();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($consulta)) {
                 $rta = true;
             } else {
-                $this->setmedeshabilitado($base->getError());
+                $this->setMensaje($base->getError());
             }
         } else {
-            $this->setmedeshabilitado($base->getError());
+            $this->setMensaje($base->getError());
         }
         return $rta;
     }
 
     
+
 }
