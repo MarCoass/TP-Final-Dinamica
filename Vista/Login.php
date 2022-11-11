@@ -1,5 +1,5 @@
 
-<!------ Include the above in your HEAD tag ---------->
+<?php include_once ('Common/Header.php')?>
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
@@ -24,3 +24,5 @@
 
   </div>
 </div>
+
+<?php include_once ('Common/Footer.php')?>
