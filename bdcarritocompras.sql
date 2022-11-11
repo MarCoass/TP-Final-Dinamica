@@ -95,6 +95,7 @@ CREATE TABLE `menu` (
   `medescripcion` varchar(124) NOT NULL COMMENT 'Descripcion mas detallada del item del menu',
   `idpadre` bigint(20) DEFAULT NULL COMMENT 'Referencia al id del menu que es subitem',
   `medeshabilitado` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez'
+  `script` varchar(100) NULL  COMMENT 'Script que hace referencia a la vista del menu.'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
