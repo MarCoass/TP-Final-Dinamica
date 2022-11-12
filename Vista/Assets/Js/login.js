@@ -11,8 +11,3 @@ function mostrar_login(){
     document.getElementById('login_from').style.display = 'block';
 }
 
-function registrar_nuevo_usuario(){
-    var usuario = md5($('#usuario_nuevo').val());
-
-    console(usuario);
-}

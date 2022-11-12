@@ -204,5 +204,13 @@ class Usuario
         return $rta;
     }
 
+    public function setear($idusuario, $usnombre, $uspass, $usmail, $usdeshabilitado)
+    {
+        $this->setidusuario($idusuario);
+        $this->setusnombre($usnombre);
+        $this->setuspass($uspass);
+        $this->setusmail($usmail);
+        $this->setusdeshabilitado($usdeshabilitado);
+    }
     
 }
