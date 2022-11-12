@@ -1,5 +1,6 @@
 <?php
 include_once 'C_Usuario.php';
+include_once 'AbmUsuario.php';
 
     //Constructor que inicia la sesion
 
@@ -71,7 +72,7 @@ class Session
         $inicia = false;
         $nombreUsuario = $this->getUserName();
         $passUsuario = $this->getPass();
-        $abmUsuario = new C_Usuario();
+        $abmUsuario = new AbmUsuario();
         $where = array();
         $filtro1 = array();
         $filtro1['usnombre'] = $nombreUsuario;
@@ -88,7 +89,7 @@ class Session
         } elseif ($pass == null) {
             $error .= "Contraseña incorrecta";
         }
-        if (count($listaUsuarios) > 0) {
+        if (is_array($listaUsuarios) &&  count($listaUsuarios) > 0) {
             if ($listaUsuarios[0]->getUsdeshabilitado()) {
                 $error .= "El usuario está deshabilitado";
             } else {
@@ -114,7 +115,7 @@ class Session
     /** GET USUARIO **/
     public function getUsuario()
     {
-        $abmUsuario = new C_Usuario();
+        $abmUsuario = new AbmUsuario();
         $where = ['idusuario' => $_SESSION['idusuario']];
         $listaUsuarios = $abmUsuario->buscar($where);
         if ($listaUsuarios >= 1) {
@@ -127,7 +128,7 @@ class Session
     /** GET ROL **/
     public function getRol()
     {
-        $abmUsuarioRol = new C_Usuario();
+        $abmUsuarioRol = new AbmUsuario();
         $usuario = $this->getUsuario();
         $idUsuario = $usuario->getIdUsuario();
         $param = ['idusuario' => $idUsuario];
