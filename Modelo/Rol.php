@@ -46,12 +46,23 @@ class Rol
         $this->mensaje = $mensaje;
     }
 
+    public function setroldescripcion($valor)
+    {
+        $this->roldescripcion = $valor;
+    }
+
     public function __toString()
     {
         return "idrol: " . $this->getidrol() .
             "\nrodescripcion: " . $this->getrodescripcion();
     }
 
+    /** SETEAR **/
+    public function setear($idrol, $roldescripcion)
+    {
+        $this->setidrol($idrol);
+        $this->setroldescripcion($roldescripcion);
+    }
     //Funciones BD
 
     //BUSCAR

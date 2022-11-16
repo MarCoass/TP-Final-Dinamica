@@ -35,8 +35,8 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php"); ?>
     <script src="https://cdn.amcharts.com/lib/5/pie.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/geodata/argentinaLow.js"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 </head>
 
 <body background="../Assets/Img/fondo.png">
