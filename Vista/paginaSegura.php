@@ -6,6 +6,8 @@ include_once '../Modelo/Usuario.php';
 include_once '../Modelo/UsuarioRol.php';
 include_once '../Modelo/conector/BaseDatos.php';
 include_once '../Modelo/Rol.php';
+include_once '../Control/Session.php';
+include_once '../Util/funciones.php';
 
 $sesion = new Session();
 $datos = data_submitted();

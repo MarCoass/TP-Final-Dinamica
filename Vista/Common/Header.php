@@ -42,5 +42,5 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php"); ?>
 <body background="../Assets/Img/fondo.png">
 
     <header id="navbar ">
-                <?php include_once ('Menu.php')?>
+                
     </header>
