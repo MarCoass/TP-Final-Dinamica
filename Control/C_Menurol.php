@@ -123,4 +123,41 @@ class C_Menurol
         
         return $arreglo;
     }
+
+    //FUNCIONES QUE PODRIAN FUNCIONAR O NO
+
+    /**
+     * Recibe por parametro un array de id roles que corresponden a la sesion activa.
+     */
+    public function menuesByIdRol($idRoles){
+        $arrayDeMenuRol = []; // Array de todos los obj MenuRol con $idRol igual a los que hay en $idRoles
+        foreach($idRoles as $idRol){
+            $param = ['idrol' => $idRol]; //Armo el parametro de busqueda, en este caso por idrol
+            $arrayDeMenuRol[] = $this->buscar($param); 
+            //agrego lo que devuelva la busqueda, si es solo un menu se agregara solo un objMenuRol y si son
+            //varios se agregara un array de objMenuRol
+        }
+
+        $menuRoles = []; //Array donde se guardaran solo objMenuRol, no arrays
+        foreach($arrayDeMenuRol as $elemento){
+            if(is_array($elemento)){
+                //Si elemento es un array, recorre sus posiciones y las va agregando al array
+                foreach($elemento as $posicion){
+                    $menuRoles[] = $posicion;
+                }
+            } else {
+                //Si no es array, simplemente lo agrega.
+                $menuRoles[] = $elemento;
+            }
+        }
+
+        //Esta parte puede hacerse a la vez que la anterior CREO
+        $arrayDeMenues = [];
+        foreach($menuRoles as $menuRol){//Por cada objMenuRol almacena el objeto Menu
+            $arrayDeMenues[] = $menuRol->getMenu();
+        }
+        return $arrayDeMenues;
+    }
+
+    
 }

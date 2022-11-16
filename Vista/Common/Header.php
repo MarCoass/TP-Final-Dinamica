@@ -42,5 +42,5 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php"); ?>
 <body background="../Assets/Img/fondo.png">
 
     <header id="navbar ">
-                
+                <h1>nav temporal hasta que pueda hacer el hdp menu</h1>
     </header>

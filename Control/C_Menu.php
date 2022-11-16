@@ -13,7 +13,7 @@ class C_Menu
         $obj = null;
         if (array_key_exists('idmenu', $param)) {
 
-            if (isset($param['idpadre'])){
+            if (isset($param['idpadre'])) {
                 $padre = new Menu();
                 $padre->buscar(['idmenu' => $param['idpadre']]);
             } else {
@@ -100,11 +100,12 @@ class C_Menu
      * @param array $param
      * @return boolean
      */
-    public function modificacion($param){
+    public function modificacion($param)
+    {
         $resp = false;
-        if ($this->seteadosCamposClaves($param)){
-            $obj= $this->cargarObjeto($param);
-            if($obj!=null && $obj->modificar()){
+        if ($this->seteadosCamposClaves($param)) {
+            $obj = $this->cargarObjeto($param);
+            if ($obj != null && $obj->modificar()) {
                 $resp = true;
             }
         }
@@ -116,26 +117,67 @@ class C_Menu
      * @param array $param
      * @return array
      */
-    public function buscar($param){
-        $where = " true "; 
-        if ($param<>NULL){
+    public function buscar($param)
+    {
+        $where = " true ";
+        if ($param <> NULL) {
             $where .= '';
-            if  (isset($param['idmenu']))
-                $where.=" and idmenu ='".$param['idMenu']."'"; 
-            if  (isset($param['menombre']))
-                    $where.=" and menombre ='".$param['menombre']."'";
-            if  (isset($param['medescripcion']))
-                    $where.=" and medescripcion ='".$param['medescripcion']."'";
-            if  (isset($param['idpadre']))
-                    $where.=" and idpadre ='".$param['idpadre']."'";
-            if  (isset($param['medeshabilitado']))
-                    $where.=" and medeshabilitado ='".$param['medeshabilitado']."'";
-            if  (isset($param['script']))
-                    $where.=" and script ='".$param['script']."'";
+            if (isset($param['idmenu']))
+                $where .= " and idmenu ='" . $param['idMenu'] . "'";
+            if (isset($param['menombre']))
+                $where .= " and menombre ='" . $param['menombre'] . "'";
+            if (isset($param['medescripcion']))
+                $where .= " and medescripcion ='" . $param['medescripcion'] . "'";
+            if (isset($param['idpadre']))
+                $where .= " and idpadre ='" . $param['idpadre'] . "'";
+            if (isset($param['medeshabilitado']))
+                $where .= " and medeshabilitado ='" . $param['medeshabilitado'] . "'";
+            if (isset($param['script']))
+                $where .= " and script ='" . $param['script'] . "'";
         }
         $obj = new Menu();
-        $arreglo =  $obj->listar($where);  
-        
+        $arreglo =  $obj->listar($where);
+
         return $arreglo;
+    }
+
+    //AIUDA
+
+    /**Funcion que arma la estructura de un menu (esto puede malir sal)
+     * Recibe por parameto un array de menues (obtenidos con menuesByIdRol() de C_Menurol)
+     * tiene foreachs anidados asi que debe ser la cosa menos eficiente jamas vista, pero solo me salio asi si es para un menu de hasta 2 niveles
+     * **/
+    public function armarMenu($menues)
+    {
+        $htmlCompleto = '';
+        foreach ($menues as $itemMenu) {
+            if ($itemMenu->getidPadre() == NULL) { // Si no tiene padre crea el li y revisa si tiene hijos
+                $htmlItemMenu = "<li class='nav-item'><a class='nav-link' href='{$itemMenu->getScript()}'>'{$itemMenu->getMenombre()}'</a>";
+
+                //Veo si tiene hijos, supongo que esto se puede modularizar
+                foreach ($menues as $otroMenu) {
+
+                    if ($otroMenu->getIdpadre() == $itemMenu->getIdmenu()) {
+                        //Si los id coinciden, se agrega a un array
+                        $hijosDeItemMenu[] = $otroMenu;
+                    }
+                }
+                //Si el array no esta vacio
+                if (count($hijosDeItemMenu) > 0) {
+                    //Armo la estructura html de cada hijo adentro de un ul class dropdown
+                    $ulDropdown = "<ul class='dropdown-menu'>";
+                    foreach ($hijosDeItemMenu as $hijo) {
+                        $ulDropdown = $ulDropdown . "<li><a class='dropdown-item' href='{$hijo->getScript()}'>'{$hijo->getMenombre()}'</a></li>";
+                    }
+
+                    $ulDropdown = $ulDropdown . "</ul>";
+                }
+                $htmlItemMenu = $htmlItemMenu . "</li>";
+            } else {
+                //NO HACE NADA, ENTONCES SI ES UN ITEM HIJO ES IGNORADO HASTA QUE ENCUENTRE A SU PADRE
+            }
+            $htmlCompleto = $htmlCompleto . $htmlItemMenu; //despues de cada iteracion agrega el html del item que se reviso a un html general
+        }
+        return $htmlCompleto;
     }
 }
