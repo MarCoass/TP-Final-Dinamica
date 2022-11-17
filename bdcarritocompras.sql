@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 15-10-2018 a las 23:12:45
--- Versión del servidor: 10.1.34-MariaDB
--- Versión de PHP: 7.2.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-11-2022 a las 20:45:46
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `compra` (
   `idcompra` bigint(20) NOT NULL,
-  `cofecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cofecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `idusuario` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -44,7 +43,7 @@ CREATE TABLE `compraestado` (
   `idcompraestado` bigint(20) UNSIGNED NOT NULL,
   `idcompra` bigint(11) NOT NULL,
   `idcompraestadotipo` int(11) NOT NULL,
-  `cefechaini` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `cefechaini` timestamp NOT NULL DEFAULT current_timestamp(),
   `cefechafin` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -94,20 +93,26 @@ CREATE TABLE `menu` (
   `menombre` varchar(50) NOT NULL COMMENT 'Nombre del item del menu',
   `medescripcion` varchar(124) NOT NULL COMMENT 'Descripcion mas detallada del item del menu',
   `idpadre` bigint(20) DEFAULT NULL COMMENT 'Referencia al id del menu que es subitem',
-  `medeshabilitado` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez',
-  `script` varchar(100) NULL  COMMENT 'Script que hace referencia a la vista del menu.'
+  `medeshabilitado` timestamp NULL DEFAULT NULL COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez',
+  `script` varchar(100) DEFAULT NULL COMMENT 'Script que hace referencia a la vista del menu.'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `menu`
 --
 
-INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabilitado`) VALUES
-(7, 'nuevo', 'kkkkk', NULL, NULL),
-(8, 'nuevo', 'kkkkk', NULL, NULL),
-(9, 'nuevo', 'kkkkk', 7, NULL),
-(10, 'nuevo', 'kkkkk', NULL, NULL),
-(11, 'nuevo', 'kkkkk', NULL, NULL);
+INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabilitado`, `script`) VALUES
+(1, 'Productos', 'Vista de Productos', NULL, NULL, NULL),
+(12, 'Compras', 'Vista de Compras', NULL, NULL, NULL),
+(13, 'Gestion', 'Vista de Gestion', NULL, NULL, NULL),
+(14, 'Productos 3D', 'Vista de Productos 3D', 1, NULL, NULL),
+(15, 'Productos 2D', 'Vista de Productos 2D', 1, NULL, NULL),
+(16, 'Accesorios', 'Vista de Accesorios', 1, NULL, NULL),
+(17, 'Mis compras', 'Vista de mis Compras', 12, NULL, NULL),
+(18, 'Administrar Compras', 'Vista de Administrar compras', 12, NULL, NULL),
+(19, 'Gestion de Usuarios', 'Vista de gestion de usuarios', 13, NULL, NULL),
+(20, 'Gestion de Menu', 'Vista de gestion de menu', 13, NULL, NULL),
+(21, 'Administrar Productos', 'Vista admin productos', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -116,9 +121,30 @@ INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabi
 --
 
 CREATE TABLE `menurol` (
+  `idmenurol` bigint(20) NOT NULL,
   `idmenu` bigint(20) NOT NULL,
   `idrol` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `menurol`
+--
+
+INSERT INTO `menurol` (`idmenurol`, `idmenu`, `idrol`) VALUES
+(1, 1, 3),
+(2, 1, 2),
+(3, 1, 1),
+(4, 14, 3),
+(5, 15, 3),
+(6, 16, 3),
+(7, 21, 2),
+(8, 18, 2),
+(9, 18, 1),
+(10, 19, 1),
+(11, 20, 1),
+(12, 14, 1),
+(13, 15, 1),
+(14, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -144,6 +170,15 @@ CREATE TABLE `rol` (
   `rodescripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`idrol`, `rodescripcion`) VALUES
+(1, 'Administrador'),
+(2, 'Deposito'),
+(3, 'Cliente');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +192,13 @@ CREATE TABLE `usuario` (
   `usmail` varchar(50) NOT NULL,
   `usdeshabilitado` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
+(1, 'Admin', 'admin123', 'admin@mail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -217,8 +259,9 @@ ALTER TABLE `menu`
 -- Indices de la tabla `menurol`
 --
 ALTER TABLE `menurol`
-  ADD PRIMARY KEY (`idmenu`,`idrol`),
-  ADD KEY `fkmenurol_2` (`idrol`);
+  ADD PRIMARY KEY (`idmenurol`),
+  ADD KEY `idmenu` (`idmenu`),
+  ADD KEY `idrol` (`idrol`);
 
 --
 -- Indices de la tabla `producto`
@@ -275,7 +318,13 @@ ALTER TABLE `compraitem`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `idmenu` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idmenu` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT de la tabla `menurol`
+--
+ALTER TABLE `menurol`
+  MODIFY `idmenurol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -287,13 +336,13 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `idrol` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idrol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -329,8 +378,8 @@ ALTER TABLE `menu`
 -- Filtros para la tabla `menurol`
 --
 ALTER TABLE `menurol`
-  ADD CONSTRAINT `fkmenurol_1` FOREIGN KEY (`idmenu`) REFERENCES `menu` (`idmenu`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fkmenurol_2` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `menurol_ibfk_1` FOREIGN KEY (`idmenu`) REFERENCES `menu` (`idmenu`),
+  ADD CONSTRAINT `menurol_ibfk_2` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`);
 
 --
 -- Filtros para la tabla `usuariorol`
