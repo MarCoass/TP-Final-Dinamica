@@ -12,13 +12,13 @@ $name = md5($datos['usuario_nuevo']);
 $pass = md5($datos['password_nuevo']);
 $sesion->iniciar($name, $pass);
 $obj_Controlador = new Usuario();
-$obj_Controlador->setear(null, $name, $pass, $name, 1);
+$obj_Controlador->setear(null, $name, $pass, $name, date('Y-m-d'));
 $obj_Controlador->insertar();
-
+$obj_Controlador->getusmail();
 ?>
 
 <script>
-window.location.href = "http://localhost/PWD_TP_FINAL/TP-Final-Dinamica/Vista/Login.php";
+window.location.href = "http://localhost/TP-Final-Dinamica/Vista/Login.php";
 </script>
 
 

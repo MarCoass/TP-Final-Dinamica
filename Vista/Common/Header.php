@@ -24,6 +24,8 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
     <link rel="stylesheet" href="/TPInvestigacion/Vista/Assets/css/Estilos.css">
     <link rel="icon" href="/TPInvestigacion/Vista/Assets/Img/logoBesto.svg" id="logoPagina">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 </head>
 
 <body background="../Assets/Img/fondo.png">
