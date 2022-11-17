@@ -1,5 +1,5 @@
 <?php
-include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php"); ?>
+include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php"); ?>
 <html lang="en">
 
 <head>
@@ -23,18 +23,6 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php"); ?>
     <link rel="stylesheet" href="/TPInvestigacion/Vista/Assets/css/Estilos.css">
     <link rel="icon" href="/TPInvestigacion/Vista/Assets/Img/logoBesto.svg" id="logoPagina">
 
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Dark.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/locales/de_DE.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/fonts/notosans-sc.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/plugins/exporting.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/pie.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/geodata/argentinaLow.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 </head>

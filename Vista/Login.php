@@ -1,7 +1,6 @@
 
 <?php include_once ('Common/Header.php')?>
 <link rel="stylesheet" href="Assets/css/login.css">
-<script src="Assets/Js/md5.js"></script>
 <script src="Assets/Js/login.js"></script>
 <div class="wrapper fadeInDown">
   <div id="formContent">
