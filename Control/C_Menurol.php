@@ -1,5 +1,6 @@
 <?php
 include_once '../Modelo/Menurol.php';
+include_once '../Modelo/Menu.php';
 
 class C_Menurol
 {
@@ -154,7 +155,8 @@ class C_Menurol
         //Esta parte puede hacerse a la vez que la anterior CREO
         $arrayDeMenues = [];
         foreach($menuRoles as $menuRol){//Por cada objMenuRol almacena el objeto Menu
-            $arrayDeMenues[] = $menuRol->getMenu();
+            
+            $arrayDeMenues[] = $menuRol->getIdmenu();
         }
         return $arrayDeMenues;
     }

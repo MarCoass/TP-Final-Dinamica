@@ -1,16 +1,22 @@
 <?php
 
+
+//echo $_SESSION['ROOT'].'Modelo/';
 $objSession = new Session();
-print_r($objSession->activa());
 $menues = [];
 if ($objSession->activa()) {
-    $idRoles = $_SESSION['roles'];
-    $objMenuRol = new C_MenuRol();
+    $idRoles = $objSession->getRol();
+    $objMenuRol = new C_Menurol();
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
     $htmlMenu = $objMenu->armarMenu($menues);
 } else {
-    $htmlMenu = "Menu vacio o no tenes permiso menso.";
+    
+    $idRoles = [3];
+    $objMenuRol = new C_Menurol();
+    $menues = $objMenuRol->menuesByIdRol($idRoles);
+    $objMenu = new C_Menu();
+    $htmlMenu = $objMenu->armarMenu($menues);
 }
 ?>
 

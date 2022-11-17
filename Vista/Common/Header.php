@@ -1,5 +1,6 @@
 <?php
-include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php"); ?>
+include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php"); 
+?>
 <html lang="en">
 
 <head>
