@@ -90,7 +90,7 @@ class Session
             $error .= "Contraseña incorrecta";
         }
         if (is_array($listaUsuarios) &&  count($listaUsuarios) > 0) {
-            if ($listaUsuarios[0]->getUsdeshabilitado()) {
+            if ($listaUsuarios[0]->getUsdeshabilitado() != '0000-00-00 00:00:00') {
                 $error .= "El usuario está deshabilitado";
             } else {
                 $inicia = true;

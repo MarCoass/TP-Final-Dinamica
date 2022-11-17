@@ -14,7 +14,7 @@ $sesion->iniciar($name, $pass);
 list($valido, $error) = $sesion->validar();
 
 if ($valido) {
-    header("Location:paginaSegura.php");
+    header("Location:Home.php");
 } else {
     $sesion->cerrar();
     header("Location:login.php?error=" . urlencode($error));
