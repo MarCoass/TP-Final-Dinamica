@@ -4,7 +4,7 @@
 
 
 <div class="container mx-auto" style="margin:30px;height:80vh;">
-    <div class="container bg-dark"> 
+    <div class="container bg-dark pb-3"> 
             <div class="display-1 text-light  text-center" id="titulo"><h1>¡Bienvenidxs al cat&aacute;logo Besto3D!</h1></div>
             <div class="container" id="contIndex" >
                 <div id="carouselExampleIndicators" class="carousel slide start-50 translate-middle-x" data-bs-ride="true">
