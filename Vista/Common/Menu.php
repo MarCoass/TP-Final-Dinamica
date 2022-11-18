@@ -1,6 +1,4 @@
 <?php
-
-
 //echo $_SESSION['ROOT'].'Modelo/';
 $objSession = new Session();
 $menues = [];
@@ -22,6 +20,6 @@ if ($objSession->activa()) {
 
 
 
-<div class="navbar" id="">
+<div class="navbar " id="">
     <?php echo $htmlMenu ?>
 </div>

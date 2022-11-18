@@ -149,35 +149,46 @@ class C_Menu
      * **/
     public function armarMenu($menues)
     {
+        //echo "CANTIDAD DE MENUES: " . count($menues) . "\n";
         $htmlCompleto = '';
         foreach ($menues as $itemMenu) {
-            if ($itemMenu->getidPadre() == NULL) { // Si no tiene padre crea el li y revisa si tiene hijos
-                $htmlItemMenu = "<li class='nav-item'><a class='nav-link' href='{$itemMenu->getScript()}'>'{$itemMenu->getMenombre()}'</a>";
+            $htmlHijos = [];
+            if ($itemMenu->getIdpadre() == NULL) { // Si no tiene padre crea el li y revisa si tiene hijos
+                //echo "INICIO DEL IF\n";
+                //echo "HTMLITEMMENU: " . $htmlItemMenu . "\n";
 
-                //Veo si tiene hijos, supongo que esto se puede modularizar
-                foreach ($menues as $otroMenu) {
-
-                    if ($otroMenu->getIdpadre() == $itemMenu->getIdmenu()) {
-                        //Si los id coinciden, se agrega a un array
-                        $hijosDeItemMenu[] = $otroMenu;
+                //Recorro los menus y busco los hijos de este menu
+                foreach ($menues as $menu) {
+                    //Si el menu tiene idpadre igual al id del menu actual, lo agrego a un array
+                    if ($menu->getIdpadre() == $itemMenu->getIdmenu()) {
+                        //$hijos[] = $itemMenu;
+                        $htmlHijos[] = "<li><a class='dropdown-item text-dark' href='{$menu->getScript()}'>{$menu->getMenombre()}</a></li>";
                     }
                 }
-                //Si el array no esta vacio
-                if (count($hijosDeItemMenu) > 0) {
-                    //Armo la estructura html de cada hijo adentro de un ul class dropdown
-                    $ulDropdown = "<ul class='dropdown-menu'>";
-                    foreach ($hijosDeItemMenu as $hijo) {
-                        $ulDropdown = $ulDropdown . "<li><a class='dropdown-item' href='{$hijo->getScript()}'>'{$hijo->getMenombre()}'</a></li>";
-                    }
+                if (count($htmlHijos) > 0) {
+                    $htmlItemMenu = "<li class='nav-item dropdown'><a class='nav-link dropdown-toggle text-dark' data-bs-toggle='dropdown' role='button' aria-expanded='false' href='{$itemMenu->getScript()}'>{$itemMenu->getMenombre()}</a>";
 
-                    $ulDropdown = $ulDropdown . "</ul>";
+                    $htmlDesplegable = "<ul class='dropdown-menu'>";
+                    foreach ($htmlHijos as $item) {
+                        $htmlDesplegable = $htmlDesplegable . $item;
+                    }
+                    $htmlDesplegable = $htmlDesplegable . "</ul>";
+                    $htmlItemMenu = $htmlItemMenu . $htmlDesplegable . "</li>";
+                } else {
+                    $htmlItemMenu = "<li class='nav-item'><a class='nav-link text-dark' href='{$itemMenu->getScript()}'>{$itemMenu->getMenombre()}</a></li>";
                 }
-                $htmlItemMenu = $htmlItemMenu . "</li>";
+                
+                $arrayItemsMenu[] = $htmlItemMenu;
             } else {
                 //NO HACE NADA, ENTONCES SI ES UN ITEM HIJO ES IGNORADO HASTA QUE ENCUENTRE A SU PADRE
             }
-            $htmlCompleto = $htmlCompleto . $htmlItemMenu; //despues de cada iteracion agrega el html del item que se reviso a un html general
         }
+        $htmlCompleto = "<ul class='nav nav-pills '>";
+        foreach ($arrayItemsMenu as $item) {
+            $htmlCompleto = $htmlCompleto . $item;
+        }
+        $htmlCompleto = $htmlCompleto ."</ul>";
+        //echo $htmlCompleto;
         return $htmlCompleto;
     }
 }
