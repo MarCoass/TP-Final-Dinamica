@@ -160,6 +160,7 @@ class C_Menurol
             
             $arrayDeMenues[] = $menuRol->getIdmenu();
         }
+       $arrayDeMenues = array_unique($arrayDeMenues); //Elimina elementos repetidos del array
         return $arrayDeMenues;
     }
 
