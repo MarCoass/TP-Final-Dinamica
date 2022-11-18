@@ -1,6 +1,5 @@
 <?php
-//agregar confi
-
+include_once('../configuracion.php');
 $sesion = new Session();
 $sesion->cerrar();
 $message = "Sesión cerrada";
