@@ -11,9 +11,7 @@ if ($objSession->activa()) {
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
     $htmlMenu = $objMenu->armarMenu($menues);
-
 } else {
-    
     $htmlMenu ="Armar menu sin permisos";
 }
 ?>
