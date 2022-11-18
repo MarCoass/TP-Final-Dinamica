@@ -149,13 +149,11 @@ class C_Menu
      * **/
     public function armarMenu($menues)
     {
-        //echo "CANTIDAD DE MENUES: " . count($menues) . "\n";
+        
         $htmlCompleto = '';
         foreach ($menues as $itemMenu) {
             $htmlHijos = [];
             if ($itemMenu->getIdpadre() == NULL) { // Si no tiene padre crea el li y revisa si tiene hijos
-                //echo "INICIO DEL IF\n";
-                //echo "HTMLITEMMENU: " . $htmlItemMenu . "\n";
 
                 //Recorro los menus y busco los hijos de este menu
                 foreach ($menues as $menu) {

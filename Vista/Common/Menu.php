@@ -10,7 +10,7 @@ if ($objSession->activa()) {
     $htmlMenu = $objMenu->armarMenu($menues);
 } else {
     
-    $idRoles = [3];
+    $idRoles = [1];
     $objMenuRol = new C_Menurol();
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
