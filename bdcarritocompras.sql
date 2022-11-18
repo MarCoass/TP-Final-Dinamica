@@ -157,7 +157,7 @@ INSERT INTO `menurol` (`idmenurol`, `idmenu`, `idrol`) VALUES
 
 CREATE TABLE `producto` (
   `idproducto` bigint(20) NOT NULL,
-  `pronombre` int(11) NOT NULL,
+  `pronombre` varchar(512) NOT NULL,
   `prodetalle` varchar(512) NOT NULL,
   `proprecio` int(11) NOT NULL,
   `procantstock` int(11) NOT NULL,
@@ -166,19 +166,19 @@ CREATE TABLE `producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `producto` (`idproducto`, `pronombre`, `prodetalle`, `proprecio`, `procantstock`, `protipo`, `proimagen`) VALUES
-(1, 'Aros Hito Hito no mi', 'Aros impresos 3D de One Piece', '$800', 9, 'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Hito Hito no mi.jpeg'),
-(2, 'Llaveros varios', 'Llaveros de acr&iacute;lico con una imagen dentro', '$300', 200,'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Llaveros.jpeg'),
-(3, 'Pins varios', 'Pins de pla con una imagen a elecci&oacute;n dentro', '$300', 344, 'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Pins.jpeg'),
-(4, 'Stickers surtidos', 'Stickers de varios animes, juegos, etc. Se venden de a 3 unidades', '$100', 1045, '2D', '/TP-Final-Dinamica/Vista/Assets/Img/P2D/Stickers.jpeg'),
-(5, 'Tarjetas Genshin Impact', 'Tarjetas del juego Genshin Impact, vienen con un soporte impreso 3D de color surtido', '$300', '2D', '/TP-Final-Dinamica/Vista/Assets/Img/P2D/Tarjetas Genshin.jpeg'),
-(6, 'Anya', 'Figura 3D de Anya Forger, 10cm de alto', '$1500', 15, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Anya.jpeg'),
-(7, 'Bo', 'Figura 3D de Bo, de Studio Ghibli, 10cm de alto', '$1200', 3, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Bo.jpeg'),
-(8, 'Bulbasaur', 'Figura 3D de Bulbasaur, 8cm de alto. Puede pedirse Shiny', '$1200', 18, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Bulbasaur.jpeg'),
-(9, 'Chopper', 'Figura 3D de Chopper, 15cm de alto', '$2000', 4, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Chopper.jpeg'),
-(10, 'Eevee', 'Figura 3D de Eevee, 8cm de alto. Puede pedirse Shiny', '$1200', 12, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Eevee.jpeg'),
-(11, 'Gengar', 'Figura 3D de Gengar, 8cm de alto', '$1200', 8, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Gengar.jpeg'),
-(12, 'Eva 01', 'Figura 3D del Eva 01, 15cm de alto', '$2500', 3, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Eva 01.jpeg'),
-(13, 'Totoro', 'Figura 3D de Totoro, 15cm de alto', '$2000', 7, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Totoro.jpeg');
+(1, 'Aros Hito Hito no mi', 'Aros impresos 3D de One Piece', 800, 9, 'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Hito Hito no mi.jpeg'),
+(2, 'Llaveros varios', 'Llaveros de acr&iacute;lico con una imagen dentro', 300, 200,'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Llaveros.jpeg'),
+(3, 'Pins varios', 'Pins de pla con una imagen a elecci&oacute;n dentro', 300, 344, 'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Pins.jpeg'),
+(4, 'Stickers surtidos', 'Stickers de varios animes, juegos, etc. Se venden de a 3 unidades', 100, 1045, '2D', '/TP-Final-Dinamica/Vista/Assets/Img/P2D/Stickers.jpeg'),
+(5, 'Tarjetas Genshin Impact', 'Tarjetas del juego Genshin Impact, vienen con un soporte impreso 3D de color surtido', 300, 145, '2D', '/TP-Final-Dinamica/Vista/Assets/Img/P2D/Tarjetas Genshin.jpeg'),
+(6, 'Anya', 'Figura 3D de Anya Forger, 10cm de alto', 1500, 15, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Anya.jpeg'),
+(7, 'Bo', 'Figura 3D de Bo, de Studio Ghibli, 10cm de alto', 1200, 3, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Bo.jpeg'),
+(8, 'Bulbasaur', 'Figura 3D de Bulbasaur, 8cm de alto. Puede pedirse Shiny', 1200, 18, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Bulbasaur.jpeg'),
+(9, 'Chopper', 'Figura 3D de Chopper, 15cm de alto', 2000, 4, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Chopper.jpeg'),
+(10, 'Eevee', 'Figura 3D de Eevee, 8cm de alto. Puede pedirse Shiny', 1200, 12, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Eevee.jpeg'),
+(11, 'Gengar', 'Figura 3D de Gengar, 8cm de alto', 1200, 8, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Gengar.jpeg'),
+(12, 'Eva 01', 'Figura 3D del Eva 01, 15cm de alto', 2500, 3, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Eva 01.jpeg'),
+(13, 'Totoro', 'Figura 3D de Totoro, 15cm de alto', 2000, 7, '3D', '/TP-Final-Dinamica/Vista/Assets/Img/3D/Totoro.jpeg');
 
 -- --------------------------------------------------------
 
