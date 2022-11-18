@@ -56,7 +56,6 @@ class Session
         $_SESSION['uspass'] = $pass;
     }
 
-
     /** INICIAR **/
     public function iniciar($nombreUsuario, $passUsuario)
     {

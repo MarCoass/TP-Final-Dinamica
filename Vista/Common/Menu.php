@@ -5,7 +5,6 @@ $menues = [];
 
 if ($objSession->activa()) {
     $idRoles = $objSession->getOtroRol();
-    
     $objMenuRol = new C_Menurol();
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
