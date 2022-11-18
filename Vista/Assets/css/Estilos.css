@@ -38,6 +38,17 @@ footer {
   width: 100px;
 }
 
+#botonLogin {
+  background-color: #e91e63;
+  border:2px;
+  border-color: aliceblue;
+}
+
+
+#botonLogin a:hover {
+  background-color: #e33670;
+}
+
 #contIndex{
   width: 540px; 
   height: fit-content;
@@ -71,8 +82,5 @@ footer {
   border-color: #e91e63;
 }
 
-#botonModal {
-  background-color: #e91e63;
-  border:none;
-}
+
 
