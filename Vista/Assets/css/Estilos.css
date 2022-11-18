@@ -49,6 +49,17 @@ footer {
   background-color: #e33670;
 }
 
+#botonLogout {
+  background-color: #e91e63;
+  border:2px;
+  border-color: aliceblue;
+}
+
+
+#botonLogout a:hover {
+  background-color: #e33670;
+}
+
 #contIndex{
   width: 540px; 
   height: fit-content;
