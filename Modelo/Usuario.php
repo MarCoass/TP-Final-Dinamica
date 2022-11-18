@@ -6,6 +6,7 @@ class Usuario
     private $uspass;
     private $usmail;
     private $usdeshabilitado;
+    private $mensajeoperacion;
 
 
     /** CONSTRUCTOR **/
@@ -91,6 +92,36 @@ class Usuario
         $this->mensajeoperacion = $valor;
     }
 
+    public function __toString()
+    {
+        return "idusuario: " . $this->getidusuario() .
+            "\nusnombre: " . $this->getusnombre() ;
+    }
+
+    /**BUSCAR */
+    public function buscar($idusuario)
+    {
+        $base = new BaseDatos();
+        $resp = false;
+        $sql = "SELECT * FROM usuario WHERE idusuario = '" . $idusuario . "'";
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                if ($row2 = $base->Registro()) {
+                    $this->setidusuario($row2['idusuario']);
+                    $this->setusnombre($row2['usnombre']);
+                    $this->setuspass($row2['uspass']);
+                    $this->setusmail($row2['usmail']);
+                    $this->setusdeshabilitado($row2['usdeshabilitado']);
+                    $resp = true;
+                }
+            } else {
+                $this->setmensajeoperacion($base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion($base->getError());
+        }
+        return $resp;
+    }
 
     /** CARGAR **/
     public function cargar()
@@ -198,4 +229,5 @@ class Usuario
         }
         return $arreglo;
     }
+
 }

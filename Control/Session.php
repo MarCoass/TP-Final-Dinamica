@@ -141,6 +141,17 @@ class Session
         return $rol;
     }
 
+    public function getOtroRol(){
+        //$objC_Usuario = new C_Usuario();
+        $usuarioActual = $this->getUsuario(); //Usuario actual
+        $objC_UsuarioRol = new C_Usuariorol(); //Creo el obj controlador de usuariorol para usar su buscar
+        $param = ['idusuario' => $usuarioActual->getIdusuario()]; //obtengo el id del usuario actual
+        $listaRoles = $objC_UsuarioRol->buscar($param);
+        //echo "ROL: " . $listaRoles[0];
+        //print_r($listaRoles);
+        return $listaRoles;
+
+    }
 
     /** CERRAR **/
     public function cerrar()

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2022 a las 01:41:30
+-- Tiempo de generación: 18-11-2022 a las 17:13:10
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -201,7 +201,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
-(1, 'Admin', 'admin123', 'admin@mail.com', NULL);
+(1, 'Admin', 'admin123', 'admin@mail.com', NULL),
+(2, '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -210,9 +211,18 @@ INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabili
 --
 
 CREATE TABLE `usuariorol` (
+  `idusuariorol` bigint(20) NOT NULL,
   `idusuario` bigint(20) NOT NULL,
   `idrol` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuariorol`
+--
+
+INSERT INTO `usuariorol` (`idusuariorol`, `idusuario`, `idrol`) VALUES
+(1, 1, 1),
+(2, 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -291,7 +301,7 @@ ALTER TABLE `usuario`
 -- Indices de la tabla `usuariorol`
 --
 ALTER TABLE `usuariorol`
-  ADD PRIMARY KEY (`idusuario`,`idrol`),
+  ADD PRIMARY KEY (`idusuariorol`),
   ADD KEY `idusuario` (`idusuario`),
   ADD KEY `idrol` (`idrol`);
 
@@ -345,7 +355,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuariorol`
+--
+ALTER TABLE `usuariorol`
+  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -388,8 +404,8 @@ ALTER TABLE `menurol`
 -- Filtros para la tabla `usuariorol`
 --
 ALTER TABLE `usuariorol`
-  ADD CONSTRAINT `fkmovimiento_1` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuariorol_ibfk_2` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuariorol_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`),
+  ADD CONSTRAINT `usuariorol_ibfk_2` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

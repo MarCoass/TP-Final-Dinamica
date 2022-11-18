@@ -2,19 +2,19 @@
 //echo $_SESSION['ROOT'].'Modelo/';
 $objSession = new Session();
 $menues = [];
+
+
 if ($objSession->activa()) {
-    $idRoles = $objSession->getRol();
+    $idRoles = $objSession->getOtroRol();
+    
     $objMenuRol = new C_Menurol();
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
     $htmlMenu = $objMenu->armarMenu($menues);
+
 } else {
     
-    $idRoles = [1];
-    $objMenuRol = new C_Menurol();
-    $menues = $objMenuRol->menuesByIdRol($idRoles);
-    $objMenu = new C_Menu();
-    $htmlMenu = $objMenu->armarMenu($menues);
+    $htmlMenu ="Armar menu sin permisos";
 }
 ?>
 

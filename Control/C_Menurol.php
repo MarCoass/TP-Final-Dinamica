@@ -109,6 +109,7 @@ class C_Menurol
      * @return array
      */
     public function buscar($param){
+        //print_r($param);
         $where = " true "; 
         if ($param<>NULL){
             $where .= '';
@@ -131,13 +132,17 @@ class C_Menurol
      * Recibe por parametro un array de id roles que corresponden a la sesion activa.
      */
     public function menuesByIdRol($idRoles){
+
         $arrayDeMenuRol = []; // Array de todos los obj MenuRol con $idRol igual a los que hay en $idRoles
+
         foreach($idRoles as $idRol){
-            $param = ['idrol' => $idRol]; //Armo el parametro de busqueda, en este caso por idrol
+            $idRolActual = $idRol->getidrol()->getIdrol(); //esto es feo feo ya se
+            $param = ['idrol' => $idRolActual]; //Armo el parametro de busqueda, en este caso por idrol
             $arrayDeMenuRol[] = $this->buscar($param); 
             //agrego lo que devuelva la busqueda, si es solo un menu se agregara solo un objMenuRol y si son
             //varios se agregara un array de objMenuRol
         }
+        //print_r($arrayDeMenuRol);
 
         $menuRoles = []; //Array donde se guardaran solo objMenuRol, no arrays
         foreach($arrayDeMenuRol as $elemento){
@@ -151,10 +156,8 @@ class C_Menurol
                 $menuRoles[] = $elemento;
             }
         }
-
-        //Esta parte puede hacerse a la vez que la anterior CREO
-        $arrayDeMenues = [];
         foreach($menuRoles as $menuRol){//Por cada objMenuRol almacena el objeto Menu
+            
             $arrayDeMenues[] = $menuRol->getIdmenu();
         }
         return $arrayDeMenues;

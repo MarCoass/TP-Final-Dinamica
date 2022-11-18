@@ -108,7 +108,7 @@ class UsuarioRol
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from usuarioRol";
+        $sql =  "select * from usuariorol";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }
