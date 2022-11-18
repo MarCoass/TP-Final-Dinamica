@@ -19,7 +19,9 @@ class C_Producto
                 $param['idproducto'],
                 $param['pronombre'],
                 $param['prodetalle'],
-                $param['procantstock']
+                $param['proprecio'],
+                $param['procantstock'],
+                $param['proimagen']
             );
         }
         return $obj;
@@ -36,7 +38,7 @@ class C_Producto
         $obj = null;
         if (isset($param['idproducto'])) {
             $obj = new Producto();
-            $obj->cargar($param['idproducto'], null, null, null);
+            $obj->cargar($param['idproducto'], null, null, null,null,null);
         }
         return $obj;
     }
@@ -118,8 +120,12 @@ class C_Producto
                     $where.=" and pronombre ='".$param['pronombre']."'";
             if  (isset($param['prodetalle']))
                     $where.=" and prodetalle ='".$param['prodetalle']."'";
+            if  (isset($param['proprecio']))
+                    $where.=" and proprecio ='".$param['procantstock']."'";
             if  (isset($param['procantstock']))
                     $where.=" and procantstock ='".$param['procantstock']."'";
+            if  (isset($param['proimagen']))
+                    $where.=" and proimagen ='".$param['procantstock']."'";
         }
         $obj = new Producto();
         $arreglo =  $obj->listar($where);  

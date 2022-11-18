@@ -5,7 +5,9 @@ class Producto
     private $idproducto;
     private $pronombre;
     private $prodetalle;
+    private $proprecio;
     private $procantstock;
+    private $proimagen;
     private $mensaje;
 
     public function __construct()
@@ -13,15 +15,19 @@ class Producto
         $this->idproducto = "";
         $this->pronombre = "";
         $this->prodetalle = "";
+        $this->proprecio = " ";
         $this->procantstock = "";
+        $this->proimagen = " ";
     }
 
-    public function cargar($idproducto, $pronombre, $prodetalle, $procantstock)
+    public function cargar($idproducto, $pronombre, $prodetalle, $proprecio, $procantstock, $proimagen)
     {
         $this->setIdproducto($idproducto);
         $this->setPronombre($pronombre);
         $this->setProdetalle($prodetalle);
+        $this->setProprecio($proprecio);
         $this->setProcantstock($procantstock);
+        $this->setProimagen($proimagen);
     }
 
     //Metodos de acceso
@@ -50,6 +56,14 @@ class Producto
         $this->prodetalle = $prodetalle;
     }
 
+    public function getProprecio(){
+        return $this->proprecio;
+    }
+
+    public function setProprecio($proprecio){
+        $this->proprecio = $proprecio;
+    }
+
     public function getProcantstock()
     {
         return $this->procantstock;
@@ -58,6 +72,14 @@ class Producto
     public function setProcantstock($procantstock)
     {
         $this->procantstock = $procantstock;
+    }
+
+    public function getProimagen(){
+        return $this->proimagen;
+    }
+
+    public function setProimagen($proimagen){
+        $this->proimagen = $proimagen;
     }
 
     public function getMensaje(){
@@ -73,7 +95,9 @@ class Producto
         return "idproducto: " . $this->getIdproducto() .
             "\npronombre: " . $this->getPronombre() .
             "\nprodetalle: " . $this->getProdetalle() .
-            "\nprocantstock: " . $this->getProcantstock() ;
+            "\nproprecio: ". $this->getProprecio().
+            "\nprocantstock: " . $this->getProcantstock().
+            "\nproimagen: ". $this->getProimagen() ;
     }
 
     //Funciones BD
@@ -90,7 +114,9 @@ class Producto
                     $this->setIdproducto($row2['idproducto']);
                     $this->setPronombre($row2['pronombre']);
                     $this->setProdetalle($row2['prodetalle']);
+                    $this->setProprecio($row2['proprecio']);
                     $this->setProcantstock($row2['procantstock']);
+                    $this->setProimagen($row2['proimagen']);
                     $resp = true;
                 }
             } else {
@@ -140,7 +166,7 @@ class Producto
         $prodetalle = $this->getProdetalle();
         $procantstock = $this->getProcantstock();
         //Creo la consulta 
-        $sql = "INSERT INTO producto (idproducto, pronombre, prodetalle, procantstock) VALUES ('{$idproducto}', '{$pronombre}', '{$prodetalle}', '{$procantstock}')";
+        $sql = "INSERT INTO producto (idproducto, pronombre, prodetalle, proprecio, procantstock, proimagen) VALUES ('{$idproducto}', '{$pronombre}', '{$prodetalle}', '{$procantstock}')";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -161,8 +187,10 @@ class Producto
         $idproducto = $this->getIdproducto();
         $pronombre = $this->getPronombre();
         $prodetalle = $this->getProdetalle();
+        $proprecio = $this->getProprecio();
         $procantstock = $this->getProcantstock();
-        $sql = "UPDATE producto SET pronombre = '{$pronombre}', prodetalle = '{$prodetalle}' , procantstock = '{$procantstock}' WHERE idproducto = '{$idproducto}'";
+        $proimagen = $this->getProimagen();
+        $sql = "UPDATE producto SET pronombre = '{$pronombre}', prodetalle = '{$prodetalle}', proprecio = '{$proprecio}' , procantstock = '{$procantstock}', proimagen = '{$proimagen}' WHERE idproducto = '{$idproducto}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
