@@ -43,5 +43,4 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
                     </ul>
                 </div>
             </div>
-
     </header>
