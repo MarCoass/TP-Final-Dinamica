@@ -21,7 +21,7 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/TPInvestigacion/Vista/Assets/css/Estilos.css">
+    <link rel="stylesheet" href="/TP-Final-Dinamica/Vista/Assets/css/Estilos.css">
     <link rel="icon" href="/TPInvestigacion/Vista/Assets/Img/logoBesto.svg" id="logoPagina">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
@@ -32,4 +32,32 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
 
     <header id="navbar ">
                 <?php include_once ('Menu.php')?>
+                <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid" id="cabecera">
+                <a class="navbar-brand text-light fs-5" href="/TP-Final-Dinamica/Vista/Home.php"><img src="/TP-Final-Dinamica/Vista/Assets/Img/logo simple.png" width="70px" class="mb-1"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarHeader">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active text-light fs-5" aria-current="page" href="/TPInvestigacion/Vista/Index.php">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fs-5" href="/TPInvestigacion/Vista/VerGrafico.php">Informes</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <ul class="dropdown-menu" id="dropdown">
+                                <li><a class="dropdown-item text-light" href="/TPInvestigacion/Vista/Productos2D.php">Impresiones 2D</a></li>
+                                <li><a class="dropdown-item text-light" href="/TPInvestigacion/Vista/Productos3D.php">Impresiones 3D</a></li>
+                                <li><a class="dropdown-item text-light" href="/TPInvestigacion/Vista/Accesorios.php">Accesorios</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
     </header>
