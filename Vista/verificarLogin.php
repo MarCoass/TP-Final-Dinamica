@@ -10,8 +10,10 @@ $datos = data_submitted();
 $sesion = new Session();
 $name = md5($datos['usuario']);
 $pass = md5($datos['password']);
+
 $sesion->iniciar($name, $pass);
 list($valido, $error) = $sesion->validar();
+
 
 if ($valido) {
     header("Location:Home.php");

@@ -8,6 +8,7 @@ include_once '../Modelo/UsuarioRol.php';
 include_once '../Control/Session.php';
 include_once 'Login.php';
 include_once '../Util/funciones.php';
+
 $datos = data_submitted();
 $sesion = new Session();
 $name = md5($datos['usuario_nuevo']);
