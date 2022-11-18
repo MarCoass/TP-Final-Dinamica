@@ -7,6 +7,7 @@ class Producto
     private $prodetalle;
     private $proprecio;
     private $procantstock;
+    private $protipo;
     private $proimagen;
     private $mensaje;
 
@@ -17,16 +18,18 @@ class Producto
         $this->prodetalle = "";
         $this->proprecio = " ";
         $this->procantstock = "";
+        $this->protipo = " ";
         $this->proimagen = " ";
     }
 
-    public function cargar($idproducto, $pronombre, $prodetalle, $proprecio, $procantstock, $proimagen)
+    public function cargar($idproducto, $pronombre, $prodetalle, $proprecio, $procantstock, $protipo, $proimagen)
     {
         $this->setIdproducto($idproducto);
         $this->setPronombre($pronombre);
         $this->setProdetalle($prodetalle);
         $this->setProprecio($proprecio);
         $this->setProcantstock($procantstock);
+        $this->setProtipo($protipo);
         $this->setProimagen($proimagen);
     }
 
@@ -56,11 +59,13 @@ class Producto
         $this->prodetalle = $prodetalle;
     }
 
-    public function getProprecio(){
+    public function getProprecio()
+    {
         return $this->proprecio;
     }
 
-    public function setProprecio($proprecio){
+    public function setProprecio($proprecio)
+    {
         $this->proprecio = $proprecio;
     }
 
@@ -74,11 +79,23 @@ class Producto
         $this->procantstock = $procantstock;
     }
 
-    public function getProimagen(){
+    public function getProtipo()
+    {
+        return $this->protipo;
+    }
+
+    public function setProtipo($protipo)
+    {
+        $this->protipo = $protipo;
+    }
+
+    public function getProimagen()
+    {
         return $this->proimagen;
     }
 
-    public function setProimagen($proimagen){
+    public function setProimagen($proimagen)
+    {
         $this->proimagen = $proimagen;
     }
 
@@ -97,6 +114,7 @@ class Producto
             "\nprodetalle: " . $this->getProdetalle() .
             "\nproprecio: ". $this->getProprecio().
             "\nprocantstock: " . $this->getProcantstock().
+            "\nprotipo: ". $this->getProtipo().
             "\nproimagen: ". $this->getProimagen() ;
     }
 
@@ -116,6 +134,7 @@ class Producto
                     $this->setProdetalle($row2['prodetalle']);
                     $this->setProprecio($row2['proprecio']);
                     $this->setProcantstock($row2['procantstock']);
+                    $this->setProtipo($row2['protipo']);
                     $this->setProimagen($row2['proimagen']);
                     $resp = true;
                 }
@@ -164,9 +183,12 @@ class Producto
         $idproducto = $this->getIdproducto();
         $pronombre = $this->getPronombre();
         $prodetalle = $this->getProdetalle();
+        $proprecio = $this->getProprecio();
         $procantstock = $this->getProcantstock();
+        $protipo = $this->getProtipo();
+        $proimagen = $this->getProimagen();
         //Creo la consulta 
-        $sql = "INSERT INTO producto (idproducto, pronombre, prodetalle, proprecio, procantstock, proimagen) VALUES ('{$idproducto}', '{$pronombre}', '{$prodetalle}', '{$procantstock}')";
+        $sql = "INSERT INTO producto (idproducto, pronombre, prodetalle, proprecio, procantstock, protipo, proimagen) VALUES ('{$idproducto}', '{$pronombre}', '{$prodetalle}', '{$proprecio}', '{$procantstock}', '{$protipo}', '{$proimagen}')";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -189,8 +211,9 @@ class Producto
         $prodetalle = $this->getProdetalle();
         $proprecio = $this->getProprecio();
         $procantstock = $this->getProcantstock();
+        $protipo = $this->getProtipo();
         $proimagen = $this->getProimagen();
-        $sql = "UPDATE producto SET pronombre = '{$pronombre}', prodetalle = '{$prodetalle}', proprecio = '{$proprecio}' , procantstock = '{$procantstock}', proimagen = '{$proimagen}' WHERE idproducto = '{$idproducto}'";
+        $sql = "UPDATE producto SET pronombre = '{$pronombre}', prodetalle = '{$prodetalle}', proprecio = '{$proprecio}' , procantstock = '{$procantstock}', protipo = '{$protipo}', proimagen = '{$proimagen}' WHERE idproducto = '{$idproducto}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
