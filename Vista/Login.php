@@ -9,7 +9,7 @@ include_once ('Common/Header.php')?>
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="/TPInvestigacion/Vista/Assets/Img/logo simple.png" width="70px" class="mb-1">
+      <img src="/TP-Final-Dinamica/Vista/Assets/Img/logo simple.png" width="70px" class="mb-1">
     </div>
 
     <!-- Login Form -->
