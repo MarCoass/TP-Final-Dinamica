@@ -159,7 +159,10 @@ CREATE TABLE `producto` (
   `idproducto` bigint(20) NOT NULL,
   `pronombre` int(11) NOT NULL,
   `prodetalle` varchar(512) NOT NULL,
-  `procantstock` int(11) NOT NULL
+  `proprecio` int(11) NOT NULL,
+  `procantstock` int(11) NOT NULL,
+  `protipo` varchar(512) NOT NULL,
+  `proimagen` varchar (512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -411,3 +414,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

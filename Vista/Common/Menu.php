@@ -8,11 +8,11 @@ if ($objSession->activa()) {
     $objMenuRol = new C_Menurol();
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
-    $htmlMenu = $objMenu->armarMenu($menues) . "<div class='col-md-3 text-end'><button class='btn text-light btn-outline-light mx-3' id='botonLogout'>Perfil</button><button class='btn text-light btn-outline-light'id='botonLogout'>Cerrar Session</button></div>";
-    $htmlMenu = $objMenu->armarMenu($menues) . "<div class='col-md-3 text-end'><button class='btn text-light btn-outline-light mx-3'id='botonLogout'>Perfil</button><a href='cerrarSesion.php'><button class='btn text-light btn-outline-light' id='botonLogout'>Cerrar Session</button></a></div>";
+    $htmlMenu = $objMenu->armarMenu($menues) . "<div class='col align-self-end'><button class='btn text-light btn-outline-light mx-3' id='botonLogout'>Perfil</button><button class='btn text-light btn-outline-light'id='botonLogout'>Cerrar Session</button></div>";
+    $htmlMenu = $objMenu->armarMenu($menues) . "<div class='col align-self-end'><button class='btn text-light btn-outline-light mx-3'id='botonLogout'>Perfil</button><a href='cerrarSesion.php'><button class='btn text-light btn-outline-light' id='botonLogout'>Cerrar Session</button></a></div>";
     
 } else {
-    $aux = "<div class='col-md-3 text-end'><button class='btn text-light btn-outline-light' id='botonLogin' >Iniciar sesion</button></div>";
+    $aux = "<div class='col align-self-end'><button class='btn text-light btn-outline-light' id='botonLogin' >Iniciar sesion</button></div>";
     $htmlMenu = $aux;
 }
 ?>
