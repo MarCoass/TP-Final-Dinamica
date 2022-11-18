@@ -26,7 +26,7 @@ $i = 0;
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $arrayProductos[$i]->getNombre() ?></h5>
                                 <p class="card-text"><b>Descripci&oacute;n:</b> <?php echo $arrayProductos[$i]->getDescripcion() ?> <br>
-                                                     <b>Precio:</b>  $<?php echo $arrayProductos[$i]->getPrecio() ?></p>
+                                                    <b>Precio:</b>  $<?php echo $arrayProductos[$i]->getPrecio() ?></p>
                             </div>
                         </div>
                     </div>
