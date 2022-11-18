@@ -1,6 +1,7 @@
 <?php
 //FALTA EL CONFI
 //cocoloco no sera que lo que falta era el header?
+include_once 'Common/Header.php';
 include_once '../Control/AbmUsuario.php';
 include_once '../Control/AbmUsuarioRol.php';
 include_once '../Modelo/Usuario.php';

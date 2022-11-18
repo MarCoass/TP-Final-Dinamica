@@ -84,7 +84,7 @@ class UsuarioRol
                     $this->setIdusuariorol($row2['idusuariorol']);
 
                     //Creo un objeto para buscar al id y setear el objeto
-                    $usuario = new usuario();
+                    $usuario = new Usuario();
                     $usuario->buscar($row2['idusuario']);
                     $this->setIdusuario($usuario);
 
@@ -140,7 +140,7 @@ class UsuarioRol
         $idusuario = $this->getIdusuario();
         $idrol = $this->getIdrol();
         //Creo la consulta 
-        $sql = "INSERT INTO usuarioRol (idusuariorol, idusuario, idrol) VALUES ('{$idusuariorol}', '{$idusuario}', '{$idrol}')";
+        $sql = "INSERT INTO usuarioRol ( idusuario, idrol) VALUES ('{$idusuario}', '{$idrol}')";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;

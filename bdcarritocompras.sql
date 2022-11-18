@@ -1,4 +1,13 @@
 -- phpMyAdmin SQL Dump
+<<<<<<< HEAD
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 18-11-2022 a las 00:04:36
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 8.0.3
+=======
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
@@ -6,6 +15,7 @@
 -- Tiempo de generación: 17-11-2022 a las 20:45:46
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
+>>>>>>> dac216bfb54d5ac3f64748ce5bae321ad6c2f8c1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -93,7 +103,11 @@ CREATE TABLE `menu` (
   `menombre` varchar(50) NOT NULL COMMENT 'Nombre del item del menu',
   `medescripcion` varchar(124) NOT NULL COMMENT 'Descripcion mas detallada del item del menu',
   `idpadre` bigint(20) DEFAULT NULL COMMENT 'Referencia al id del menu que es subitem',
+<<<<<<< HEAD
+  `medeshabilitado` timestamp NULL DEFAULT current_timestamp() COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez',
+=======
   `medeshabilitado` timestamp NULL DEFAULT NULL COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez',
+>>>>>>> dac216bfb54d5ac3f64748ce5bae321ad6c2f8c1
   `script` varchar(100) DEFAULT NULL COMMENT 'Script que hace referencia a la vista del menu.'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -102,6 +116,13 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabilitado`, `script`) VALUES
+<<<<<<< HEAD
+(7, 'nuevo', 'kkkkk', NULL, NULL, NULL),
+(8, 'nuevo', 'kkkkk', NULL, NULL, NULL),
+(9, 'nuevo', 'kkkkk', 7, NULL, NULL),
+(10, 'nuevo', 'kkkkk', NULL, NULL, NULL),
+(11, 'nuevo', 'kkkkk', NULL, NULL, NULL);
+=======
 (1, 'Productos', 'Vista de Productos', NULL, NULL, NULL),
 (12, 'Compras', 'Vista de Compras', NULL, NULL, NULL),
 (13, 'Gestion', 'Vista de Gestion', NULL, NULL, NULL),
@@ -113,6 +134,7 @@ INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabi
 (19, 'Gestion de Usuarios', 'Vista de gestion de usuarios', 13, NULL, NULL),
 (20, 'Gestion de Menu', 'Vista de gestion de menu', 13, NULL, NULL),
 (21, 'Administrar Productos', 'Vista admin productos', NULL, NULL, NULL);
+>>>>>>> dac216bfb54d5ac3f64748ce5bae321ad6c2f8c1
 
 -- --------------------------------------------------------
 
@@ -175,9 +197,13 @@ CREATE TABLE `rol` (
 --
 
 INSERT INTO `rol` (`idrol`, `rodescripcion`) VALUES
+<<<<<<< HEAD
+(1, 'Cliente');
+=======
 (1, 'Administrador'),
 (2, 'Deposito'),
 (3, 'Cliente');
+>>>>>>> dac216bfb54d5ac3f64748ce5bae321ad6c2f8c1
 
 -- --------------------------------------------------------
 
@@ -336,7 +362,11 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
+<<<<<<< HEAD
+  MODIFY `idrol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+=======
   MODIFY `idrol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+>>>>>>> dac216bfb54d5ac3f64748ce5bae321ad6c2f8c1
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
