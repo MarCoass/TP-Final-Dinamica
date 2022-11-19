@@ -1,6 +1,6 @@
 
 <?php 
-include_once ('Common/Header.php')?>
+include_once ('Common/Header_publico.php')?>
 <link rel="stylesheet" href="Assets/css/login.css">
 <script src="Assets/Js/login.js"></script>
 <div class="wrapper fadeInDown">
@@ -22,7 +22,7 @@ include_once ('Common/Header.php')?>
     <form id="nuevo_usuario" class="form-signin" name="nuevo_usuario" method="POST" action="registrar_usuario.php">
       <input type="text" id="usuario_nuevo" class="fadeIn second" name="usuario_nuevo" placeholder="usuario@gmail.com">
       <input type="text" id="password_nuevo" class="fadeIn third" name="password_nuevo" placeholder="password">
-      <input type="submit" onclick="registrar_nuevo_usuario()" class="fadeIn fourth" value="Registrar">
+      <input type="submit" class="fadeIn fourth" value="Registrar">
     </form>
 
     <!-- Remind Passowrd -->
