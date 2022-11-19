@@ -8,7 +8,7 @@ include_once '../Util/funciones.php';
 
 $datos = data_submitted();
 $sesion = new Session();
-$name = md5($datos['usuario']);
+$name = $datos['usuario'];
 $pass = md5($datos['password']);
 
 $sesion->iniciar($name, $pass);
