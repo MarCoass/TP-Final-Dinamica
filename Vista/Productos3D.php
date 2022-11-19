@@ -1,11 +1,6 @@
-<?php
-include_once("../Control/Session.php");
-$obj_sesion = new Session();
-if($obj_sesion->activa()){    
+<?php    
 include_once("Common/Header.php");
-}else{
-    include_once("Common/Header_publico.php");
-}
+
 $objControlProducto = new C_Producto();
 $param = array();
 $param['protipo'] = '3D';
