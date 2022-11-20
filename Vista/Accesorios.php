@@ -3,7 +3,7 @@
 include_once("Common/Header.php");
 
 $objControlProducto = new C_Producto();
-$param =['protipo' => "'Accesorio'"];
+$param =['protipo' => "Accesorio"];
 $arrayProductos = $objControlProducto->buscar($param);
 if ($arrayProductos != null) {
     $cantidadProductos = count($arrayProductos);
