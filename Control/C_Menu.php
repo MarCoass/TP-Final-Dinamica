@@ -165,9 +165,9 @@ class C_Menu
                     }
                 }
                 if (count($htmlHijos) > 0) {
-                    $htmlItemMenu = "<li class='nav-item dropdown'><a class='nav-link dropdown-toggle text-dark' data-bs-toggle='dropdown' role='button' aria-expanded='false' href='{$itemMenu->getScript()}'>{$itemMenu->getMenombre()}</a>";
+                    $htmlItemMenu = "<li class='nav-item dropdown'><a class='nav-link dropdown-toggle text-dark' data-bs-toggle='dropdown' role='button' aria-expanded='false' href='#'>{$itemMenu->getMenombre()}</a>";
 
-                    $htmlDesplegable = "<ul class='dropdown-menu'>";
+                    $htmlDesplegable = "<ul class='dropdown-menu id='dropdown'>";
                     foreach ($htmlHijos as $item) {
                         $htmlDesplegable = $htmlDesplegable . $item;
                     }
