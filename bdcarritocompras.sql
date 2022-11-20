@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2022 a las 17:13:10
+-- Tiempo de generación: 20-11-2022 a las 18:08:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -94,7 +94,7 @@ CREATE TABLE `menu` (
   `medescripcion` varchar(124) NOT NULL COMMENT 'Descripcion mas detallada del item del menu',
   `idpadre` bigint(20) DEFAULT NULL COMMENT 'Referencia al id del menu que es subitem',
   `medeshabilitado` timestamp NULL DEFAULT NULL COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez',
-  `script` varchar(100) DEFAULT NULL COMMENT 'Script que hace referencia a la vista del menu.'
+  `script` varchar(200) DEFAULT NULL COMMENT 'Script que hace referencia a la vista del menu.'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -102,17 +102,17 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabilitado`, `script`) VALUES
-(1, 'Productos', 'Vista de Productos', NULL, NULL, NULL),
+(1, 'Productos', 'Vista de Productos', NULL, NULL, '/TP-Final-Dinamica/Vista/Productos.php'),
 (12, 'Compras', 'Vista de Compras', NULL, NULL, NULL),
 (13, 'Gestion', 'Vista de Gestion', NULL, NULL, NULL),
-(14, 'Productos 3D', 'Vista de Productos 3D', 1, NULL, NULL),
-(15, 'Productos 2D', 'Vista de Productos 2D', 1, NULL, NULL),
-(16, 'Accesorios', 'Vista de Accesorios', 1, NULL, NULL),
-(17, 'Mis compras', 'Vista de mis Compras', 12, NULL, NULL),
-(18, 'Administrar Compras', 'Vista de Administrar compras', 12, NULL, NULL),
-(19, 'Gestion de Usuarios', 'Vista de gestion de usuarios', 13, NULL, NULL),
-(20, 'Gestion de Menu', 'Vista de gestion de menu', 13, NULL, NULL),
-(21, 'Administrar Productos', 'Vista admin productos', 1, NULL, NULL);
+(14, 'Productos 3D', 'Vista de Productos 3D', 1, NULL, '/TP-Final-Dinamica/Vista/Productos3D.php'),
+(15, 'Productos 2D', 'Vista de Productos 2D', 1, NULL, '/TP-Final-Dinamica/Vista/Productos2D.php'),
+(16, 'Accesorios', 'Vista de Accesorios', 1, NULL, '/TP-Final-Dinamica/Vista/Accesorios.php'),
+(17, 'Mis compras', 'Vista de mis Compras', 12, NULL, '/TP-Final-Dinamica/Vista/MisCompras.php'),
+(18, 'Administrar Compras', 'Vista de Administrar compras', 12, NULL, '/TP-Final-Dinamica/Vista/AdminCompras.php'),
+(19, 'Gestion de Usuarios', 'Vista de gestion de usuarios', 13, NULL, '/TP-Final-Dinamica/Vista/GestionUsuarios.php'),
+(20, 'Gestion de Menu', 'Vista de gestion de menu', 13, NULL, '/TP-Final-Dinamica/Vista/GestionMenu.php'),
+(21, 'Administrar Productos', 'Vista admin productos', 1, NULL, '/TP-Final-Dinamica/Vista/AdminProductos.php');
 
 -- --------------------------------------------------------
 
@@ -162,12 +162,16 @@ CREATE TABLE `producto` (
   `proprecio` int(11) NOT NULL,
   `procantstock` int(11) NOT NULL,
   `protipo` varchar(512) NOT NULL,
-  `proimagen` varchar (512) NOT NULL
+  `proimagen` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
 
 INSERT INTO `producto` (`idproducto`, `pronombre`, `prodetalle`, `proprecio`, `procantstock`, `protipo`, `proimagen`) VALUES
 (1, 'Aros Hito Hito no mi', 'Aros impresos 3D de One Piece', 800, 9, 'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Hito Hito no mi.jpeg'),
-(2, 'Llaveros varios', 'Llaveros de acr&iacute;lico con una imagen dentro', 300, 200,'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Llaveros.jpeg'),
+(2, 'Llaveros varios', 'Llaveros de acr&iacute;lico con una imagen dentro', 300, 200, 'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Llaveros.jpeg'),
 (3, 'Pins varios', 'Pins de pla con una imagen a elecci&oacute;n dentro', 300, 344, 'Accesorio', '/TP-Final-Dinamica/Vista/Assets/Img/Accesorios/Pins.jpeg'),
 (4, 'Stickers surtidos', 'Stickers de varios animes, juegos, etc. Se venden de a 3 unidades', 100, 1045, '2D', '/TP-Final-Dinamica/Vista/Assets/Img/P2D/Stickers.jpeg'),
 (5, 'Tarjetas Genshin Impact', 'Tarjetas del juego Genshin Impact, vienen con un soporte impreso 3D de color surtido', 300, 145, '2D', '/TP-Final-Dinamica/Vista/Assets/Img/P2D/Tarjetas Genshin.jpeg'),
@@ -220,7 +224,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
 (1, 'Admin', 'admin123', 'admin@mail.com', NULL),
-(2, '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '0000-00-00 00:00:00');
+(2, '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '0000-00-00 00:00:00'),
+(3, 'mar', '5fa9db2e335ef69a4eeb9fe7974d61f4', 'mar', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -240,7 +245,8 @@ CREATE TABLE `usuariorol` (
 
 INSERT INTO `usuariorol` (`idusuariorol`, `idusuario`, `idrol`) VALUES
 (1, 1, 1),
-(2, 2, 1);
+(2, 2, 1),
+(3, 3, 3);
 
 --
 -- Índices para tablas volcadas
@@ -361,7 +367,7 @@ ALTER TABLE `menurol`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idproducto` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproducto` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -373,13 +379,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuariorol`
 --
 ALTER TABLE `usuariorol`
-  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -429,4 +435,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

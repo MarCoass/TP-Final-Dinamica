@@ -161,6 +161,7 @@ class C_Menu
                     if ($menu->getIdpadre() == $itemMenu->getIdmenu()) {
                         //$hijos[] = $itemMenu;
                         $htmlHijos[] = "<li><a class='dropdown-item text-dark' href='{$menu->getScript()}'>{$menu->getMenombre()}</a></li>";
+                        //echo $menu->getScript();
                     }
                 }
                 if (count($htmlHijos) > 0) {
