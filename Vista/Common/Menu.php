@@ -13,7 +13,9 @@ if ($objSession->activa()) {
     
 } else {
   //  $aux = "<div class='col align-self-end'><button class='btn text-light btn-outline-light' id='botonLogin' >Iniciar sesion</button></div>";
-    $aux = "<li class='nav-item dropdown'>
+    $aux = "
+    <ul class='nav nav-pills '>
+    <li class='nav-item dropdown'>
                 <a class='nav-link dropdown-toggle text-light fs-5' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                     Productos
                 </a>
@@ -26,6 +28,7 @@ if ($objSession->activa()) {
         <li class='nav-item'>
             <a class='nav-link active text-light fs-5' aria-current='page' href='/TP-Final-Dinamica/Vista/Login.php'>Iniciar Sesion</a>
         </li>
+        </ul>
     ";
     
     $htmlMenu = $aux;
