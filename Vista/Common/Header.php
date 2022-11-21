@@ -52,7 +52,8 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
     <header id="navbar ">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid" id="cabecera">
-                <a class="navbar-brand text-light fs-5" href="/TP-Final-Dinamica/Vista/Home.php"><img src="/TP-Final-Dinamica/Vista/Assets/Img/logo simple.png" width="70px" class="mb-1"></a>
+                <a class="navbar-brand text-light fs-5" href="/TP-Final-Dinamica/Vista/Home.php">
+                    <img src="/TP-Final-Dinamica/Vista/Assets/Img/logo simple.png" width="70px" class="mb-1"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -61,17 +62,17 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $totalcantidad; ?></a>
                         </li>
+                        
                     </ul>
                 </div>
 
-                <div class="nav">
-                    <?php include_once('Menu.php') ?>
-                </div>
+                <?php include_once('Menu.php') ?>
+                
 
 
             </div>
         </nav>
 
     </header>
-
+    
     <!-- MODAL CARRITO -->

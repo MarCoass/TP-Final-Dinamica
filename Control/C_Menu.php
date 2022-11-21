@@ -183,7 +183,7 @@ class C_Menu
                 //NO HACE NADA, ENTONCES SI ES UN ITEM HIJO ES IGNORADO HASTA QUE ENCUENTRE A SU PADRE
             }
         }
-        $htmlCompleto = "<ul class='nav nav-tabs '>";
+        $htmlCompleto = "<ul class='nav nav-tabs text-dark'>";
         foreach ($arrayItemsMenu as $item) {
             $htmlCompleto = $htmlCompleto . $item;
         }
