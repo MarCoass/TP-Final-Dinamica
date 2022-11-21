@@ -12,15 +12,17 @@ $datos = data_submitted();
 $obj_sesion = new Session();
 $name = $datos['usuario_nuevo'];
 $pass = md5($datos['password_nuevo']);
+$mail = $datos['mail_nuevo'];
 $obj_sesion->iniciar($name, $pass);
 $obj_Usuario = new Usuario();
-$obj_Usuario->setear(null, $name, $pass, $name,NULL);
+$obj_Usuario->setear(null, $name, $pass, $mail,NULL);
 $obj_Usuario->insertar();
 
 $obj_AbmUsuario = new AbmUsuario();
 $param = array();
 $param['usnombre'] = $name;
 $param['uspass'] = $pass;
+$param['usmail'] = $mail;
 $usuario = $obj_AbmUsuario->buscar($param);
 
 $obj_UsuarioRol = new UsuarioRol();
