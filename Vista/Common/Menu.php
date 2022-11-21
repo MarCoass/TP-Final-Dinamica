@@ -8,7 +8,7 @@ if ($objSession->activa()) {
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
     
-    $htmlMenu = $objMenu->armarMenu($menues) . "<div class='col align-self-end'><button class='btn text-light btn-outline-light mx-3'id='botonLogout'>Perfil</button><a href='cerrarSesion.php'><button class='btn text-light btn-outline-light' id='botonLogout'>Cerrar Session</button></a></div>";
+    $htmlMenu = $objMenu->armarMenu($menues) . "<div class='col align-self-end'><a href='/TP-Final-Dinamica/Vista/Perfil.php'><button class='btn text-light btn-outline-light mx-3'id='botonLogout'>Perfil</button></a><a href='cerrarSesion.php'><button class='btn text-light btn-outline-light' id='botonLogout'>Cerrar Session</button></a></div>";
     
 } else {
   //  $aux = "<div class='col align-self-end'><button class='btn text-light btn-outline-light' id='botonLogin' >Iniciar sesion</button></div>";
