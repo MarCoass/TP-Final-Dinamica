@@ -27,8 +27,11 @@ while ($i < $cantidadProductos) {
                 <div class="card-body">
                         <h5 class="card-title"><?php echo $arrayProductos[$i]->getPronombre() ?></h5>
                         <p class="card-text"><b>Descripci&oacute;n:</b> <?php echo $arrayProductos[$i]->getProdetalle() ?> - Precio:  $<?php echo $arrayProductos[$i]->getProprecio() ?></p>
-                        <button class="btn btn-primary" type="submit" ><i class="fas fa-shopping-cart"></i> Añadir al carrito</button>
+                        
                 </div>
+                <div class="card-footer">
+                                <button class="btn  btn-outline-dark" type="submit"><i class="bi bi-cart-plus-fill"></i> Añadir al carrito</button>
+                            </div>
         </form>
 </div>
 

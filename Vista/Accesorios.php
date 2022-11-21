@@ -30,6 +30,9 @@ $i = 0;
                                 <p class="card-text"><b>Descripci&oacute;n:</b> <?php echo $arrayProductos[$i]->getProdetalle() ?> <br>
                                                      <b>Precio:</b>  $<?php echo $arrayProductos[$i]->getProprecio() ?></p>
                             </div>
+                            <div class="card-footer">
+                                <button class="btn  btn-outline-dark"><i class="bi bi-cart-plus-fill"></i> Añadir al carrito</button>
+                            </div>
                         </div>
                     </div>
                 </div>
