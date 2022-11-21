@@ -60,7 +60,7 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $totalcantidad; ?></a>
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: black;"><i class="fas fa-shopping-cart"></i> <?php echo $totalcantidad; ?></a>
                         </li>
                         
                     </ul>
