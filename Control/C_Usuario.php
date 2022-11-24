@@ -170,8 +170,9 @@ class C_Usuario
         //roles recibidos por parametro
         $rolesNuevos = $param['rol'];
 
+        //agrega roles, parece funcionar
         foreach($rolesNuevos as $rolAgregar){
-            if(!in_array($rolAgregar,$rolesUsuario)){
+            if(count($objUsuarioRol->buscar(['idusuario'=>$param['idusuario'], 'idrol'=>$rolAgregar]))==0){
                 $idUsuario = $param['idusuario'];
                 $usuarioRol = new UsuarioRol();
                 $usuarioRol->cargar(NULL, $idUsuario, $rolAgregar);
@@ -179,8 +180,9 @@ class C_Usuario
             }
         }
 
-        foreach($rolesUsuario as $rolEliminar){
-            if(!in_array($rolEliminar,$rolesNuevos)){
+        //elimina roles, no funciona
+        foreach($rolesUsuario[0] as $rolEliminar){
+            if(count($objUsuarioRol->buscar(['idusuario'=>$param['idusuario'], 'idrol'=>$rolEliminar]))>0){
                 $idUsuario = $param['idusuario'];
                 $usuarioRol = new UsuarioRol();
                 $usuarioRol->cargar(NULL, $idUsuario, $rolEliminar);
@@ -190,4 +192,6 @@ class C_Usuario
 
         return $resp;
     }
+
+    
 }

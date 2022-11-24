@@ -27,14 +27,14 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
 
             </div>
             <div class="col-10 col-lg-7">
-                <label for="usNombre" class="form-label mt-2">MAIL</label>
-                <input type="text" class="form-control" placeholder="Mail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\.([a-z]{3})(\.[a-z]{2})*$" name="usmail" id="usmail" value="<?php echo $usuarioModificar->getUsMail() ?>" required>
+                <label for="usmail" class="form-label mt-2">MAIL</label>
+                <input type="text" class="form-control" placeholder="Mail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\.([a-z]{3})(\.[a-z]{2})*$" name="usmail" id="usmail" value="<?php echo $usuarioModificar->getUsmail() ?>" required>
                 <div class="invalid-feedback">
                     Porfavor ingrese un mail valido.
                 </div>
             </div>
             <div class="col-10 col-lg-7">
-                <label for="usPass" class="form-label mt-2">CONTRASEÑA</label>
+                <label for="uspass" class="form-label mt-2">CONTRASEÑA</label>
                 <input type="password" class="form-control" placeholder="***********" id="uspassNueva">
                 <input type="password" class="form-control d-none" id="uspassAnterior" value="<?php echo $usuarioModificar->getUspass() ?>">
 
