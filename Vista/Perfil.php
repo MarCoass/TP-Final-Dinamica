@@ -17,7 +17,6 @@ include_once('../Vista/Common/Header.php');
             </div>
             <div id="ContenedorBotones m-5">
                 <button class="btn btn-light">Editar perfil</button>
-                
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_borrar"><button class="btn btn-danger">Borrar cuenta</button></a>
             </div>
         </div>

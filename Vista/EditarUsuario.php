@@ -8,7 +8,6 @@ $datos=data_submitted();
         $roles=$objRol->buscar(null);
         $usuarioModificar=$objUsuario->buscar($datos);
 
-
 ?>
 
 <div class="container-md mb-5">
@@ -48,8 +47,7 @@ $datos=data_submitted();
         
         
             <?php
-             foreach($roles as $rol){
-                if($rol->getRodescripcion()!='CLIENTE'){
+            foreach($roles as $rol){
                     ?>
                     <div class="form-check">
                     <input class='form-check-input' type='checkbox' name='rol[]' value='<?php echo $rol->getIdRol() ?>'
@@ -65,7 +63,7 @@ $datos=data_submitted();
                     <label class='form-check-label' for='admin'><?php echo $rol->getRodescripcion() ?> </label>
                     </div>
                     <?php
-                }
+                
             }
             ?>
     </div>
