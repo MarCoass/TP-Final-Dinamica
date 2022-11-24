@@ -15,9 +15,11 @@ if(isset($datos['id_producto']) && isset($datos['cantidad'])){
 	}
 }
 	
-
-header("Location: ".$_SERVER['HTTP_REFERER']."");
 ?>
+
+<script>
+window.history.back();
+</script>
 
 
 
