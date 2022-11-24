@@ -1,5 +1,5 @@
 <?php
-include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
+include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
 ?>
 <html lang="en">
 
@@ -29,22 +29,8 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
 
 <body background="../Assets/Img/fondo.png">
     <?php
-    if (isset($_SESSION['carrito'])) {
-        $carrito = $_SESSION['carrito'];
-        $_SESSION['carrito'] = $carrito;
-
-        // contamos nuestro carrito
-
-        for ($i = 0; $i <= count($carrito) - 1; $i++) {
-            if ($carrito[$i] != NULL) {
-                $total_cantidad = $carrito['cantidad'];
-                $total_cantidad++;
-                $totalcantidad += $total_cantidad;
-            }
-        }
-    } else {
-        $totalcantidad = 0;
-    }
+    $sesion = new Session();
+    $totalcantidad = $sesion->contarCarrito();
     ?>
     <header id="navbar ">
         <nav class="navbar navbar-expand-lg">
