@@ -168,7 +168,11 @@ class Session
     
             for ($i = 0; $i <= count($carrito) - 1; $i++) {
                 if ($carrito[$i] != NULL) {
-                    $totalcantidad = $carrito['cantidad'];
+                    if(isset($carrito['cantidad'])){
+                      $totalcantidad = $carrito['cantidad'];
+                    }else{
+                        $totalcantidad = 0;
+                    }
                     $totalcantidad++;
                     $totalcantidad += $totalcantidad;
                 }
