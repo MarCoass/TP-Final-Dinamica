@@ -36,7 +36,7 @@ $i = 0;
                             </td>
                             <td class="text-center"> <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ? "Habilitado" : "Deshabilitado"; ?> </td>
                             <td>
-                                <form method='post' action='actualizarLogin.php' id="'<?php echo $usuarios[$i]->getIdUsuario() ?>">
+                                <form method='post' action='EditarUsuario.php' id="'<?php echo $usuarios[$i]->getIdUsuario() ?>">
                                     <input style="display:none;" name='idUsuario' id='idUsuario' value='<?php echo $usuarios[$i]->getIdUsuario() ?>'>
                                     <button type="submit" class="ms-3 text-decoration-none btn btn-outline-warning"> EDITAR </button>
                                     <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
