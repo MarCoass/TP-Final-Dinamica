@@ -166,7 +166,7 @@ class C_Menu
                 }
                 if (count($htmlHijos) > 0) {
                     
-                    $htmlItemMenu = "<li class='nav-item dropdown'><a class= 'nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false'>{$itemMenu->getMenombre()}</a>";
+                    $htmlItemMenu = "<li class='nav-item dropdown'><a class= 'nav-link dropdown-toggle text-light' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false'>{$itemMenu->getMenombre()}</a>";
                     
                     $htmlDesplegable = "<ul class='dropdown-menu'>";
                     foreach ($htmlHijos as $item) {
@@ -183,7 +183,7 @@ class C_Menu
                 //NO HACE NADA, ENTONCES SI ES UN ITEM HIJO ES IGNORADO HASTA QUE ENCUENTRE A SU PADRE
             }
         }
-        $htmlCompleto = "<ul class='nav nav-tabs text-dark'>";
+        $htmlCompleto = "<ul class='nav nav-pills text-light'>";
         foreach ($arrayItemsMenu as $item) {
             $htmlCompleto = $htmlCompleto . $item;
         }
