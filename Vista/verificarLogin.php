@@ -11,9 +11,9 @@ $datos = data_submitted();
 $name = $datos['usuario'];
 $pass = md5($datos['password']);
 
-$sesion->iniciar($name, $pass);
+$sesion->setUserName($name);
+$sesion->setPass($pass);
 list($valido, $error) = $sesion->validar();
-
 
 if ($valido) {
     header("Location:Home.php");

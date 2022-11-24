@@ -12,7 +12,7 @@ $datos = data_submitted();
 $name = $datos['usuario_nuevo'];
 $pass = md5($datos['password_nuevo']);
 $mail = $datos['mail_nuevo'];
-$obj_sesion->iniciar($name, $pass);
+$sesion->iniciar($name, $pass);
 $obj_Usuario = new Usuario();
 $obj_Usuario->setear(null, $name, $pass, $mail,NULL);
 $obj_Usuario->insertar();
