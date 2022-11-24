@@ -39,6 +39,8 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
                 <input type="password" class="form-control d-none" id="uspassAnterior" value="<?php echo $usuarioModificar->getUspass() ?>">
 
             </div>
+
+
             <div class="col-8 col-lg-7 mt-4">
                 <h6 class="text-center mb-3">ROLES</h6>
 
@@ -62,6 +64,7 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
                 }
                 ?>
             </div>
+            
             <button class="btn btn-lg btn-success my-3 col-10 col-lg-7 mt-4">MODIFICAR</button>
         </form>
     </main>
