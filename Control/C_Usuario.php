@@ -158,4 +158,40 @@ class C_Usuario
         }
         return $resp;
     }
+
+    //Cambiar roles
+    public function modificarRoles($param){
+        $resp = false;
+        //busco el usuario con el id que recibe la funcion
+        $usuario = $this->buscar($param['idusuario']);
+        $objUsuarioRol = new C_UsuarioRol();
+        //busco los roles el usuario
+        $rolesUsuario = $objUsuarioRol->buscar(['idusuario'=>$param['idusuario']]);
+        //roles recibidos por parametro
+        $rolesNuevos = $param['rol'];
+
+        //agrega roles, parece funcionar
+        foreach($rolesNuevos as $rolAgregar){
+            if(count($objUsuarioRol->buscar(['idusuario'=>$param['idusuario'], 'idrol'=>$rolAgregar]))==0){
+                $idUsuario = $param['idusuario'];
+                $usuarioRol = new UsuarioRol();
+                $usuarioRol->cargar(NULL, $idUsuario, $rolAgregar);
+                $usuarioRol->insertar(); 
+            }
+        }
+
+        //elimina roles, no funciona
+        foreach($rolesUsuario[0] as $rolEliminar){
+            if(count($objUsuarioRol->buscar(['idusuario'=>$param['idusuario'], 'idrol'=>$rolEliminar]))>0){
+                $idUsuario = $param['idusuario'];
+                $usuarioRol = new UsuarioRol();
+                $usuarioRol->cargar(NULL, $idUsuario, $rolEliminar);
+                $usuarioRol->eliminar(); 
+            }
+        }
+
+        return $resp;
+    }
+
+    
 }

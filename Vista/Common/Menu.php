@@ -1,8 +1,9 @@
 <?php
 //echo $_SESSION['ROOT'].'Modelo/';
 $menues = [];
+
 if ($sesion->activa()) {
-    $idRoles = $sesion->getOtroRol();
+    $idRoles = $sesion->getRoles();
     $objMenuRol = new C_Menurol();
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();

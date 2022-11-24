@@ -140,7 +140,7 @@ class Session
         return $rol;
     }
 
-    public function getOtroRol(){
+    public function getRoles(){
         //$objC_Usuario = new C_Usuario();
         $usuarioActual = $this->getUsuario(); //Usuario actual
         $objC_UsuarioRol = new C_Usuariorol(); //Creo el obj controlador de usuariorol para usar su buscar
@@ -190,6 +190,7 @@ class Session
         return $totalcantidad;
     }
 
+<<<<<<< HEAD
     public function obtener_carrito(){
         
         if(isset( $_SESSION['carrito']['cantidad'])){
@@ -200,4 +201,6 @@ class Session
 
         return $result;
     }
+=======
+>>>>>>> 60110eecb9244c483deeb444c52a845968f5853d
 }

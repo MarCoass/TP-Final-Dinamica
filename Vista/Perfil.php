@@ -11,8 +11,8 @@ include_once('../Vista/Common/Header.php');
         <hr class="border border-ligtht border-2 opacity-50" >
         <div class="container" id="">
             <div class="text-light" id="InfoUsuario">
-                Username: <?php echo $objSession->getUserName() ?> <br>
-                Mail: <?php echo $objSession->getUsuario()->getUsmail() ?> <br>
+                Username: <?php echo $sesion->getUserName() ?> <br>
+                Mail: <?php echo $sesion->getUsuario()->getUsmail() ?> <br>
                 Contraseña: ***********
             </div>
             <div id="ContenedorBotones m-5">
