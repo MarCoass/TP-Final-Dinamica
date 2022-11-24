@@ -37,7 +37,7 @@ $i = 0;
                             <td class="text-center"> <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ? "Habilitado" : "Deshabilitado"; ?> </td>
                             <td>
                                 <form method='post' action='EditarUsuario.php' id="'<?php echo $usuarios[$i]->getIdUsuario() ?>">
-                                    <input style="display:none;" name='idUsuario' id='idUsuario' value='<?php echo $usuarios[$i]->getIdUsuario() ?>'>
+                                    <input style="display:none;" name='idusuario' id='idusuario' value='<?php echo $usuarios[$i]->getIdUsuario() ?>'>
                                     <button type="submit" class="ms-3 text-decoration-none btn btn-outline-warning"> EDITAR </button>
                                     <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
                                         "<button type='button' class='mx-2 text-decoration-none btn btn-outline-danger deshabilitar'>
