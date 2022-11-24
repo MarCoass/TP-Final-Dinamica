@@ -173,7 +173,7 @@ class Session
             $_SESSION['carrito']['cantidad'] += $param['cantidad'];
         }else{
             $_SESSION['carrito']['productos'][$param['id_producto']] = array(
-                'descripcion' => $param['descripcion'],
+                'descripcion' => $param['nombre'],
                 'cantidad' => $param['cantidad']
             );
 

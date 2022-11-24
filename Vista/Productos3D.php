@@ -20,7 +20,7 @@ while ($i < $cantidadProductos) {
 <div class="card m-4" style="width: 18rem;">
         <form id="formulario" name="formulario" method="post" action="cart.php">
         <input name="precio" type="hidden" id="precio" value="<?php echo $arrayProductos[$i]->getProprecio();?>" />
-        <input name="titulo" type="hidden" id="titulo" value="<?php echo $arrayProductos[$i]->getPronombre();?>" />
+        <input name="nombre" type="hidden" id="nombre" value="<?php echo $arrayProductos[$i]->getPronombre();?>" />
         <input name="id_producto" id="id_producto" type="hidden" value="<?php echo $arrayProductos[$i]->getIdproducto(); ?>"/>
         <img src="<?php echo $arrayProductos[$i]->getProimagen() ?>" class="card-img-top" alt="Foto del producto">
                        
