@@ -170,15 +170,16 @@ class Session
     public function insertar_producto_carrito($param){
         if(array_key_exists($param['id_producto'],$_SESSION['carrito']['productos'])){
             $_SESSION['carrito']['productos'][$param['id_producto']]['cantidad'] += $param['cantidad'];
-            $_SESSION['carrito']['cantidad'] += $param['cantidad'];
+           
         }else{
             $_SESSION['carrito']['productos'][$param['id_producto']] = array(
                 'descripcion' => $param['nombre'],
                 'cantidad' => $param['cantidad']
             );
 
-            $_SESSION['carrito']['cantidad'] = $param['cantidad'];
         }
+
+        $_SESSION['carrito']['cantidad'] += $param['cantidad'];
         
     }
 
