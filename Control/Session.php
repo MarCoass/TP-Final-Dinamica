@@ -140,7 +140,7 @@ class Session
         return $rol;
     }
 
-    public function getOtroRol(){
+    public function getRoles(){
         //$objC_Usuario = new C_Usuario();
         $usuarioActual = $this->getUsuario(); //Usuario actual
         $objC_UsuarioRol = new C_Usuariorol(); //Creo el obj controlador de usuariorol para usar su buscar
