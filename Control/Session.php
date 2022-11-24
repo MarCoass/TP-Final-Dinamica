@@ -190,7 +190,6 @@ class Session
         return $totalcantidad;
     }
 
-<<<<<<< HEAD
     public function obtener_carrito(){
         
         if(isset( $_SESSION['carrito']['cantidad'])){
@@ -201,6 +200,4 @@ class Session
 
         return $result;
     }
-=======
->>>>>>> 60110eecb9244c483deeb444c52a845968f5853d
 }
