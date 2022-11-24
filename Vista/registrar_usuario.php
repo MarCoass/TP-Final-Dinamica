@@ -4,7 +4,6 @@ include_once("Common/Header.php");
 include_once '../Control/AbmUsuario.php';
 include_once '../Modelo/Usuario.php';
 include_once '../Modelo/UsuarioRol.php';
-include_once '../Modelo/Conector/BaseDatos.php';
 include_once '../Modelo/UsuarioRol.php';
 include_once 'Login.php';
 
