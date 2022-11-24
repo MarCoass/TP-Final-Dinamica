@@ -93,11 +93,12 @@ class C_Usuario
      * @param array $param
      * @return boolean
      */
-    public function modificacion($param){
+    public function modificacion($param)
+    {
         $resp = false;
-        if ($this->seteadosCamposClaves($param)){
-            $obj= $this->cargarObjeto($param);
-            if($obj!=null && $obj->modificar()){
+        if ($this->seteadosCamposClaves($param)) {
+            $obj = $this->cargarObjeto($param);
+            if ($obj != null && $obj->modificar()) {
                 $resp = true;
             }
         }
@@ -109,24 +110,52 @@ class C_Usuario
      * @param array $param
      * @return array
      */
-    public function buscar($param){
-        $where = " true "; 
-        if ($param<>NULL){
+    public function buscar($param)
+    {
+        $where = " true ";
+        if ($param <> NULL) {
             $where .= '';
-            if  (isset($param['idusuario']))
-                $where.=" and idusuario ='".$param['idusuario']."'"; 
-            if  (isset($param['usnombre']))
-                    $where.=" and usnombre ='".$param['usnombre']."'";
-            if  (isset($param['uspass']))
-                    $where.=" and uspass ='".$param['uspass']."'";
-            if  (isset($param['usmail']))
-                    $where.=" and usmail ='".$param['usmail']."'";
-            if  (isset($param['usdeshabilitado']))
-                    $where.=" and usdeshabilitado ='".$param['usdeshabilitado']."'";
+            if (isset($param['idusuario']))
+                $where .= " and idusuario ='" . $param['idusuario'] . "'";
+            if (isset($param['usnombre']))
+                $where .= " and usnombre ='" . $param['usnombre'] . "'";
+            if (isset($param['uspass']))
+                $where .= " and uspass ='" . $param['uspass'] . "'";
+            if (isset($param['usmail']))
+                $where .= " and usmail ='" . $param['usmail'] . "'";
+            if (isset($param['usdeshabilitado']))
+                $where .= " and usdeshabilitado ='" . $param['usdeshabilitado'] . "'";
         }
         $obj = new Usuario();
-        $arreglo =  $obj->listar($where);  
-        
+        $arreglo =  $obj->listar($where);
+
         return $arreglo;
+    }
+
+
+    function deshabilitar($param)
+    {
+        $resp = false;
+        $arrayObjUsuarios = $this->buscar($param);
+        $fecha = new DateTime();
+        $fechaStamp = $fecha->format('Y-m-d H:i:s');
+        $objUsuario = $arrayObjUsuarios[0];
+        $objUsuario->setUsDeshabilitado($fechaStamp);
+        if ($objUsuario != null and $objUsuario->modificar()) {
+            $resp = true;
+        }
+        return $resp;
+    }
+
+    function habilitar($param)
+    {
+        $resp = false;
+        $arrayObjUsuarios = $this->buscar($param);
+        $objUsuario = $arrayObjUsuarios[0];
+        $objUsuario->setUsDeshabilitado('0000-00-00 00:00:00');
+        if ($objUsuario != null and $objUsuario->modificar()) {
+            $resp = true;
+        }
+        return $resp;
     }
 }

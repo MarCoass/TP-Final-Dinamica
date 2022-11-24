@@ -7,10 +7,7 @@ include_once("/xampp/htdocs/TP-FInal-Dinamica/configuracion.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap-5.2.0-dist/css/bootstrap.min.css" crossorigin="anonymous">
-    <script src="bootstrap-5.2.0-dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <title>Besto 3d homepage</title>
-    <script src="../assets/js/jquery/jquery-1.12.0.js"></script>
     <link href="https://www.flaticon.es/iconos-gratis/menu" title="menú iconos">
 
 

@@ -18,8 +18,8 @@ $i = 0;
                         <th scope="col-4">NOMBRE</th>
                         <th scope="col-4">MAIL</th>
                         <th scope="col-4">ROL</th>
-                        <th scope="col-6">DESHABILITADO</th>
-                        <th scope="col-6">ACCIONES</th>
+                        <th scope="col-6">ESTADO</th>
+                        <th scope="col-6">OPCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,12 +34,12 @@ $i = 0;
                                     echo "aca van los roles";
                             ?>
                             </td>
-                            <td class="text-center"> <?php echo $usuarios[$i]->getUsdeshabilitado() == NULL ? "NO" : $usuarios[$i]->getUsdeshabilitado(); ?> </td>
+                            <td class="text-center"> <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ? "Habilitado" : "Deshabilitado"; ?> </td>
                             <td>
                                 <form method='post' action='actualizarLogin.php' id="'<?php echo $usuarios[$i]->getIdUsuario() ?>">
                                     <input style="display:none;" name='idUsuario' id='idUsuario' value='<?php echo $usuarios[$i]->getIdUsuario() ?>'>
                                     <button type="submit" class="ms-3 text-decoration-none btn btn-outline-warning"> EDITAR </button>
-                                    <?php echo $usuarios[$i]->getUsdeshabilitado() == NULL ?
+                                    <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
                                         "<button type='button' class='mx-2 text-decoration-none btn btn-outline-danger deshabilitar'>
                         DESHABILITAR
                         </button>" :
@@ -60,7 +60,7 @@ $i = 0;
 
 </div>
 
-
+<script src="Assets/Js/GestionUsuarios.js"></script>
 <?php 
 include_once ('Common/Footer.php');
 ?>

@@ -12,7 +12,7 @@ if ($arrayProductos != null) {
 }
 $i = 0;
 ?>
-<div class="container-fluid  mt-3" style="width: 100vw;">
+<div class="container-fluid  mt-3 ms-3" >
     <div class="row ">
 
         <?php
