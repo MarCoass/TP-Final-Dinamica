@@ -159,6 +159,25 @@ class Session
         session_destroy();
     }
 
+    public function iniciar_carrito(){
+        if (!isset($_SESSION['carrito'])) {
+           $_SESSION['carrito']['cantidad'] = 0;
+           $_SESSION['carrito']['productos'] = array();
+        }
+    }
+
+    public function insertar_producto_carrito($param){
+        if(array_key_exists($param['id_producto'],$_SESSION['carrito']['productos'])){
+            $_SESSION['carrito']['productos'][$param['id_producto']]['cantidad'] += $param['cantidad'];
+        }else{
+            $_SESSION['carrito']['productos'][$param['id_producto']] = array(
+                'descripcion' => $param['descripcion'],
+                'cantidad' => $param['cantidad']
+            );
+        }
+        
+    }
+
     public function contarCarrito(){
         if (isset($_SESSION['carrito'])) {
             $carrito = $_SESSION['carrito'];

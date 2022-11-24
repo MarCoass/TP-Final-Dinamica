@@ -226,6 +226,21 @@ class Producto
         return $resp;
     }
 
+    public function validar_cantidad_stock($id_producto,$cantidad){
+        $base = new BaseDatos();
+        $rta = false;
+        $consulta = "SELECT * FROM `producto` WHERE (`procantstock` >= ".$cantidad." OR `procantstock` <= ".$cantidad.") AND `idproducto` = ".$id_producto;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($consulta)) {
+                $rta = true;
+            } else {
+                $this->setMensaje($base->getError());
+            }
+        } else {
+            $this->setMensaje($base->getError());
+        }
+        return $rta;
+    }
     //ELIMINAR
     public function eliminar()
     {
