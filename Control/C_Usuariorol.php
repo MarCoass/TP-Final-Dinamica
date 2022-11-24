@@ -34,9 +34,9 @@ class C_Usuariorol
     private function cargarObjetoConClave($param)
     {
         $obj = null;
-        if (isset($param['idUsuariorol'])) {
+        if (isset($param['idusuariorol'])) {
             $obj = new Usuariorol();
-            $obj->cargar($param['idUsuariorol'], null, null);
+            $obj->cargar($param['idusuariorol'], null, null);
         }
         return $obj;
     }
