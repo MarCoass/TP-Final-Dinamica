@@ -1,9 +1,8 @@
 <?php
 //echo $_SESSION['ROOT'].'Modelo/';
-$objSession = new Session();
 $menues = [];
-if ($objSession->activa()) {
-    $idRoles = $objSession->getOtroRol();
+if ($sesion->activa()) {
+    $idRoles = $sesion->getOtroRol();
     $objMenuRol = new C_Menurol();
     $menues = $objMenuRol->menuesByIdRol($idRoles);
     $objMenu = new C_Menu();
@@ -19,9 +18,9 @@ if ($objSession->activa()) {
                     Productos
                 </a>
             <ul class='dropdown-menu' id='dropdown'>
-                <li><a class='dropdown-item text-light' href='/TP-Final-Dinamica/Vista/Productos2D.php'>Impresiones 2D</a></li>
-                <li><a class='dropdown-item text-light' href='/TP-Final-Dinamica/Vista/Productos3D.php'>Impresiones 3D</a></li>
-                <li><a class='dropdown-item text-light' href='/TP-Final-Dinamica/Vista/Accesorios.php'>Accesorios</a></li>
+                <li><a class='dropdown-item text-light' href='Productos2D.php'>Impresiones 2D</a></li>
+                <li><a class='dropdown-item text-light' href='Productos3D.php'>Impresiones 3D</a></li>
+                <li><a class='dropdown-item text-light' href='Accesorios.php'>Accesorios</a></li>
             </ul>
             </li>
         <li class='nav-item'>

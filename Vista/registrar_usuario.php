@@ -9,7 +9,6 @@ include_once '../Modelo/UsuarioRol.php';
 include_once 'Login.php';
 
 $datos = data_submitted();
-$obj_sesion = new Session();
 $name = $datos['usuario_nuevo'];
 $pass = md5($datos['password_nuevo']);
 $mail = $datos['mail_nuevo'];

@@ -160,7 +160,7 @@ class C_Menu
                     //Si el menu tiene idpadre igual al id del menu actual, lo agrego a un array
                     if ($menu->getIdpadre() == $itemMenu->getIdmenu()) {
                         //$hijos[] = $itemMenu;
-                        $htmlHijos[] = "<li><a class='dropdown-item' href='#'>{$menu->getMenombre()}</a></li>";
+                        $htmlHijos[] = "<li><a class='dropdown-item' href=".$menu->getScript().">{$menu->getMenombre()}</a></li>";
                         //echo "<li><a class='dropdown-item text-dark' href=".$menu->getScript().">{$menu->getMenombre()}</a></li>";
                     }
                 }

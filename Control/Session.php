@@ -158,4 +158,24 @@ class Session
         session_unset();
         session_destroy();
     }
+
+    public function contarCarrito(){
+        if (isset($_SESSION['carrito'])) {
+            $carrito = $_SESSION['carrito'];
+            $_SESSION['carrito'] = $carrito;
+    
+            // contamos nuestro carrito
+    
+            for ($i = 0; $i <= count($carrito) - 1; $i++) {
+                if ($carrito[$i] != NULL) {
+                    $totalcantidad = $carrito['cantidad'];
+                    $totalcantidad++;
+                    $totalcantidad += $totalcantidad;
+                }
+            }
+        } else {
+            $totalcantidad = 0;
+        }
+        return $totalcantidad;
+    }
 }
