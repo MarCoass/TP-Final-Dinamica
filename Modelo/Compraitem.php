@@ -117,7 +117,7 @@ class Compraitem
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from compra";
+        $sql =  "select * from compraitem";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }
