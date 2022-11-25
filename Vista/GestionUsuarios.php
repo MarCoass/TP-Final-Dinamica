@@ -51,7 +51,7 @@ if ($sesion->esAdmin()) {
                                         "<button type='button' class='mx-2 mt-1 text-decoration-none btn deshabilitar text-light' id='botonModal'>
                         DESHABILITAR
                         </button>" :
-                                        "<button type='button' class='mx-2 mb-1 text-decoration-none btn habilitar' id='botonHab'>
+                                        "<button type='button' class='mx-2 mb-1 text-decoration-none btn habilitar' id='botonModal'>
                         HABILITAR
                         </button>";
                                     ?>
