@@ -31,7 +31,7 @@ $usuario = $sesion->getUsuario();
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" >
+        <form name="form" action="Accion/editarPerfil.php" method="post">
           <div class="col-lg-7 col-12">Username:
             <input value='<?php echo $usuario->getUsnombre() ?>' type="text" style="width: 150px;"  name="usnombre"></input>
           </div>

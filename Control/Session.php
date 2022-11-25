@@ -152,6 +152,22 @@ class Session
         return $listaRoles;
     }
 
+    public function esAdmin()
+    {
+        $arrayRoles = $this->getRoles();
+        $esAdmin = false;
+        $i = 0;
+        
+        while ($i < count($arrayRoles) && !$esAdmin) {
+            //print_r($arrayRoles[$i]->getIdrol());
+            if ($arrayRoles[$i]->getIdrol()->getIdrol() == 1) {
+                $esAdmin = true;
+            }
+            $i++;
+        }
+        return $esAdmin;
+    }
+
     /** CERRAR **/
     public function cerrar()
     {
@@ -186,7 +202,7 @@ class Session
                 'cantidad' => $param['cantidad']
             );
         }
-        
+
         $_SESSION['carrito']['cantidad'] += $param['cantidad'];
     }
 
