@@ -1,5 +1,4 @@
 <?php
-include_once '../Modelo/Usuario.php';
 
 class C_Usuario
 {

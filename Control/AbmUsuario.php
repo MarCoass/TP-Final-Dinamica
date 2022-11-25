@@ -1,5 +1,4 @@
 <?php
-include_once('../Modelo/Usuario.php');
 class AbmUsuario
 {
     //Espera como parametro un arreglo asociativo donde las claves coinciden con los uspasss de las variables instancias del objeto

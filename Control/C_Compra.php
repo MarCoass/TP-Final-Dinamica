@@ -69,6 +69,7 @@ class C_Compra
         return $resp;
     }
 
+
     /**
      * permite eliminar un objeto 
      * @param array $param

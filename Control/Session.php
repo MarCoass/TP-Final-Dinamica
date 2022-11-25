@@ -2,19 +2,19 @@
 include_once 'C_Usuario.php';
 include_once 'AbmUsuario.php';
 
-    //Constructor que inicia la sesion
+//Constructor que inicia la sesion
 
-    //iniciar($nombreUsuario,$psw). Actualiza las variables de sesión con los valores ingresados.
+//iniciar($nombreUsuario,$psw). Actualiza las variables de sesión con los valores ingresados.
 
-    //validar(). Valida si la sesión actual tiene usuario y psw  válidos. Devuelve true o false
+//validar(). Valida si la sesión actual tiene usuario y psw  válidos. Devuelve true o false
 
-    //activa(). Devuelve true o false si la sesión está activa o no.
+//activa(). Devuelve true o false si la sesión está activa o no.
 
-    //getUsuario().Devuelve el usuario logeado.
+//getUsuario().Devuelve el usuario logeado.
 
-    //getRol(). Devuelve el rol del usuario  logeado.
+//getRol(). Devuelve el rol del usuario  logeado.
 
-    //cerrar(). Cierra la sesión actual.
+//cerrar(). Cierra la sesión actual.
 
 class Session
 {
@@ -140,7 +140,8 @@ class Session
         return $rol;
     }
 
-    public function getRoles(){
+    public function getRoles()
+    {
         //$objC_Usuario = new C_Usuario();
         $usuarioActual = $this->getUsuario(); //Usuario actual
         $objC_UsuarioRol = new C_Usuariorol(); //Creo el obj controlador de usuariorol para usar su buscar
@@ -149,7 +150,6 @@ class Session
         //echo "ROL: " . $listaRoles[0];
         //print_r($listaRoles);
         return $listaRoles;
-
     }
 
     /** CERRAR **/
@@ -159,51 +159,52 @@ class Session
         session_destroy();
     }
 
-    public function iniciar_carrito(){
+    public function iniciar_carrito()
+    {
         if (!isset($_SESSION['carrito'])) {
-           $_SESSION['carrito'] = array();
-           $_SESSION['carrito']['cantidad'] = 0;
-           $_SESSION['carrito']['productos'] = array();
+            $_SESSION['carrito'] = array();
+            $_SESSION['carrito']['cantidad'] = 0;
+            $_SESSION['carrito']['productos'] = array();
         }
     }
 
-    public function setear_carrito(){
-           $_SESSION['carrito'] = array();
-           $_SESSION['carrito']['cantidad'] = 0;
-           $_SESSION['carrito']['productos'] = array();
-        
+    public function setear_carrito()
+    {
+        $_SESSION['carrito'] = array();
+        $_SESSION['carrito']['cantidad'] = 0;
+        $_SESSION['carrito']['productos'] = array();
     }
 
-    public function insertar_producto_carrito($param){
-        if(array_key_exists($param['id_producto'],$_SESSION['carrito']['productos'])){
+    public function insertar_producto_carrito($param)
+    {
+        if (array_key_exists($param['id_producto'], $_SESSION['carrito']['productos'])) {
             $_SESSION['carrito']['productos'][$param['id_producto']]['cantidad'] += $param['cantidad'];
-           
-        }else{
+        } else {
             $_SESSION['carrito']['productos'][$param['id_producto']] = array(
                 'descripcion' => $param['nombre'],
                 'precio' => $param['precio'],
                 'cantidad' => $param['cantidad']
             );
-
         }
-
-        $_SESSION['carrito']['cantidad'] += $param['cantidad'];
         
+        $_SESSION['carrito']['cantidad'] += $param['cantidad'];
     }
 
-    public function contarCarrito(){
-      $totalcantidad = 0;
-      if(isset( $_SESSION['carrito']['cantidad'])){
-         $totalcantidad = $_SESSION['carrito']['cantidad'];
-      }
+    public function contarCarrito()
+    {
+        $totalcantidad = 0;
+        if (isset($_SESSION['carrito']['cantidad'])) {
+            $totalcantidad = $_SESSION['carrito']['cantidad'];
+        }
         return $totalcantidad;
     }
 
-    public function obtener_carrito(){
-        
-        if(isset( $_SESSION['carrito']['cantidad'])){
+    public function obtener_carrito()
+    {
+
+        if (isset($_SESSION['carrito']['cantidad'])) {
             $result =  $_SESSION['carrito'];
-        }else{
+        } else {
             $result = false;
         }
 
