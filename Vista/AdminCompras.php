@@ -96,16 +96,13 @@ if ($sesion->esAdmin()) {
                                         <button class="btn btn-outline-dark cambiarEstado" type="button" onclick="enviarDato(<?php echo $itemEstado->getIdcompraestadotipo() ?>)">Guardar</button>
                                         
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
-                                   
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php
                     $i++;
-                     } ?>
+                } ?>
             </tbody>
         </table>
     </div>
