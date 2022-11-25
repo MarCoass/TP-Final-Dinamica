@@ -37,6 +37,7 @@ footer {
 
 #botonUser a:hover {
   background-color: #e33670;
+  border: none;
 }
 
 #contIndex {
