@@ -6,9 +6,16 @@ $i = 0;
 $objCompra = new C_Compra();
 $arrayCompras = $objCompra->buscar([]);
 $cantidadCompras = count($arrayCompras);
+if ($sesion->esAdmin()) {
+
+        //obtengo todos los usuarios 
+        $objC_Usuario = new C_Usuario();
+        $usuarios = $objC_Usuario->buscar(NULL);
+        $cantidadUsuarios = count($usuarios);
+        $i = 0;
 ?>
 
-<div class="container bg-dark">
+<div class="container bg-dark mt-3 mb-3">
     <h3 class="text-light">Gestion Compras</h3>
     <div class="rounded p-3 mb-2 bg-dark text-white">
         <table class="table table-dark table-hover p-5">
@@ -49,6 +56,9 @@ $cantidadCompras = count($arrayCompras);
 
                         <td>
 
+                            <button class="ms-3 text-decoration-none btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modal_estado"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
+                                                                                                                                                        ?>Cambiar estado<?php
+                                                                                                                                                                    } ?> </button>
                             <button class="ms-3 text-decoration-none btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_estado_<?php echo $arrayCompras[$i]->getIdcompra() ?>" onclick="this"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
                                                                                                                                                                                                                                 ?>Cambiar estado<?php
                                                                                                                                                                                                                                 } ?> </button>
@@ -107,4 +117,13 @@ $cantidadCompras = count($arrayCompras);
 <script src="Assets/Js/cambiarEstadoCompra.js"></script>
 <?php
 include_once("Common/Footer.php");
-?>
+} else {
+        ?>
+            <script>
+                window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
+            </script>
+        
+        <?php
+        }
+
+        ?> 

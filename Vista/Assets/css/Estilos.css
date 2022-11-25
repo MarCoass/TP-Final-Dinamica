@@ -45,6 +45,12 @@ footer {
   border: none;
 }
 
+
+#botonHab a:hover {
+  border-color: #ffcadb;
+}
+
+
 #contIndex {
   background-color: #ffcadb;
 }

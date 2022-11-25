@@ -15,7 +15,7 @@ $arrayCompras = $objCompra->buscar(['idusuario' => $usuario->getIdusuario()]);
 $cantidadCompras = count($arrayCompras);
 ?>
 
-<div class="container bg-dark">
+<div class="container bg-dark mt-3 mb-3">
     <h3>Mis compras</h3>
     <div class="rounded p-3 mb-2 bg-dark text-white">
         <table class="table table-dark table-hover p-5">
@@ -58,7 +58,7 @@ $cantidadCompras = count($arrayCompras);
                                 <input style="display:none;" name='idcompraestado' id='idcompraestado' value='<?php echo $objCompraEstado->getIdcompraestado();  ?>'>
                                 <input style="display:none;" name='idcompra' id='idcompra' value='<?php echo $idcompra ?>'>
                                 <input style="display:none;" name='idcompraestadotipo' id='idcompraestadotipo' value='4'>
-                                <button class="btn btn-danger cambiarEstado" type="submit" <?php if ($estado->getIdcompraestadotipo() != 1) { ?> disabled <?php  } ?>>Cancelar</button>
+                                <button class="btn cambiarEstado btn-outline-light" type="submit" <?php if ($estado->getIdcompraestadotipo() != 1) { ?> disabled <?php  } ?>>Cancelar</button>
                             </form>
 
                         </td>

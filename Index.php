@@ -2,7 +2,7 @@
 include_once ("HeaderIndex.php");
 ?>
 <div>
-    <div class="display-1 text-light  text-center mt-3" id="titulo"><h1>Bienvenidas a nuestro trabajo pr&aacute;ctico final</h1></div>
+    <div class="display-1 text-light  text-center mt-3" id="titulo"><h1>Bienvenidxs a nuestro trabajo pr&aacute;ctico final</h1></div>
     <div class="text-center">
   <img src="Vista/Assets/Img/Puppycat.png" class="rounded" alt="Gatito estresado" id="imagenIndex">
 </div>

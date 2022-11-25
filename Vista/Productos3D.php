@@ -24,7 +24,7 @@ $i = 0;
                                         <input name="precio" type="hidden" id="precio" value="<?php echo $arrayProductos[$i]->getProprecio(); ?>" />
                                         <input name="nombre" type="hidden" id="nombre" value="<?php echo $arrayProductos[$i]->getPronombre(); ?>" />
                                         <input name="id_producto" id="id_producto" type="hidden" value="<?php echo $arrayProductos[$i]->getIdproducto(); ?>" />
-                                        <img src="<?php echo $arrayProductos[$i]->getProimagen() ?>" class="card-img-top" alt="Foto del producto">
+                                        <img src="<?php echo $arrayProductos[$i]->getProimagen() ?>" class="card-img-top mt-3" alt="Foto del producto">
 
                                         <div class="card-body">
                                                 <h5 class="card-title"><?php echo $arrayProductos[$i]->getPronombre() ?></h5>
