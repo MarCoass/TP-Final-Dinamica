@@ -16,7 +16,7 @@ $cantidadCompras = count($arrayCompras);
 ?>
 
 <div class="container bg-dark mt-3 mb-3">
-    <h3>Mis compras</h3>
+<h3 class="text-light">Mis Compras</h3>
     <div class="rounded p-3 mb-2 bg-dark text-white">
         <table class="table table-dark table-hover p-5">
             <thead class="text-center">
