@@ -193,6 +193,7 @@ class Session
 
     public function insertar_producto_carrito($param)
     {
+        $objProducto = new C_Producto();
 
         if(isset($_SESSION['idusuario']) && !isset($_SESSION['compra'])){
             $compra_borrado = new C_Compra();
@@ -214,12 +215,28 @@ class Session
 
         if (array_key_exists($param['id_producto'], $_SESSION['carrito']['productos'])) {
             $_SESSION['carrito']['productos'][$param['id_producto']]['cantidad'] += $param['cantidad'];
+        
+            $arrayProductos = $_SESSION['carrito']['productos'];
+
+            foreach ($arrayProductos as $key => $producto) {
+                $producto = $objProducto->buscar(['idproducto' => $key])[0];
+                $producto->setProcantstock($producto->getProcantstock()-$_SESSION['carrito']['productos'][$key]);
+            }        
+        
         } else {
             $_SESSION['carrito']['productos'][$param['id_producto']] = array(
                 'descripcion' => $param['nombre'],
                 'precio' => $param['precio'],
                 'cantidad' => $param['cantidad']
             );
+
+            $arrayProductos = $_SESSION['carrito']['productos'];
+
+            foreach ($arrayProductos as $key => $producto) {
+              //creo objeto compraItem
+              $objCompraItem = new C_Compraitem();
+              $objCompraItem->alta(['idcompraitem'=>NULL, 'idproducto'=>$key, 'idcompra'=>$_SESSION['compra'][0]->getIdcompra(), 'cicantidad'=>$producto['cantidad']]);
+           }
         }
 
         $_SESSION['carrito']['cantidad'] += $param['cantidad'];
