@@ -199,17 +199,17 @@ class Session
             $compra_borrado = new C_Compra();
             $compra_estado = new C_Compraestado();
 
-            $param = array(
+            $param_compra = array(
                 'idcompra'  => NULL,
                 'cofecha'  => date('Y-m-d H:i:s'),
                 'idusuario'  => $_SESSION['idusuario'],
             );
 
-            $compra_borrado->alta($param);
-            $compra = $compra_borrado->buscar(['cofecha'=> $param['cofecha'], 'idusuario'=>$param['idusuario']]);
+            $compra_borrado->alta($param_compra);
+            $compra = $compra_borrado->buscar(['cofecha'=> $param_compra['cofecha'], 'idusuario'=>$param_compra['idusuario']]);
             $_SESSION['compra'] = $compra;
 
-            $compra_estado->alta(['idcompraestado'=>NULL, 'idcompra'=>$compra[0]->getIdcompra(), 'idcompraestadotipo'=>0, 'cefechaini'=>$param['cofecha'], 'cefechafin'=>NULL]);
+            $compra_estado->alta(['idcompraestado'=>NULL, 'idcompra'=>$compra[0]->getIdcompra(), 'idcompraestadotipo'=>0, 'cefechaini'=>$param_compra['cofecha'], 'cefechafin'=>NULL]);
 
         }
 
@@ -218,9 +218,9 @@ class Session
         
             $arrayProductos = $_SESSION['carrito']['productos'];
 
-            foreach ($arrayProductos as $key => $producto) {
+            foreach ($arrayProductos as $key => $prd) {
                 $producto = $objProducto->buscar(['idproducto' => $key])[0];
-                $producto->setProcantstock($producto->getProcantstock()-$_SESSION['carrito']['productos'][$key]);
+                $producto->setProcantstock($producto->getProcantstock()-$prd['cantidad']);
             }        
         
         } else {
@@ -230,13 +230,10 @@ class Session
                 'cantidad' => $param['cantidad']
             );
 
-            $arrayProductos = $_SESSION['carrito']['productos'];
-
-            foreach ($arrayProductos as $key => $producto) {
               //creo objeto compraItem
               $objCompraItem = new C_Compraitem();
-              $objCompraItem->alta(['idcompraitem'=>NULL, 'idproducto'=>$key, 'idcompra'=>$_SESSION['compra'][0]->getIdcompra(), 'cicantidad'=>$producto['cantidad']]);
-           }
+              $objCompraItem->alta(['idcompraitem'=>NULL, 'idproducto'=>$param['id_producto'], 'idcompra'=>$_SESSION['compra'][0]->getIdcompra(), 'cicantidad'=>$param['cantidad']]);
+           
         }
 
         $_SESSION['carrito']['cantidad'] += $param['cantidad'];
