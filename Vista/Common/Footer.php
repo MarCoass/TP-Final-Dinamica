@@ -39,6 +39,7 @@ $carrito = $sesion->obtener_carrito();
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
+        <a type="button" class="btn btn-primary" href="iniciar_compra.php">Iniciar Compra</a>
       </div>
     </div>
   </div>

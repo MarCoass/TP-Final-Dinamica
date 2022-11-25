@@ -1,6 +1,8 @@
 <?php
 include('Common/Header.php');
-
+$roles = $sesion->getRoles();
+$rol =  $roles[0]->getIdrol()->getIdrol();
+if($rol == 1){
 $datos = data_submitted();
 $objUsuario = new C_Usuario();
 $objUsuarioRol = new C_UsuarioRol();
@@ -84,5 +86,10 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
 
 <script src="Assets/Js/EditarUsuario.js"></script>
 <?php
-include('Common/Footer.php')
+include('Common/Footer.php');
+}
 ?>
+
+<script>
+    window.location.href = "/TP-Final-Dinamica/Vista/Home.php"; 
+</script>
