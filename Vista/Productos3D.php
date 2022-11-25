@@ -12,7 +12,9 @@ if ($arrayProductos != null) {
 }
 $i = 0;
 ?>
-<div class="container mt-5">
+<div class="container">
+
+        <div class="display-1 text-light  text-center mt-3" id="titulo"><h1>Productos 3D</h1></div>
         <div class="row" style="justify-content: center;">
                 <?php
                 while ($i < $cantidadProductos) {
