@@ -36,8 +36,10 @@ $cantidadCompras = count($arrayCompras);
                     <tr>
                         <th scope="row" class="text-center"><?php echo $i + 1 ?></th>
                         <td> <?php echo $arrayCompras[$i]->getCofecha()?> </td>
-                        <td> <?php 
-                        ?> Aca van los productos</td>
+                        <td> <?php foreach($arrayProductos as $producto){
+                            echo $producto->getPronombre(); ?> <br> <?php 
+                        }
+                        ?> </td>
                         <td> <?php ?> Aca va el total
                         </td>
                         <td>
