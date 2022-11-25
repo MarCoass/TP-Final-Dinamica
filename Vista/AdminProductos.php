@@ -6,10 +6,10 @@ $arrayProductos = $objProducto->buscar([]);
 
 <div class="container-fluid" style="margin-bottom: 19%">
     <div class="container bg-dark col-md-10 text-white mt-5">
-        <h2>Admin Productos:</h2>
+    <h3 class="text-light">Admin productos</h3>
         <div class="mb-3">
             <div class="mt-3 mb-3 d-none">
-                <a class="btn text-decoration-none btn btn-outline-light" href="cargarProducto.php">AGREGAR PRODUCTO</a>
+                <a class="btn text-decoration-none btn btn-outline-light" href="cargarProducto.php" id="botonModal">AGREGAR PRODUCTO</a>
             </div>
             <?php
             if ($arrayProductos != null) {
@@ -40,7 +40,7 @@ $arrayProductos = $objProducto->buscar([]);
                     echo '<td>
                     <form method="post" action="EditarProducto.php" id="' .  $producto->getIdproducto() . '">
                     <input style="display:none;" name="idproducto" id="idproducto" value="' .  $producto->getIdproducto() . '">
-                    <button type="submit" class="ms-3 text-decoration-none btn btn-outline-warning"> EDITAR </button>
+                    <button type="submit" class="ms-3 text-decoration-none text-light btn" id="botonModal"> EDITAR </button>
 
                 </form>
                     </td>';

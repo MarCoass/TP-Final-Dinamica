@@ -12,7 +12,7 @@ if ($sesion->esAdmin()) {
 ?>
 
     <div class="container">
-        <div class="display-1 text-light  text-center mt-3" id="titulo"><h3>Gesti&oacute;n de usuarios</h3></div>
+        <div class="display-1 text-light bg-dark text-center mt-3" id="titulo"><h3>Gesti&oacute;n de usuarios</h3></div>
 
         <div class="rounded p-3 mb-2 bg-dark text-white">
             <table class="table table-dark table-hover p-5">

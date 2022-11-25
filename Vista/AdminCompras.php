@@ -57,7 +57,7 @@ if ($sesion->esAdmin()) {
                         <td>
 
                             
-                            <button class="ms-3 text-decoration-none btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_estado_<?php echo $arrayCompras[$i]->getIdcompra() ?>" onclick="this"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
+                            <button class="ms-3 text-decoration-none btn text-light" id="botonModal" data-bs-toggle="modal" data-bs-target="#modal_estado_<?php echo $arrayCompras[$i]->getIdcompra() ?>" onclick="this"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
                                                                                                                                                                                                                                 ?>Cambiar estado<?php
                                                                                                                                                                                                                                 } ?> </button>
 
@@ -68,7 +68,7 @@ if ($sesion->esAdmin()) {
                   
                     <div class="modal fade" id="modal_estado_<?php echo $arrayCompras[$i]->getIdcompra() ?>" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content bg-dark text-light">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Cambiar estado compra</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -93,9 +93,9 @@ if ($sesion->esAdmin()) {
                                             }
                                             ?>
                                         </select>
-                                        <button class="btn btn-outline-dark cambiarEstado" type="button" onclick="enviarDato(<?php echo $itemEstado->getIdcompraestadotipo() ?>)">Guardar</button>
+                                        <button class="btn cambiarEstado text-light mt-2" id="botonModal" type="button" onclick="enviarDato(<?php echo $itemEstado->getIdcompraestadotipo() ?>)">Guardar</button>
                                         
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                                    <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">Volver</button>
                                 </div>
                             </div>
                         </div>
