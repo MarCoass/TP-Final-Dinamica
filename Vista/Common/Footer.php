@@ -4,7 +4,7 @@ $carrito = $sesion->obtener_carrito();
 ?>
 <div class="modal fade" id="modal_cart" tabindex="-1"  aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content bg-dark text-light">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -38,8 +38,8 @@ $carrito = $sesion->obtener_carrito();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
-        <button type="button" class="btn btn-primary iniciar" href="">Iniciar Compra</button>
+        <a type="button" class="btn btn-primary" href="borrarcarro.php" id="botonModal">Vaciar carrito</a>
+        <button type="button" class="btn btn-primary iniciar" href="" id="botonModal">Iniciar Compra</button>
       </div>
     </div>
   </div>
