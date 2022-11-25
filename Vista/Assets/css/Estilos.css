@@ -82,6 +82,11 @@ footer {
     width: 50%;     
 }
 
+#imagenIndex {
+  border-radius: 8px;
+    width: 35%;  
+}
+
 #titulo{
   display: block;
   margin-left: auto;

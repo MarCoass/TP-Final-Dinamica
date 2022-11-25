@@ -45,7 +45,7 @@ $usuario = $sesion->getUsuario();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
-        <button type="button" class="btn btn-success editar" href="">Guardar</button>
+        <button type="button" class="btn editar text-light" id="botonModal" href="">Guardar</button>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@ $usuario = $sesion->getUsuario();
 
 <div class="modal fade" id="modal_borrar" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content bg-dark text-light">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Borrar cuenta</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
