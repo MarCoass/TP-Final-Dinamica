@@ -1,9 +1,11 @@
 <?php
 include_once('Common/Header.php');
-//obtengo todos los usuarios
+
 $roles = $sesion->getRoles();
 $rol =  $roles[0]->getIdrol()->getIdrol();
 if($rol == 1){
+
+//obtengo todos los usuarios 
 $objC_Usuario = new C_Usuario();
 $usuarios = $objC_Usuario->buscar(NULL);
 $cantidadUsuarios = count($usuarios);
@@ -71,9 +73,12 @@ $i = 0;
 <?php
 
 include_once('Common/Footer.php');
-}
+} 
+
+
 ?>
 
 <script>
     window.location.href = "/TP-Final-Dinamica/Vista/Home.php"; 
 </script>
+

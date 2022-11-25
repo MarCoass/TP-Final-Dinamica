@@ -129,4 +129,7 @@ class C_Compraestado
         
         return $arreglo;
     }
+
+    ///////
+   
 }
