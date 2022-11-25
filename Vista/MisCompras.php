@@ -19,6 +19,7 @@ $cantidadCompras = count($arrayCompras);
                     <th scope="col-4">Productos</th>
                     <th scope="col-4">Total</th>
                     <th scope="col-6">Estado</th>
+                    <th scope="col-6">Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +28,7 @@ $cantidadCompras = count($arrayCompras);
                     //obtengo el estado
                     $objCompraEstado = new C_Compraestado();
                     $objCompraEstado = $objCompraEstado->buscar(['idcompra'=>$arrayCompras[$i]->getIdcompra()])[0];
-                    $estado = $objCompraEstado->getIdcompraestadotipo()->getCetdescripcion();
+                    $estado = $objCompraEstado->getIdcompraestadotipo();
 
                     //Obtengo los productos
                     $objCompraItem = new C_Compraitem();
@@ -43,7 +44,10 @@ $cantidadCompras = count($arrayCompras);
                         <td> <?php echo $objCompraItem->totalCompra($arrayCompras[$i]->getIdcompra())?>
                         </td>
                         <td>
-                            <?php echo $estado?>
+                            <?php echo $estado->getCetdescripcion()?>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" <?php if($estado->getIdcompraestadotipo()!=1){?> disabled <?php  }?> >Cancelar</button>
                         </td>
                     </tr>
                 <?php
