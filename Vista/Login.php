@@ -55,3 +55,6 @@ include_once("Common/Header.php");
 </div>
 
 <script src="Assets/Js/Validacion.js"> </script>
+<?php
+include_once("Common/Footer.php");
+?>

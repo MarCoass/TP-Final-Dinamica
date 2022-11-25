@@ -166,7 +166,7 @@ class C_Menu
                 }
                 if (count($htmlHijos) > 0) {
                     
-                    $htmlItemMenu = "<li class='nav-item dropdown'><a class= 'nav-link dropdown-toggle text-light' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false' id='dropdownMenu'>{$itemMenu->getMenombre()}</a>";
+                    $htmlItemMenu = "<li class='nav-item dropdown'><a class= 'nav-link dropdown-toggle text-light fs-5' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false' id='dropdownMenu'>{$itemMenu->getMenombre()}</a>";
                     
                     $htmlDesplegable = "<ul class='dropdown-menu'id='dropdownMenu'> ";//aca va el id='dropdownMenu'
                     foreach ($htmlHijos as $item) {
