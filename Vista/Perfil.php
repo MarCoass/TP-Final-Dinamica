@@ -30,6 +30,7 @@ $usuario = $sesion->getUsuario();
         <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form name="form" action="Accion/editarPerfil.php" method="post">
       <div class="modal-body">
         <form name="form" class="needs-validation" action="Accion/editarPerfil.php" method="post" novalidate>
           <div class="col-lg-7 col-12">Username:

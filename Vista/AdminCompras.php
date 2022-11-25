@@ -56,60 +56,61 @@ if ($sesion->esAdmin()) {
 
                         <td>
 
-                            <button class="ms-3 text-decoration-none btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modal_estado"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
-                                                                                                                                                        ?>Cambiar estado<?php
-                                                                                                                                                                    } ?> </button>
+                            
+                            <button class="ms-3 text-decoration-none btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_estado_<?php echo $arrayCompras[$i]->getIdcompra() ?>" onclick="this"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
+                                                                                                                                                                                                                                ?>Cambiar estado<?php
+                                                                                                                                                                                                                                } ?> </button>
 
 
-                            </form>
+
                         </td>
                     </tr>
+                  
+                    <div class="modal fade" id="modal_estado_<?php echo $arrayCompras[$i]->getIdcompra() ?>" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cambiar estado compra</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Elija el estado: </h4>
+                                        <input type="hidden" name="idcompraestado_<?php echo $idcompra ?>" id="idcompraestado_<?php echo $idcompra ?>" value="<?php echo $objCompraEstado->getIdcompraestado();  ?>">
+                                        <input type="hidden" name="idcompra_<?php echo $idcompra ?>" id="idcompra_<?php echo $idcompra ?>" value="<?php echo $idcompra ?>">
+                                        <select class="form-select" aria-label="estado" id="idcompraestadotipo_<?php echo $idcompra ?>" name="idcompraestadotipo_<?php echo $idcompra ?>">
+                                            <?php
+                                            //obtengo todos los estados y armo los inputs
+                                            $objEstados = new C_Compraestadotipo();
+                                            $arrayEstados = $objEstados->buscar([]);
+                                            foreach ($arrayEstados as $itemEstado) {
+                                                if ($itemEstado->getIdcompraestadotipo() != 0) {
+                                            ?>
+                                                    <option value="<?php echo $itemEstado->getIdcompraestadotipo() ?>"> <?php echo $itemEstado->getCetdescripcion() ?></option>
+
+                                            <?php
+
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                        <button class="btn btn-outline-dark cambiarEstado" type="button" onclick="enviarDato(<?php echo $itemEstado->getIdcompraestadotipo() ?>)">Guardar</button>
+                                        
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                                   
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                     $i++;
-                } ?>
+                     } ?>
             </tbody>
         </table>
     </div>
 </div>
 
-<div class="modal fade" id="modal_estado" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content bg-dark text-light">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cambiar estado compra</h5>
-                <button type="button" class="btn-close btn-outline-light" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-light">
-                <h4>Elija el estado: </h4>
-                <form name="form" action="Accion/cambiarEstado.php" method="post">
-
-                    <input style="display:none;" name='idcompraestado' id='idcompraestado' value='<?php echo $objCompraEstado->getIdcompraestado();  ?>'>
-                    <input style="display:none;" name='idcompra' id='idcompra' value='<?php echo $idcompra ?>'>
-
-                    <select class="form-select" aria-label="estado" id="idcompraestadotipo" name="idcompraestadotipo">
-                        <?php
-                        //obtengo todos los estados y armo los inputs
-                        $objEstados = new C_Compraestadotipo();
-                        $arrayEstados = $objEstados->buscar([]);
-                        foreach ($arrayEstados as $itemEstado) {
-                            if ($itemEstado->getIdcompraestadotipo() != 0) {
-                        ?>
-                                <option value="<?php echo $itemEstado->getIdcompraestadotipo() ?>"> <?php echo $itemEstado->getCetdescripcion() ?></option>
-
-                        <?php
-
-                            }
-                        }
-                        ?>
-                    </select>
-                    <button class="btn btn-outline-dark cambiarEstado text-light mt-2" type="submit" id="botonModal">Guardar</button>
-                    <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">Volver</button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <script src="Assets/Js/cambiarEstadoCompra.js"></script>
 <?php
