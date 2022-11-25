@@ -16,7 +16,7 @@ $carrito = $sesion->obtener_carrito();
       <th scope="col">#</th>
       <th scope="col">Producto</th>
       <th scope="col">Cantidad</th>
-      <th scope="col">Acciones</th>
+      <th scope="col">Precio</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +29,7 @@ $carrito = $sesion->obtener_carrito();
       <th scope="row"><?php echo  $i ?></th>
       <td><?php echo $producto['descripcion'] ?></td>
       <td><?php echo $producto['cantidad'] ?></td>
-      <td>-</td>
+      <td><?php echo ($producto['cantidad']*$producto['precio']) ?></td>
     </tr>
     <?php $i++;
       }}?>
