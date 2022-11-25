@@ -160,22 +160,22 @@ class C_Menu
                     //Si el menu tiene idpadre igual al id del menu actual, lo agrego a un array
                     if ($menu->getIdpadre() == $itemMenu->getIdmenu()) {
                         //$hijos[] = $itemMenu;
-                        $htmlHijos[] = "<li><a class='dropdown-item' href=".$menu->getScript().">{$menu->getMenombre()}</a></li>";
+                        $htmlHijos[] = "<li><a class='dropdown-item text-light' href=".$menu->getScript().">{$menu->getMenombre()}</a></li>";
                         //echo "<li><a class='dropdown-item text-dark' href=".$menu->getScript().">{$menu->getMenombre()}</a></li>";
                     }
                 }
                 if (count($htmlHijos) > 0) {
                     
-                    $htmlItemMenu = "<li class='nav-item dropdown'><a class= 'nav-link dropdown-toggle text-light' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false'>{$itemMenu->getMenombre()}</a>";
+                    $htmlItemMenu = "<li class='nav-item dropdown'><a class= 'nav-link dropdown-toggle text-light' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false' id='dropdownMenu'>{$itemMenu->getMenombre()}</a>";
                     
-                    $htmlDesplegable = "<ul class='dropdown-menu'>";
+                    $htmlDesplegable = "<ul class='dropdown-menu'id='dropdownMenu'> ";//aca va el id='dropdownMenu'
                     foreach ($htmlHijos as $item) {
                         $htmlDesplegable = $htmlDesplegable . $item;
                     }
                     $htmlDesplegable = $htmlDesplegable . "</ul>";
                     $htmlItemMenu = $htmlItemMenu . $htmlDesplegable . "</li>";
                 } else {
-                    $htmlItemMenu = "<li class='nav-item'><a class='nav-link text-dark' href='#'>{$itemMenu->getMenombre()}</a></li>";
+                    $htmlItemMenu = "<li class='nav-item'><a class='nav-link text-light' href='#'>{$itemMenu->getMenombre()}</a></li>";
                 }
                 
                 $arrayItemsMenu[] = $htmlItemMenu;
@@ -183,7 +183,7 @@ class C_Menu
                 //NO HACE NADA, ENTONCES SI ES UN ITEM HIJO ES IGNORADO HASTA QUE ENCUENTRE A SU PADRE
             }
         }
-        $htmlCompleto = "<ul class='nav nav-pills text-light'>";
+        $htmlCompleto = "<ul class='nav nav-pills text-light' id='navbarHeader'>";
         foreach ($arrayItemsMenu as $item) {
             $htmlCompleto = $htmlCompleto . $item;
         }

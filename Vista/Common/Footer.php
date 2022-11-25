@@ -1,5 +1,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
-
+<?php
+$carrito = $sesion->obtener_carrito();
+?>
 <div class="modal fade" id="modal_cart" tabindex="-1"  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -8,7 +10,31 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-   
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    if(count($carrito['productos']) > 0){
+      $i = 1;
+      foreach($carrito['productos'] as $producto){
+    ?>
+    <tr>
+      <th scope="row"><?php echo  $i ?></th>
+      <td><?php echo $producto['descripcion'] ?></td>
+      <td><?php echo $producto['cantidad'] ?></td>
+      <td>-</td>
+    </tr>
+    <?php $i++;
+      }}?>
+  </tbody>
+</table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

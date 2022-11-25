@@ -135,4 +135,18 @@ class C_Producto
         
         return $arreglo;
     }
+
+    public function validar_stock_producto_por_cantidad($id_producto,$cantidad){
+
+        if($id_producto == null || $id_producto == '' ){
+            return false;
+        }
+
+        $obj = new Producto();
+        //return un booleano
+        return $obj->validar_cantidad_stock($id_producto,$cantidad);
+
+
+    }
+
 }
