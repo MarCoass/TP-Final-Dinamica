@@ -12,7 +12,6 @@ $(document).ready(function() {
             document.querySelector('#uspassAnterior').value=contra;
             document.querySelector('#usPassAnterior').name='uspass';
         }
-        console.log(this);
         $.ajax({
             type: "POST",
             url: 'Accion/editarUser.php',
