@@ -30,23 +30,25 @@ $usuario = $sesion->getUsuario();
         <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form name="form" action="Accion/editarPerfil.php" method="post">
       <div class="modal-body">
-        <form name="form" action="Accion/editarPerfil.php" method="post">
+        
           <div class="col-lg-7 col-12">Username:
-            <input value='<?php echo $usuario->getUsnombre() ?>' type="text" style="width: 150px;"  name="usnombre"></input>
+            <input value='<?php echo $usuario->getUsnombre() ?>' type="text" style="width: 150px;" id="usnombre" name="usnombre"></input>
           </div>
           <div class="col-lg-7 col-12">Mail:
-            <input value='<?php echo $usuario->getUsmail() ?>' type="text" style="width: 150px;"  name="usmail"></input>
+            <input value='<?php echo $usuario->getUsmail() ?>' type="text" style="width: 150px;" id="usmail" name="usmail"></input>
           </div>
           <div class="col-lg-7 col-12">Contraseña:
-            <input value='<?php echo $usuario->getUspass() ?>' type="password" style="width: 150px;" name="uspass"></input>
+            <input value='<?php echo $usuario->getUspass() ?>' type="password" style="width: 150px;" id="uspass" name="uspass"></input>
           </div>
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
-        <button type="button" class="btn btn-success editar" href="">Guardar</button>
+        <button type="submit" class="btn btn-success editar" href="">Guardar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

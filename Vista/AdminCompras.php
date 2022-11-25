@@ -49,12 +49,12 @@ $cantidadCompras = count($arrayCompras);
 
                         <td>
 
-                            <button class="ms-3 text-decoration-none btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_estado"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
+                            <button class="ms-3 text-decoration-none btn btn-outline-warning abrirModal" data-bs-toggle="modal" data-bs-target="#modal_estado"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
                                                                                                                                                         ?>Cambiar estado<?php
                                                                                                                                                                     } ?> </button>
 
 
-                            </form>
+                            
                         </td>
                     </tr>
                 <?php

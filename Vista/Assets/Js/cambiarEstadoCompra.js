@@ -1,3 +1,4 @@
+
 $(document).on('click', '.cambiarEstado', function() {
     const form = $(this.parentNode);
     console.log(form);
