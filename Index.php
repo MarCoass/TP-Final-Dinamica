@@ -1,18 +1,20 @@
 <?php
-include_once ("Vista/Common/Header.php");
+include_once ("HeaderIndex.php");
 ?>
 <div>
     <div class="display-1 text-light  text-center mt-3" id="titulo"><h1>Bienvenidas a nuestro trabajo pr&aacute;ctico final</h1></div>
-    <button type="button" class="btn btn-primary btn-lg" id="botonUser"><a class="text-light" href="Vista/Home.php">Ir a la vista</a></button>
+    <div class="text-center">
+  <img src="Vista/Assets/Img/Puppycat.png" class="rounded" alt="Gatito estresado" id="imagenIndex">
+</div>
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="botonUser">
+<button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" id="botonUser">
   Ver integrantes del grupo
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content bg-dark text-light">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Integrantes</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -21,12 +23,12 @@ include_once ("Vista/Common/Header.php");
 
       <table class="table">
   <thead>
-    <tr>
+    <tr class="text-light">
       <th scope="col">Nombre</th>
       <th scope="col">Legajo</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="text-light">
     <tr>
       <td>Martina Milagros Rosales</td>
       <td>FAI-2752</td>
@@ -48,7 +50,8 @@ include_once ("Vista/Common/Header.php");
     </div>
   </div>
 </div>
+<a class="text-light" href="Vista/Home.php"><button type="button" class="btn btn-primary btn-lg ms-2" id="botonUser">Ir a la vista</button></a>
 </div>
 <?php
-include_once ("Vista/Common/Footer.php");
+include_once ("FooterIndex.php");
 ?>

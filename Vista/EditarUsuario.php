@@ -91,5 +91,6 @@ if ($sesion->esAdmin()) {
         window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
     </script>
 <?php
+
 }
 ?>

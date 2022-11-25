@@ -12,7 +12,7 @@ if ($sesion->esAdmin()) {
 ?>
 
     <div class="container">
-        <h3>Gestion de usuarios</h3>
+        <div class="display-1 text-light  text-center mt-3" id="titulo"><h3>Gesti&oacute;n de usuarios</h3></div>
 
         <div class="rounded p-3 mb-2 bg-dark text-white">
             <table class="table table-dark table-hover p-5">
@@ -48,10 +48,10 @@ if ($sesion->esAdmin()) {
                                     <input style="display:none;" name='idusuario' id='idusuario' value='<?php echo $usuarios[$i]->getIdUsuario() ?>'>
                                     <button type="submit" class="ms-3 text-decoration-none btn btn-outline-warning"> EDITAR </button>
                                     <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
-                                        "<button type='button' class='mx-2 text-decoration-none btn btn-outline-danger deshabilitar'>
+                                        "<button type='button' class='mx-2 mt-1 text-decoration-none btn btn-outline-danger deshabilitar'>
                         DESHABILITAR
                         </button>" :
-                                        "<button type='button' class='mx-2 text-decoration-none btn btn-outline-danger habilitar'>
+                                        "<button type='button' class='mx-2 mb-1 text-decoration-none btn btn-outline-danger habilitar'>
                         HABILITAR
                         </button>";
                                     ?>

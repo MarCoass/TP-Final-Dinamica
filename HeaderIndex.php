@@ -1,6 +1,3 @@
-<?php
-include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
-?>
 <html lang="en">
 
 <head>
@@ -10,7 +7,7 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
     <title>Besto 3d homepage</title>
     <link href="https://www.flaticon.es/iconos-gratis/menu" title="menú iconos">
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -28,10 +25,6 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
 </head>
 
 <body background="../Assets/Img/fondo.png">
-    <?php
-    $sesion = new Session();
-    $totalcantidad = $sesion->contarCarrito();
-    ?>
     <header id="navbar ">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid" id="cabecera">
@@ -40,16 +33,9 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: black;"><i class="fas fa-shopping-cart"></i> <?php echo $totalcantidad; ?></a>
-                        </li>
-                        
-                    </ul>
-                </div>
+                
 
-                <?php include_once('Menu.php') ?>
+            
                 
 
 
@@ -58,4 +44,3 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
 
     </header>
     
-    <!-- MODAL CARRITO -->

@@ -73,6 +73,9 @@ footer {
   margin-right: auto;
 }
 
+#formulario {
+  background-color: #ffcadb;
+}
 
 #imagenCarousel {
   border-radius: 8px;
@@ -80,6 +83,11 @@ footer {
     margin-left: auto;
     margin-right: auto;
     width: 50%;     
+}
+
+#imagenIndex {
+  border-radius: 8px;
+    width: 35%;  
 }
 
 #titulo{

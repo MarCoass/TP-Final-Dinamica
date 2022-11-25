@@ -12,8 +12,46 @@ list($valido, $error) = $sesion->validar();
 
 if ($valido) {
     $sesion->iniciar_carrito();
-    header("Location:Home.php");
+?>
+    <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Se inicio sesion correctamente!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setTimeout(function() {
+                redireccionarIndex();
+            }, 1500);
+    </script>
+<?php
 } else {
     $sesion->cerrar();
-    header("Location:login.php?error=" . urlencode($error));
+?>
+    <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'La contraseña y/o el usuario no coinciden!',
+                showConfirmButton: false,
+                timer: 5000
+            })
+            setTimeout(function() {
+                recargarPagina();
+            }, 1500);
+    </script>
+<?php
 }
+?>
+
+
+<script>
+    function redireccionarIndex() {
+        location.href = "Home.php"
+    }
+</script>
+
+<script>
+    function recargarPagina() {
+        location.href = "Login.php"
+    }
+</script>

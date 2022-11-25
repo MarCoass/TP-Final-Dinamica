@@ -2,7 +2,7 @@
 <div class="collapse navbar-collapse" id="navbarHeader">
 <ul class="navbar-nav">
     <li class="nav-item">
-        <a class="nav-link active text-light fs-5" aria-current="page" href="/TP-Final-Dinamica/Vista/Home.php">Inicio</a>
+        <a class="nav-link active text-light fs-5" aria-current="page" href="Home.php">Inicio</a>
     </li>
     <li class="nav-item">
         <a class="nav-link text-light fs-5" href="#">Informes</a>
@@ -12,8 +12,27 @@
             Productos
         </a>
         <ul class="dropdown-menu" id="dropdown">
-            <li><a class="dropdown-item text-light" href="/TP-Final-Dinamica/Vista/Productos2D.php">Impresiones 2D</a></li>
-            <li><a class="dropdown-item text-light" href="/TP-Final-Dinamica/Vista/Productos3D.php">Impresiones 3D</a></li>
-            <li><a class="dropdown-item text-light" href="/TP-Final-Dinamica/Vista/Accesorios.php">Accesorios</a></li>
+            <li><a class="dropdown-item text-light" href="Productos2D.php">Impresiones 2D</a></li>
+            <li><a class="dropdown-item text-light" href="Productos3D.php">Impresiones 3D</a></li>
+            <li><a class="dropdown-item text-light" href="Accesorios.php">Accesorios</a></li>
         </ul>
     </li>
+
+
+    include_once("Common/Header.php");
+
+$datos = data_submitted();
+$name = $datos['usuario'];
+$pass = md5($datos['password']);
+
+$sesion->setUserName($name);
+$sesion->setPass($pass);
+list($valido, $error) = $sesion->validar();
+
+if ($valido) {
+    $sesion->iniciar_carrito();
+    header("Location:Home.php");
+} else {
+    $sesion->cerrar();
+    header("Location:login.php?error=" . urlencode($error));
+}

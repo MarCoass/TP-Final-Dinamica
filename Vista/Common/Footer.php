@@ -10,7 +10,7 @@ $carrito = $sesion->obtener_carrito();
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-   <table class="table table-striped">
+   <table class="table table-striped text-light">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -19,17 +19,17 @@ $carrito = $sesion->obtener_carrito();
       <th scope="col">Precio</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <?php
     if(count($carrito['productos']) > 0){
       $i = 1;
       foreach($carrito['productos'] as $producto){
     ?>
     <tr>
-      <th scope="row"><?php echo  $i ?></th>
-      <td><?php echo $producto['descripcion'] ?></td>
-      <td><?php echo $producto['cantidad'] ?></td>
-      <td><?php echo ($producto['cantidad']*$producto['precio']) ?></td>
+      <th scope="row" class="text-light"><?php echo  $i ?></th>
+      <td class="text-light"><?php echo $producto['descripcion'] ?></td>
+      <td class="text-light"><?php echo $producto['cantidad'] ?></td>
+      <td class="text-light"><?php echo ($producto['cantidad']*$producto['precio']) ?></td>
     </tr>
     <?php $i++;
       }}?>

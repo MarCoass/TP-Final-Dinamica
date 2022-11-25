@@ -4,6 +4,13 @@ $i = 0;
 $usuario = $sesion->getUsuario();
 //obtengo todas las compras del usuario
 $objCompra = new C_Compra();
+$arrayCompras = $objCompra->buscar(['idusuario'=> $usuario->getIdusuario()]);
+//$cantidadCompras = count($arrayCompras);
+if(is_array($arrayCompras) && count($arrayCompras)>0){
+    $cantidadCompras = count($arrayCompras);
+    }else{
+    $cantidadCompras = 0;
+    }
 $arrayCompras = $objCompra->buscar(['idusuario' => $usuario->getIdusuario()]);
 $cantidadCompras = count($arrayCompras);
 ?>
