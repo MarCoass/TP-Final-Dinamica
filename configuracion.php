@@ -23,3 +23,7 @@ $PRINCIPAL = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/principal.php"
 $GLOBALS['ROOT']=$ROOT;
 
 ?>
+
+<script>
+  var  base_url = "http://<?php echo $_SERVER['HTTP_HOST'] ?>/<?php echo $PROYECTO ?>/"
+</script>
