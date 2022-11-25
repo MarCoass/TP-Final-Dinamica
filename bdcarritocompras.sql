@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2022 a las 18:08:15
+-- Tiempo de generación: 25-11-2022 a las 22:03:33
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -33,6 +33,14 @@ CREATE TABLE `compra` (
   `idusuario` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`idcompra`, `cofecha`, `idusuario`) VALUES
+(18, '2022-11-25 11:56:40', 3),
+(19, '2022-11-25 14:29:17', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +54,14 @@ CREATE TABLE `compraestado` (
   `cefechaini` timestamp NOT NULL DEFAULT current_timestamp(),
   `cefechafin` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `compraestado`
+--
+
+INSERT INTO `compraestado` (`idcompraestado`, `idcompra`, `idcompraestadotipo`, `cefechaini`, `cefechafin`) VALUES
+(9, 18, 4, '2022-11-25 15:15:19', '0000-00-00 00:00:00'),
+(10, 19, 1, '2022-11-25 23:22:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -64,6 +80,7 @@ CREATE TABLE `compraestadotipo` (
 --
 
 INSERT INTO `compraestadotipo` (`idcompraestadotipo`, `cetdescripcion`, `cetdetalle`) VALUES
+(0, 'Borrador', 'Cuando los items estan en el carrito'),
 (1, 'iniciada', 'cuando el usuario : cliente inicia la compra de uno o mas productos del carrito'),
 (2, 'aceptada', 'cuando el usuario administrador da ingreso a uno de las compras en estado = 1 '),
 (3, 'enviada', 'cuando el usuario administrador envia a uno de las compras en estado =2 '),
@@ -81,6 +98,15 @@ CREATE TABLE `compraitem` (
   `idcompra` bigint(20) NOT NULL,
   `cicantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `compraitem`
+--
+
+INSERT INTO `compraitem` (`idcompraitem`, `idproducto`, `idcompra`, `cicantidad`) VALUES
+(3, 6, 18, 3),
+(4, 5, 19, 1),
+(5, 4, 19, 3);
 
 -- --------------------------------------------------------
 
@@ -170,13 +196,13 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idproducto`, `pronombre`, `prodetalle`, `proprecio`, `procantstock`, `protipo`, `proimagen`) VALUES
-(1, 'Aros Hito Hito no mi', 'Aros impresos 3D de One Piece', 800, 9, 'Accesorio', 'Assets/Img/Accesorios/Aritos Hito Hito no mi.jpeg'),
-(2, 'Llaveros varios', 'Llaveros de acr&iacute;lico con una imagen dentro', 300, 200, 'Accesorio', 'Assets/Img/Accesorios/Llaveros.jpeg'),
+(1, 'Aros Hito Hito no mi', 'Aros impresos 3D de One Piece', 800, 14, '', 'Assets/Img/Accesorios/Aritos Hito Hito no mi.jpeg'),
+(2, 'Llaveros varios', 'Llaveros de acrílico con una imagen dentro', 300, 100, '', 'Assets/Img/Accesorios/Llaveros.jpeg'),
 (3, 'Pins varios', 'Pins de pla con una imagen a elecci&oacute;n dentro', 300, 344, 'Accesorio', 'Assets/Img/Accesorios/Pins.jpeg'),
-(4, 'Stickers surtidos', 'Stickers de varios animes, juegos, etc. Se venden de a 3 unidades', 100, 1045, '2D', 'Assets/Img/P2D/Stickers.jpeg'),
-(5, 'Tarjetas Genshin Impact', 'Tarjetas del juego Genshin Impact, vienen con un soporte impreso 3D de color surtido', 300, 145, '2D', 'Assets/Img/P2D/Tarjetas Genshin.jpeg'),
-(6, 'Anya', 'Figura 3D de Anya Forger, 10cm de alto', 1500, 15, '3D', 'Assets/Img/P3D/Anya.jpeg'),
-(7, 'Bo', 'Figura 3D de Bo, de Studio Ghibli, 10cm de alto', 1200, 3, '3D', 'Assets/Img/P3D/Bo.jpeg'),
+(4, 'Stickers surtidos', 'Stickers de varios animes, juegos, etc. Se venden de a 3 unidades', 100, 1042, '2D', 'Assets/Img/P2D/Stickers.jpeg'),
+(5, 'Tarjetas Genshin Impact', 'Tarjetas del juego Genshin Impact, vienen con un soporte impreso 3D de color surtido', 300, 144, '2D', 'Assets/Img/P2D/Tarjetas Genshin.jpeg'),
+(6, 'Anya', 'Figura 3D de Anya Forger, 10cm de alto', 1500, 7, '3D', 'Assets/Img/P3D/Anya.jpeg'),
+(7, 'Bo', 'Figura 3D de Bo, de Studio Ghibli, 10cm de alto', 1200, 1, '3D', 'Assets/Img/P3D/Bo.jpeg'),
 (8, 'Bulbasaur', 'Figura 3D de Bulbasaur, 8cm de alto. Puede pedirse Shiny', 1200, 18, '3D', 'Assets/Img/P3D/Bulbasaur.jpeg'),
 (9, 'Chopper', 'Figura 3D de Chopper, 15cm de alto', 2000, 4, '3D', 'Assets/Img/P3D/Chopper.jpeg'),
 (10, 'Eevee', 'Figura 3D de Eevee, 8cm de alto. Puede pedirse Shiny', 1200, 12, '3D', 'Assets/Img/P3D/Eevee.jpeg'),
@@ -223,10 +249,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
-(1, 'Admin', 'admin123', 'admin@mail.com', '0000-00-00 00:00:00'),
+(1, 'Administrador', 'admin123', 'admin@mail.com', '0000-00-00 00:00:00'),
 (2, '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '0000-00-00 00:00:00'),
-(3, 'mar', '5fa9db2e335ef69a4eeb9fe7974d61f4', 'mar', '0000-00-00 00:00:00'),
-(4, 'marmarlis', 'e10adc3949ba59abbe56e057f20f883e', 'marmarlis@gmail.com', '0000-00-00 00:00:00');
+(3, 'marty', '5fa9db2e335ef69a4eeb9fe7974d61f4', 'mar', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -245,11 +270,13 @@ CREATE TABLE `usuariorol` (
 --
 
 INSERT INTO `usuariorol` (`idusuariorol`, `idusuario`, `idrol`) VALUES
-(1, 1, 1),
 (2, 2, 1),
 (3, 3, 3),
-(4, 4, 1),
-(5, 4, 3);
+(50, 3, 2),
+(52, 3, 1),
+(59, 1, 1),
+(60, 1, 2),
+(61, 1, 3);
 
 --
 -- Índices para tablas volcadas
@@ -340,19 +367,19 @@ ALTER TABLE `usuariorol`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idcompra` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcompra` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `compraestado`
 --
 ALTER TABLE `compraestado`
-  MODIFY `idcompraestado` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idcompraestado` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `compraitem`
 --
 ALTER TABLE `compraitem`
-  MODIFY `idcompraitem` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idcompraitem` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`
@@ -388,7 +415,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuariorol`
 --
 ALTER TABLE `usuariorol`
-  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Restricciones para tablas volcadas
