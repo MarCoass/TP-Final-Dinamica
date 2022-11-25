@@ -39,7 +39,7 @@ $carrito = $sesion->obtener_carrito();
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
-        <a type="button" class="btn btn-primary" href="Accion/iniciarCompra.php">Iniciar Compra</a>
+        <button type="button" class="btn btn-primary iniciar" href="">Iniciar Compra</button>
       </div>
     </div>
   </div>
@@ -61,6 +61,6 @@ $carrito = $sesion->obtener_carrito();
   </div>
 </footer>
 
-
+<script src="Assets/Js/iniciarCompra.js"></script>
 </body>
 </html>
