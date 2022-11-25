@@ -29,9 +29,7 @@ $cantidadCompras = count($arrayCompras);
                     $objCompraEstado = new C_Compraestado();
                     $objCompraEstado = $objCompraEstado->buscar(['idcompra' => $arrayCompras[$i]->getIdcompra()])[0];
                     $estado = $objCompraEstado->getIdcompraestadotipo();
-                    //proxima accion posible
-                    $objCompraEstadoTipo = new C_Compraestadotipo();
-                    $siguienteEstado = $objCompraEstadoTipo->buscar(['idcompraestadotipo' => $estado->getIdcompraestadotipo() + 1])[0];
+                    $idcompra = $arrayCompras[$i]->getIdcompra();
                     //Obtengo los productos
                     $objCompraItem = new C_Compraitem();
                     $arrayProductos = $objCompraItem->traerProductos($arrayCompras[$i]->getIdcompra());
@@ -51,7 +49,7 @@ $cantidadCompras = count($arrayCompras);
 
                         <td>
 
-                            <button class="ms-3 text-decoration-none btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_estado"> <?php if ($estado->getIdcompraestadotipo() < 3) {
+                            <button class="ms-3 text-decoration-none btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_estado"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
                                                                                                                                                         ?>Cambiar estado<?php
                                                                                                                                                                     } ?> </button>
 
@@ -76,8 +74,12 @@ $cantidadCompras = count($arrayCompras);
             </div>
             <div class="modal-body">
                 <h4>Elija el estado: </h4>
-                <form action="">
-                    <select class="form-select" aria-label="estado">
+                <form name="form" action="Accion/cambiarEstado.php" method="post">
+
+                    <input style="display:none;" name='idcompraestado' id='idcompraestado' value='<?php echo $objCompraEstado->getIdcompraestado();  ?>'>
+                    <input style="display:none;" name='idcompra' id='idcompra' value='<?php echo $idcompra ?>'>
+
+                    <select class="form-select" aria-label="estado" id="idcompraestadotipo" name="idcompraestadotipo">
                         <?php
                         //obtengo todos los estados y armo los inputs
                         $objEstados = new C_Compraestadotipo();
@@ -93,11 +95,11 @@ $cantidadCompras = count($arrayCompras);
                         }
                         ?>
                     </select>
+                    <button class="btn btn-outline-dark cambiarEstado" type="submit">Guardar</button>
                 </form>
-            </div>
-            <div class="modal-footer">
+
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
-                <a type="button" class="btn btn-success" href="borrarCuenta.php">Guardar</a>
+
             </div>
         </div>
     </div>

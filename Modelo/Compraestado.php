@@ -90,7 +90,7 @@ class Compraestado
     {
         $base = new BaseDatos();
         $resp = false;
-        $sql = "SELECT * FROM Compraestado WHERE idcompraestado = '" . $idcompraestado . "'";
+        $sql = "SELECT * FROM compraestado WHERE idcompraestado = '" . $idcompraestado . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row2 = $base->Registro()) {
@@ -125,7 +125,7 @@ class Compraestado
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from Compraestado";
+        $sql =  "select * from compraestado";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }

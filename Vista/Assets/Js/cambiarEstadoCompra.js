@@ -1,12 +1,12 @@
-$(document).on('click', '.siguienteEstado', function() {
-    const form=$(this.parentNode);
+$(document).on('click', '.cambiarEstado', function() {
+    const form = $(this.parentNode);
     console.log(form);
-    /**$.ajax({
+    $.ajax({
         type: "POST",
-        url: 'Accion/siguienteEstado.php',
+        url: 'Accion/cambiarEstado.php',
         data: form.serialize(),
         success: function(response){
             location.reload();
        }
-   });*/
+   });
 });
