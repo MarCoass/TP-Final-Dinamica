@@ -24,6 +24,10 @@ $cantidadCompras = count($arrayCompras);
             <tbody>
                 <?php
                 while ($i < $cantidadCompras) {
+                    //obtengo el estado
+                    $objCompraEstado = new C_Compraestado();
+                    $objCompraEstado = $objCompraEstado->buscar(['idcompra'=>$arrayCompras[$i]->getIdcompra()])[0];
+                    $estado = $objCompraEstado->getIdcompraestadotipo()->getCetdescripcion();
                 ?>
                     <tr>
                         <th scope="row" class="text-center"><?php echo $i + 1 ?></th>
@@ -31,9 +35,8 @@ $cantidadCompras = count($arrayCompras);
                         <td> <?php ?> Aca van los productos </td>
                         <td> <?php ?> Aca va el total
                         </td>
-        
                         <td>
-                            Aca va el estado
+                            <?php echo $estado?>
                         </td>
                     </tr>
                 <?php
