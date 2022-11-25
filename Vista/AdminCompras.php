@@ -6,6 +6,13 @@ $i = 0;
 $objCompra = new C_Compra();
 $arrayCompras = $objCompra->buscar([]);
 $cantidadCompras = count($arrayCompras);
+if ($sesion->esAdmin()) {
+
+        //obtengo todos los usuarios 
+        $objC_Usuario = new C_Usuario();
+        $usuarios = $objC_Usuario->buscar(NULL);
+        $cantidadUsuarios = count($usuarios);
+        $i = 0;
 ?>
 
 <div class="container bg-dark">
@@ -108,4 +115,13 @@ $cantidadCompras = count($arrayCompras);
 <script src="Assets/Js/cambiarEstadoCompra.js"></script>
 <?php
 include_once("Common/Footer.php");
-?>
+} else {
+        ?>
+            <script>
+                window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
+            </script>
+        
+        <?php
+        }
+
+        ?> 
