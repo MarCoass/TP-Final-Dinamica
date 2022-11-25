@@ -1,6 +1,7 @@
 <?php
 include_once('Common/Header.php');
 
+
 if ($sesion->esAdmin()) {
 
     //obtengo todos los usuarios 

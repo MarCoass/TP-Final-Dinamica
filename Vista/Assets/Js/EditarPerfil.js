@@ -1,7 +1,7 @@
 $(document).on('click', '.editar', function() {
     const form=$(this.parentNode);
     console.log(form);
-    editarPerfil(form);
+    //editarPerfil(form);
 }
 )
 
