@@ -31,9 +31,9 @@ if ($valido) {
     <script>
             Swal.fire({
                 icon: 'error',
-                title: 'La contraseÃ±a y/o el usuario no coinciden!',
+                title: 'La contraseña y/o el usuario no coinciden!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 5000
             })
             setTimeout(function() {
                 recargarPagina();
