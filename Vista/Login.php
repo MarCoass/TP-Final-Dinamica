@@ -21,7 +21,7 @@ include_once("Common/Header.php");
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
-    <form id="nuevo_usuario" class="form-signin" name="nuevo_usuario" method="POST" action="registrar_usuario.php">
+    <form id="nuevo_usuario" class="form-signin needs-validation" name="nuevo_usuario" method="POST" action="registrar_usuario.php">
       <input type="text" id="usuario_nuevo" class="fadeIn second" name="usuario_nuevo" placeholder="username">
       <input type="text" id="mail_nuevo" class="fadeIn second" name="mail_nuevo" placeholder="usuario@gmail.com">
       <input type="password" id="password_nuevo" class="fadeIn third" name="password_nuevo" placeholder="password">

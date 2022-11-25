@@ -40,6 +40,11 @@ footer {
   border: none;
 }
 
+#botonModal {
+  background-color: #e33670;
+  border: none;
+}
+
 #contIndex {
   background-color: #ffcadb;
 }
