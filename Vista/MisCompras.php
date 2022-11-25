@@ -40,7 +40,7 @@ $cantidadCompras = count($arrayCompras);
                             echo $producto->getPronombre(); ?> <br> <?php 
                         }
                         ?> </td>
-                        <td> <?php ?> Aca va el total
+                        <td> <?php echo $objCompraItem->totalCompra($arrayCompras[$i]->getIdcompra())?>
                         </td>
                         <td>
                             <?php echo $estado?>

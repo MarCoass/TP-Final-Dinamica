@@ -135,4 +135,16 @@ class C_Compraitem
         }
         return $arrayProductos;
     }
+
+    public function totalCompra($idCompra){
+        $arrayCompraItem = $this->buscar(['idcompra' => $idCompra]);
+        $total = 0;
+        foreach($arrayCompraItem  as $compraItem){
+            $cantidadItems = $compraItem->getCicantidad();
+            $precioItem = $compraItem->getIdproducto()->getProprecio();
+            $aux = $cantidadItems * $precioItem;
+            $total = $total + $aux;
+        }
+        return $total;
+    }
 }
