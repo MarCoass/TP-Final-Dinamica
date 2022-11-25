@@ -15,18 +15,23 @@ $aux = $objCompra->buscar(['cofecha'=> $fechaStamp, 'idusuario'=>$usuario->getId
 
 $objCompraEstado = new C_Compraestado();
 $objCompraEstado->alta(['idcompraestado'=>null, 'idcompra'=>$aux[0]->getIdcompra(), 'idcompraestadotipo'=>1, 'cefechaini'=>$fechaStamp, 'cefechafin'=>null]);
-//2) Actualizo el stock
+//2) Actualizo el stock 
 
 $objProducto = new C_Producto();
 $arrayProductos = $sesion->obtener_carrito()['productos'];
 print_r($arrayProductos);
 foreach ($arrayProductos as $key => $value) {
-    echo "ACA";
+        $cantidad = $sesion->obtener_carrito()['productos'][$key]['cantidad'];
         //key es el id del producto
         $producto = $objProducto->buscar(['idproducto' => $key])[0];
-        $producto->setProcantstock($producto->getProcantstock()-1);
+        $producto->setProcantstock($producto->getProcantstock()-$cantidad);
         //modifico el stock
         $producto->modificar();
+
+        //creo objeto compraItem
+        $objCompraItem = new C_Compraitem();
+        $objCompraItem->alta(['idcompraitem'=>null, 'idproducto'=>$key, 'idcompra'=>$aux[0]->getIdcompra(), 'cicantidad'=>$cantidad]);
+
 }
 
 //3) Vacio el carrito

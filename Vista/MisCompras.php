@@ -28,11 +28,16 @@ $cantidadCompras = count($arrayCompras);
                     $objCompraEstado = new C_Compraestado();
                     $objCompraEstado = $objCompraEstado->buscar(['idcompra'=>$arrayCompras[$i]->getIdcompra()])[0];
                     $estado = $objCompraEstado->getIdcompraestadotipo()->getCetdescripcion();
+
+                    //Obtengo los productos
+                    $objCompraItem = new C_Compraitem();
+                    $arrayProductos = $objCompraItem->traerProductos($arrayCompras[$i]->getIdcompra());
                 ?>
                     <tr>
                         <th scope="row" class="text-center"><?php echo $i + 1 ?></th>
                         <td> <?php echo $arrayCompras[$i]->getCofecha()?> </td>
-                        <td> <?php ?> Aca van los productos </td>
+                        <td> <?php 
+                        ?> Aca van los productos</td>
                         <td> <?php ?> Aca va el total
                         </td>
                         <td>

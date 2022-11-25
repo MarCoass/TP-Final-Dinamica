@@ -126,4 +126,13 @@ class C_Compraitem
         
         return $arreglo;
     }
+
+    public function traerProductos($idCompra){
+        $arrayCompraItem = $this->buscar(['idcompra' => $idCompra]);
+        $arrayProductos = [];
+        foreach($arrayCompraItem as $compraItem){
+            $arrayProductos[] = $compraItem->getIdproducto();
+        }
+        return $arrayProductos;
+    }
 }
