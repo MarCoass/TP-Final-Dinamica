@@ -1,6 +1,8 @@
 <?php
 include('Common/Header.php');
-
+$roles = $sesion->getRoles();
+$rol =  $roles[0]->getIdrol()->getIdrol();
+if($rol == 1){
 $datos = data_submitted();
 $objUsuario = new C_Usuario();
 $objUsuarioRol = new C_UsuarioRol();
@@ -41,30 +43,42 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
             </div>
 
 
+
             <div class="col-8 col-lg-7 mt-4">
                 <h6 class="text-center mb-3">ROLES</h6>
 
 
                 <?php
                 foreach ($roles as $rol) {
+                    if ($rol->getRodescripcion() != 'Cliente') {
                 ?>
-                    <div class="form-check">
-                        <input class='form-check-input' type='checkbox' name='rol[]' value='<?php echo $rol->getIdrol() ?>' <?php
-                                                                                                                            foreach ($rolesUsuario as $rolUsuario) {
-                                                                                                                                
-                                                                                                                                if ($rolUsuario->getIdrol()->getRodescripcion() == $rol->getRodescripcion()) {
-                                                                                                                            ?>checked <?php
-                                                                                                                                    }
-                                                                                                                                }
-                                                                                                                                        ?>>
-                        <label class='form-check-label' for='admin'><?php echo $rol->getRodescripcion() ?> </label>
-                    </div>
-                <?php
+                        <div class="form-check">
+                            <input class='form-check-input' type='checkbox' name='rol[]' value='<?php echo $rol->getIdrol() ?>' <?php
+                                                                                                                                foreach ($rolesUsuario as $rolUsuario) {
 
+                                                                                                                                    if ($rolUsuario->getIdrol()->getRodescripcion() == $rol->getRodescripcion()) {
+                                                                                                                                ?>checked <?php
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                            ?>>
+                            <label class='form-check-label' for='admin'><?php echo $rol->getRodescripcion() ?> </label>
+                        </div>
+                    <?php
+
+                    } else {
+                    ?>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" checked disabled>
+                            <label class="form-check-label" for="user">
+                                Cliente
+                            </label>
+                        </div>
+                <?php
+                    }
                 }
                 ?>
             </div>
-            
+
             <button class="btn btn-lg btn-success my-3 col-10 col-lg-7 mt-4">MODIFICAR</button>
         </form>
     </main>
@@ -72,5 +86,10 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
 
 <script src="Assets/Js/EditarUsuario.js"></script>
 <?php
-include('Common/Footer.php')
+include('Common/Footer.php');
+}
 ?>
+
+<script>
+    window.location.href = "/TP-Final-Dinamica/Vista/Home.php"; 
+</script>
