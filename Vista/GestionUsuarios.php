@@ -1,9 +1,6 @@
 <?php
 include_once('Common/Header.php');
 
-$roles = $sesion->getRoles();
-$rol =  $roles[0]->getIdrol()->getIdrol();
-//if($rol == 1){
 if ($sesion->esAdmin()) {
 
     //obtengo todos los usuarios 
