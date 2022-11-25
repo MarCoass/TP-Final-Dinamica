@@ -193,6 +193,25 @@ class Session
 
     public function insertar_producto_carrito($param)
     {
+
+        if(isset($_SESSION['idusuario']) && !isset($_SESSION['compra'])){
+            $compra_borrado = new C_Compra();
+            $compra_estado = new C_Compraestado();
+
+            $param = array(
+                'idcompra'  => NULL,
+                'cofecha'  => date('Y-m-d H:i:s'),
+                'idusuario'  => $_SESSION['idusuario'],
+            );
+
+            $compra_borrado->alta($param);
+            $compra = $compra_borrado->buscar(['cofecha'=> $param['cofecha'], 'idusuario'=>$param['idusuario']]);
+            $_SESSION['compra'] = $compra;
+
+            $compra_estado->alta(['idcompraestado'=>NULL, 'idcompra'=>$compra[0]->getIdcompra(), 'idcompraestadotipo'=>0, 'cefechaini'=>$param['cofecha'], 'cefechafin'=>NULL]);
+
+        }
+
         if (array_key_exists($param['id_producto'], $_SESSION['carrito']['productos'])) {
             $_SESSION['carrito']['productos'][$param['id_producto']]['cantidad'] += $param['cantidad'];
         } else {
