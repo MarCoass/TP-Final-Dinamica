@@ -79,7 +79,7 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
                 ?>
             </div>
 
-            <button class="btn btn-lg btn-success my-3 col-10 col-lg-7 mt-4">MODIFICAR</button>
+            <button class="btn btn-lg btn-success my-3 col-10 col-lg-7 mt-4" id="botonModal">MODIFICAR</button>
         </form>
     </main>
 </div>
@@ -91,5 +91,5 @@ include('Common/Footer.php');
 ?>
 
 <script>
-    window.location.href = "/TP-Final-Dinamica/Vista/Home.php"; 
+    window.location.href = "Home.php"; 
 </script>
