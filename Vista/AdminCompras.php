@@ -56,9 +56,7 @@ if ($sesion->esAdmin()) {
 
                         <td>
 
-                            <button class="ms-3 text-decoration-none btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modal_estado"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
-                                                                                                                                                        ?>Cambiar estado<?php
-                                                                                                                                                                    } ?> </button>
+                            
                             <button class="ms-3 text-decoration-none btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_estado_<?php echo $arrayCompras[$i]->getIdcompra() ?>" onclick="this"> <?php if ($estado->getIdcompraestadotipo() <= 4) {
                                                                                                                                                                                                                                 ?>Cambiar estado<?php
                                                                                                                                                                                                                                 } ?> </button>
