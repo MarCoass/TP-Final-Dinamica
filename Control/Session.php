@@ -189,13 +189,14 @@ class Session
         $_SESSION['carrito'] = array();
         $_SESSION['carrito']['cantidad'] = 0;
         $_SESSION['carrito']['productos'] = array();
+        $_SESSION['compra'] = 0;
     }
 
     public function insertar_producto_carrito($param)
     {
         $objProducto = new C_Producto();
 
-        if(isset($_SESSION['idusuario']) && !isset($_SESSION['compra'])){
+        if(isset($_SESSION['idusuario']) && (!isset($_SESSION['compra']) || $_SESSION['compra'] == 0) ){
             $compra_borrado = new C_Compra();
             $compra_estado = new C_Compraestado();
 
@@ -258,5 +259,9 @@ class Session
         }
 
         return $result;
+    }
+
+    public function obtener_compra_relacionada_a_session(){
+       return $_SESSION['compra'];
     }
 }

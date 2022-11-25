@@ -2,19 +2,14 @@
 include_once('../Common/Header.php');
 
 $usuario = $sesion->getUsuario();
+$compra = $sesion->obtener_compra_relacionada_a_session();
 
-//1) Creo una compra con estado = 1 
-$objCompra = new C_Compra();
-
-$fecha = new DateTime();
-$fechaStamp = $fecha->format('Y-m-d H:i:s');
-$objCompra->alta(['idcompra'=> null, 'cofecha'=>$fechaStamp, 'idusuario'=>$usuario->getIdusuario()]);
-
-$aux = $objCompra->buscar(['cofecha'=> $fechaStamp, 'idusuario'=>$usuario->getIdusuario()]);
-//print_r($aux[0]->getIdcompra());
 
 $objCompraEstado = new C_Compraestado();
-$objCompraEstado->alta(['idcompraestado'=>null, 'idcompra'=>$aux[0]->getIdcompra(), 'idcompraestadotipo'=>1, 'cefechaini'=>$fechaStamp, 'cefechafin'=>null]);
+$estado = $objCompraEstado->buscar(['idcompra'=>$compra[0]->getIdcompra()]);
+//idcompraestado
+
+//$estado->modificacion($param);
 //2) Actualizo el stock 
 
 $objProducto = new C_Producto();
@@ -29,9 +24,7 @@ foreach ($arrayProductos as $key => $value) {
         $producto->modificar();
 
         //creo objeto compraItem
-        $objCompraItem = new C_Compraitem();
-        $objCompraItem->alta(['idcompraitem'=>null, 'idproducto'=>$key, 'idcompra'=>$aux[0]->getIdcompra(), 'cicantidad'=>$cantidad]);
-
+       
 }
 
 //3) Vacio el carrito
