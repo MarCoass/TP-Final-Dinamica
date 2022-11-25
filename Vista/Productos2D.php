@@ -17,7 +17,7 @@ $i = 0;
 <?php
 while ($i < $cantidadProductos) {
         ?>
-<div class="card m-4" style="width: 18rem;">
+<div class="card m-4" style="width: 18rem;" id="formulario">
         <form id="formulario" name="formulario" method="post" action="cart.php">
         <input name="precio" type="hidden" id="precio" value="<?php echo $arrayProductos[$i]->getProprecio();?>" />
         <input name="nombre" type="hidden" id="nombre" value="<?php echo $arrayProductos[$i]->getPronombre();?>" />
@@ -31,7 +31,7 @@ while ($i < $cantidadProductos) {
         
                 </div>
                 <div class="card-footer">
-                        <button class="btn  btn-outline-dark" type="submit"><i class="bi bi-cart-plus-fill"></i> Añadir al carrito</button>
+                        <button class="btn  btn-outline-light" type="submit" id="botonModal"><i class="bi bi-cart-plus-fill"></i> Añadir al carrito</button>
                 </div>
         </form>
 </div>

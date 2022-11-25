@@ -3,7 +3,8 @@
 include_once("Common/Header.php");
 
 $objControlProducto = new C_Producto();
-$param = ['protipo' => "Accesorio"];
+$param = array();
+$param['protipo'] = "Accesorio";
 $arrayProductos = $objControlProducto->buscar($param);
 if ($arrayProductos != null) {
     $cantidadProductos = count($arrayProductos);
@@ -17,7 +18,7 @@ $i = 0;
 <?php
 while ($i < $cantidadProductos) {
         ?>
-<div class="card m-4" style="width: 18rem;">
+<div class="card m-4" style="width: 18rem;" id="formulario">
         <form id="formulario" name="formulario" method="post" action="cart.php">
         <input name="precio" type="hidden" id="precio" value="<?php echo $arrayProductos[$i]->getProprecio();?>" />
         <input name="titulo" type="hidden" id="titulo" value="<?php echo $arrayProductos[$i]->getPronombre();?>" />
@@ -31,7 +32,7 @@ while ($i < $cantidadProductos) {
         
                 </div>
                 <div class="card-footer">
-                        <button class="btn  btn-outline-dark" type="submit"><i class="bi bi-cart-plus-fill"></i> Añadir al carrito</button>
+                        <button class="btn  btn-outline-dark" type="submit" id="botonModal"><i class="bi bi-cart-plus-fill"></i> Añadir al carrito</button>
                 </div>
         </form>
 </div>

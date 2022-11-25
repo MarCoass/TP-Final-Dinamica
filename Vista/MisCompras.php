@@ -1,6 +1,6 @@
 <?php
-include_once ("Common/Header.php");
-$i=0;
+include_once("Common/Header.php");
+$i = 0;
 $usuario = $sesion->getUsuario();
 //obtengo todas las compras del usuario
 $objCompra = new C_Compra();
@@ -11,6 +11,8 @@ if(is_array($arrayCompras) && count($arrayCompras)>0){
     }else{
     $cantidadCompras = 0;
     }
+$arrayCompras = $objCompra->buscar(['idusuario' => $usuario->getIdusuario()]);
+$cantidadCompras = count($arrayCompras);
 ?>
 
 <div class="container bg-dark">
@@ -32,27 +34,33 @@ if(is_array($arrayCompras) && count($arrayCompras)>0){
                 while ($i < $cantidadCompras) {
                     //obtengo el estado
                     $objCompraEstado = new C_Compraestado();
-                    $objCompraEstado = $objCompraEstado->buscar(['idcompra'=>$arrayCompras[$i]->getIdcompra()])[0];
+                    $objCompraEstado = $objCompraEstado->buscar(['idcompra' => $arrayCompras[$i]->getIdcompra()])[0];
                     $estado = $objCompraEstado->getIdcompraestadotipo();
-
+                    $idcompra = $arrayCompras[$i]->getIdcompra();
                     //Obtengo los productos
                     $objCompraItem = new C_Compraitem();
                     $arrayProductos = $objCompraItem->traerProductos($arrayCompras[$i]->getIdcompra());
                 ?>
                     <tr>
                         <th scope="row" class="text-center"><?php echo $i + 1 ?></th>
-                        <td> <?php echo $arrayCompras[$i]->getCofecha()?> </td>
-                        <td> <?php foreach($arrayProductos as $producto){
-                            echo $producto->getPronombre(); ?> <br> <?php 
-                        }
-                        ?> </td>
-                        <td> <?php echo $objCompraItem->totalCompra($arrayCompras[$i]->getIdcompra())?>
+                        <td> <?php echo $arrayCompras[$i]->getCofecha() ?> </td>
+                        <td> <?php foreach ($arrayProductos as $producto) {
+                                    echo $producto->getPronombre(); ?> <br> <?php
+                                                                }
+                                                                    ?> </td>
+                        <td> <?php echo $objCompraItem->totalCompra($arrayCompras[$i]->getIdcompra()) ?>
                         </td>
                         <td>
-                            <?php echo $estado->getCetdescripcion()?>
+                            <?php echo $estado->getCetdescripcion() ?>
                         </td>
                         <td>
-                            <button class="btn btn-danger" <?php if($estado->getIdcompraestadotipo()!=1){?> disabled <?php  }?> >Cancelar</button>
+                            <form name="form" action="Accion/cambiarEstado.php" method="post">
+                                <input style="display:none;" name='idcompraestado' id='idcompraestado' value='<?php echo $objCompraEstado->getIdcompraestado();  ?>'>
+                                <input style="display:none;" name='idcompra' id='idcompra' value='<?php echo $idcompra ?>'>
+                                <input style="display:none;" name='idcompraestadotipo' id='idcompraestadotipo' value='4'>
+                                <button class="btn btn-danger cambiarEstado" type="submit" <?php if ($estado->getIdcompraestadotipo() != 1) { ?> disabled <?php  } ?>>Cancelar</button>
+                            </form>
+
                         </td>
                     </tr>
                 <?php
@@ -62,7 +70,7 @@ if(is_array($arrayCompras) && count($arrayCompras)>0){
         </table>
     </div>
 </div>
-
+<script src="Assets/Js/cambiarEstadoCompra.js"></script>
 <?php
-include_once ("Common/Footer.php");
+include_once("Common/Footer.php");
 ?>
