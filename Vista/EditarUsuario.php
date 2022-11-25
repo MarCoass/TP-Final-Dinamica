@@ -87,9 +87,13 @@ $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuarioModificar->getIdu
 <script src="Assets/Js/EditarUsuario.js"></script>
 <?php
 include('Common/Footer.php');
-}
+} else {
 ?>
 
 <script>
     window.location.href = "Home.php"; 
 </script>
+
+<?php
+}
+?>

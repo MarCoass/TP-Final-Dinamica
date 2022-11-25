@@ -248,7 +248,8 @@ INSERT INTO `usuariorol` (`idusuariorol`, `idusuario`, `idrol`) VALUES
 (1, 1, 1),
 (2, 2, 1),
 (3, 3, 3),
-(4, 4, 1);
+(4, 4, 1),
+(5, 4, 3);
 
 --
 -- Índices para tablas volcadas
