@@ -6,6 +6,7 @@ $i = 0;
 $objCompra = new C_Compra();
 $arrayCompras = $objCompra->buscar([]);
 $cantidadCompras = count($arrayCompras);
+
 if ($sesion->esAdmin()) {
 
         //obtengo todos los usuarios 
