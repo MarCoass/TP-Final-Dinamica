@@ -1,5 +1,6 @@
 <?php
-//include_once('../Common/Header.php');
+include_once('../Common/Header.php');
+//include_once("../../configuracion.php");
 $usuarioSalida = array();
 $usuarios =  array();
 $controladorUsuario = new C_Usuario();
