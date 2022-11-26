@@ -13,9 +13,14 @@ if ($arrayProductos != null) {
 }
 $i = 0;
 ?>
+<div class="container mt-5">
+<div class="row" style="justify-content: center;">
+<?php
+while ($i < $cantidadProductos) {
+        ?>
 <div class="container">
 
-<div class="display-1 text-light  text-center mt-3 bg-dark" id="titulo"><h1>Accesorios</h1></div>
+<div class="display-1 text-light  text-center" id="titulo"><h1>Productos 2D</h1></div>
 <div class="row" style="justify-content: center;">
         <?php
         while ($i < $cantidadProductos) {
@@ -30,7 +35,7 @@ $i = 0;
                                 <div class="card-body">
                                         <h5 class="card-title"><?php echo $arrayProductos[$i]->getPronombre() ?></h5>
                                         <p class="card-text"><b>Descripci&oacute;n:</b> <?php echo $arrayProductos[$i]->getProdetalle() ?> - Precio: $<?php echo $arrayProductos[$i]->getProprecio() ?></p>
-                                        <input name="cantidad" type="number" id="cantidad" value="1" class="pl-2 form-control" />
+                                        <input name="cantidad" type="number" id="cantidad" value="1" min="1" max="<?php echo $arrayProductos[$i]->getProcantstock() ?>" class="pl-2 form-control" />
 
                                 </div>
                                 <div class="card-footer">
@@ -44,9 +49,11 @@ $i = 0;
         } ?>
 </div>
 </div>
+
 <?php
     $i++;
-?>
+}?>
+</div>
 </div>
 </div>
 <?php

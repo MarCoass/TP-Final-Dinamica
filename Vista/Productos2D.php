@@ -34,7 +34,7 @@ while ($i < $cantidadProductos) {
                                 <div class="card-body">
                                         <h5 class="card-title"><?php echo $arrayProductos[$i]->getPronombre() ?></h5>
                                         <p class="card-text"><b>Descripci&oacute;n:</b> <?php echo $arrayProductos[$i]->getProdetalle() ?> - Precio: $<?php echo $arrayProductos[$i]->getProprecio() ?></p>
-                                        <input name="cantidad" type="number" id="cantidad" value="1" class="pl-2 form-control" />
+                                        <input name="cantidad" type="number" id="cantidad" value="1" min="1" max="<?php echo $arrayProductos[$i]->getProcantstock() ?>" class="pl-2 form-control" />
 
                                 </div>
                                 <div class="card-footer">
