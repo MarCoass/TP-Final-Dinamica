@@ -3,7 +3,13 @@
 $obj_compra = new C_Compra();
 $obj_compra_item = new C_Compraitem();
 $compra_borrador = $obj_compra->obtener_compra_borrador_de_usuario($sesion->getIdUser());
-$productos_compra = $obj_compra_item->buscar(array('idcompra' => $compra_borrador[0]->getIdcompra()));
+
+if($compra_borrador != null ){
+  $productos_compra = $obj_compra_item->buscar(array('idcompra' => $compra_borrador[0]->getIdcompra()));
+}else{
+  $productos_compra = null;
+}
+
 
 ?>
 <div class="modal fade" id="modal_cart" tabindex="-1"  aria-hidden="true">

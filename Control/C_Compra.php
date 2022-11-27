@@ -135,7 +135,7 @@ class C_Compra
 				$estado = new C_Compraestado();
 				$estado_borrador = $estado->buscar(array('idcompra' => $compra->getIdcompra(), 'idcompraestadotipo' => 0,'cefechafin' => NULL ));
 	
-				if($estado_borrador != null){
+				if($estado_borrador[0]->getCefechafin() == '0000-00-00 00:00:00' && $estado_borrador != null){
 					$compra_borrador = $obj_compra->buscar(array('idcompra' =>$compra->getIdcompra(),'idusuario' =>$id_usuario));
 				}
 			}
@@ -148,11 +148,13 @@ class C_Compra
     {
         $totalcantidad = 0;
         $compra_borrador = $this->obtener_compra_borrador_de_usuario($id_usuario);
-        $obj_compra_item = new C_Compraitem();
-        $productos = $obj_compra_item->buscar(array('idcompra' => $compra_borrador[0]->getIdcompra()));
+        if($compra_borrador != null){
+            $obj_compra_item = new C_Compraitem();
+            $productos = $obj_compra_item->buscar(array('idcompra' => $compra_borrador[0]->getIdcompra()));
 
-        foreach($productos as $prd){
-            $totalcantidad += $prd->getCicantidad();
+            foreach($productos as $prd){
+                $totalcantidad += $prd->getCicantidad();
+            }
         }
         return $totalcantidad;
     }
