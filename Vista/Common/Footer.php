@@ -1,6 +1,10 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 <?php
-$carrito = $sesion->obtener_carrito();
+$obj_compra = new C_Compra();
+$obj_compra_item = new C_Compraitem();
+$compra_borrador = $obj_compra->obtener_compra_borrador_de_usuario($sesion->getIdUser());
+$productos_compra = $obj_compra_item->buscar(array('idcompra' => $compra_borrador[0]->getIdcompra()));
+
 ?>
 <div class="modal fade" id="modal_cart" tabindex="-1"  aria-hidden="true">
   <div class="modal-dialog">
@@ -21,15 +25,18 @@ $carrito = $sesion->obtener_carrito();
   </thead>
   <tbody >
     <?php
-    if(count($carrito['productos']) > 0){
+    if(is_array($productos_compra) && count($productos_compra) > 0){
       $i = 1;
-      foreach($carrito['productos'] as $producto){
+      foreach($productos_compra as $indice => $prd){
+
+        $obj_producto = new C_Producto();
+        $producto = $prd->getIdproducto();
     ?>
     <tr>
       <th scope="row" class="text-light"><?php echo  $i ?></th>
-      <td class="text-light"><?php echo $producto['descripcion'] ?></td>
-      <td class="text-light"><?php echo $producto['cantidad'] ?></td>
-      <td class="text-light"><?php echo ($producto['cantidad']*$producto['precio']) ?></td>
+      <td class="text-light"><?php echo $producto->getPronombre(); ?></td>
+      <td class="text-light"><?php echo $prd->getCicantidad(); ?></td>
+      <td class="text-light"><?php echo ($prd->getCicantidad()*$producto->getProprecio()) ?></td>
     </tr>
     <?php $i++;
       }}?>

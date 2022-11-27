@@ -11,7 +11,6 @@ $sesion->setPass($pass);
 list($valido, $error) = $sesion->validar();
 
 if ($valido) {
-    $sesion->iniciar_carrito();
 ?>
     <script>
             Swal.fire({
