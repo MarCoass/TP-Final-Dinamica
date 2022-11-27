@@ -116,10 +116,12 @@ class Session
     {
         $abmUsuario = new AbmUsuario();
         $where = ['idusuario' => $_SESSION['idusuario']];
+        //print($_SESSION['idusuario']);
         $listaUsuarios = $abmUsuario->buscar($where);
         if ($listaUsuarios >= 1) {
             $usuarioLog = $listaUsuarios[0];
         }
+        print_r($usuarioLog);
         return $usuarioLog;
     }
 
@@ -146,42 +148,53 @@ class Session
         $usuarioActual = $this->getUsuario(); //Usuario actual
         $objC_UsuarioRol = new C_Usuariorol(); //Creo el obj controlador de usuariorol para usar su buscar
         $param = ['idusuario' => $usuarioActual->getIdusuario()]; //obtengo el id del usuario actual
+        print_r($param);
         $listaRoles = $objC_UsuarioRol->buscar($param);
         //echo "ROL: " . $listaRoles[0];
         //print_r($listaRoles);
+        foreach ($listaRoles as $unRol){
+           // print($unRol->getIdRol());
+        }
         return $listaRoles;
     }
 
- /**  public function esAdmin()
-  *  {
-   *     $arrayRoles = $this->getRoles();
-    *    $esAdmin = false;
-     *   $i = 0;
-        
-    *    while ($i < count($arrayRoles) && !$esAdmin) {
-    *        //print_r($arrayRoles[$i]->getIdrol());
-    *        if ($arrayRoles[$i]->getIdrol()->getIdrol() == 1) {
-    *            $esAdmin = true;
-    *        }
-    *        $i++;
-    *    }
-    *    return $esAdmin;
-    *}
- */
-    public function tienePermisos($pagina){
+   public function esAdmin()
+    {
         $arrayRoles = $this->getRoles();
-        $tienePermisos = false;
+        $esAdmin = false;
         $i = 0;
-
-        while ($i< count($arrayRoles) && !$tienePermisos){
-            $rol = $arrayRoles[$i]->getIdRol();
-            if($rol==1 && $pagina=="Admin"){
-                $tienePermisos=true;
-            }elseif($rol==2 && $pagina=="Deposito"){
-                $tienePermisos=true;
+        
+        while ($i < count($arrayRoles) && !$esAdmin) {
+            if ($arrayRoles[$i]->getIdrol()->getIdrol() == 1) {
+                $esAdmin = true;
             }
             $i++;
         }
+        return $esAdmin;
+    }
+
+    public function esDeposito(){
+        $arrayRoles = $this->getRoles();
+        $esDepo = false;
+        $i = 0;
+        
+        while ($i < count($arrayRoles) && !$esDepo) {
+            if ($arrayRoles[$i]->getIdrol()->getIdrol() == 2) {
+                $esDepo = true;
+            }
+            $i++;
+        }
+        return $esDepo;
+    }
+
+    public function tienePermisos($pagina){
+       $tienePermisos = false;
+       if($this->esAdmin() && $pagina=="Admin"){
+        $tienePermisos=true;
+       } elseif ($this->esDeposito() && $pagina="Deposito"){
+        $tienePermisos=true;
+       }
+       return $tienePermisos;    
     }
 
     /** CERRAR **/

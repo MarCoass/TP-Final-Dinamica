@@ -36,3 +36,38 @@ if ($valido) {
     $sesion->cerrar();
     header("Location:login.php?error=" . urlencode($error));
 }
+
+
+public function tienePermisos($pagina){
+        $arrayRoles = $this->getRoles();
+        $tienePermisos = false;
+        $i = 0;
+
+        while ($i< count($arrayRoles) && !$tienePermisos){
+            $rol = $arrayRoles[$i]->getIdRol();
+            if($rol==1 && $pagina=="Admin"){
+                $tienePermisos=true;
+            }elseif($rol==2 && $pagina=="Deposito"){
+                $tienePermisos=true;
+            }
+            $i++;
+        }
+    }
+
+    
+    public function getRoles()
+    {
+        //$objC_Usuario = new C_Usuario();
+        $usuarioActual = $this->getUsuario(); //Usuario actual
+        $objC_UsuarioRol = new C_Usuariorol(); //Creo el obj controlador de usuariorol para usar su buscar
+        $param = ['idusuario' => $usuarioActual->getIdusuario()]; //obtengo el id del usuario actual
+        $listaRoles = $objC_UsuarioRol->buscar($param);
+        //echo "ROL: " . $listaRoles[0];
+        //print_r($listaRoles);
+        $roles = array();
+        foreach ($listaRoles as $unRol){
+            $roles=array_push($unRol->getIdRol());
+        }
+        print_r($roles);
+        return $roles;
+    }
