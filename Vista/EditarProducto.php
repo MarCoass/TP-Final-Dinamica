@@ -1,7 +1,7 @@
 <?php
 include('Common/Header.php');
-
-if ($sesion->esAdmin()) {
+$pagina="Deposito";
+if ($sesion->tienePermisos($pagina)){
     $datos = data_submitted();
     $objProducto = new C_Producto();
     $productoModificar = $objProducto->buscar($datos)[0];

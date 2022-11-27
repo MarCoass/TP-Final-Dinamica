@@ -152,20 +152,36 @@ class Session
         return $listaRoles;
     }
 
-    public function esAdmin()
-    {
-        $arrayRoles = $this->getRoles();
-        $esAdmin = false;
-        $i = 0;
+ /**  public function esAdmin()
+  *  {
+   *     $arrayRoles = $this->getRoles();
+    *    $esAdmin = false;
+     *   $i = 0;
         
-        while ($i < count($arrayRoles) && !$esAdmin) {
-            //print_r($arrayRoles[$i]->getIdrol());
-            if ($arrayRoles[$i]->getIdrol()->getIdrol() == 1) {
-                $esAdmin = true;
+    *    while ($i < count($arrayRoles) && !$esAdmin) {
+    *        //print_r($arrayRoles[$i]->getIdrol());
+    *        if ($arrayRoles[$i]->getIdrol()->getIdrol() == 1) {
+    *            $esAdmin = true;
+    *        }
+    *        $i++;
+    *    }
+    *    return $esAdmin;
+    *}
+ */
+    public function tienePermisos($pagina){
+        $arrayRoles = $this->getRoles();
+        $tienePermisos = false;
+        $i = 0;
+
+        while ($i< count($arrayRoles) && !$tienePermisos){
+            $rol = $arrayRoles[$i]->getIdRol();
+            if($rol==1 && $pagina=="Admin"){
+                $tienePermisos=true;
+            }elseif($rol==2 && $pagina=="Deposito"){
+                $tienePermisos=true;
             }
             $i++;
         }
-        return $esAdmin;
     }
 
     /** CERRAR **/

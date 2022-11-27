@@ -1,13 +1,14 @@
 <?php
 include_once("Common/Header.php");
 $i = 0;
+$pagina="Admin";
 
 //obtengo todas las compras del usuario
 $objCompra = new C_Compra();
 $arrayCompras = $objCompra->buscar([]);
 $cantidadCompras = count($arrayCompras);
 
-if ($sesion->esAdmin()) {
+if ($sesion->tienePermisos($pagina)) {
 
         //obtengo todos los usuarios 
         $objC_Usuario = new C_Usuario();
