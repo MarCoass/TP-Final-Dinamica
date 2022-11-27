@@ -148,7 +148,7 @@ class Session
         $usuarioActual = $this->getUsuario(); //Usuario actual
         $objC_UsuarioRol = new C_Usuariorol(); //Creo el obj controlador de usuariorol para usar su buscar
         $param = ['idusuario' => $usuarioActual->getIdusuario()]; //obtengo el id del usuario actual
-        print_r($param);
+        //print_r($param);
         $listaRoles = $objC_UsuarioRol->buscar($param);
         //echo "ROL: " . $listaRoles[0];
         //print_r($listaRoles);
