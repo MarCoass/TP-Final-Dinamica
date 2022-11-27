@@ -36,7 +36,8 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
 <body background="../Assets/Img/fondo.png">
     <?php
     $sesion = new Session();
-    $totalcantidad = $sesion->contarCarrito();
+    $obj_compra = new C_Compra();
+    $totalcantidad = $obj_compra->contarCarrito($sesion->getIdUser());
     ?>
     <header id="navbar ">
         <nav class="navbar navbar-expand-lg">

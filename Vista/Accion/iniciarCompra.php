@@ -35,6 +35,6 @@ foreach ($arrayProductos as $key => $value) {
 }
 
 //3) Vacio el carrito
-$sesion->setear_carrito();
+
 
 //4) Redirect a Mis Compras (?)

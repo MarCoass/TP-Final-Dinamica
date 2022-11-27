@@ -30,7 +30,6 @@ $sesion->setPass($pass);
 list($valido, $error) = $sesion->validar();
 
 if ($valido) {
-    $sesion->iniciar_carrito();
     header("Location:Home.php");
 } else {
     $sesion->cerrar();
