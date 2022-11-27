@@ -121,7 +121,7 @@ class Session
         if ($listaUsuarios >= 1) {
             $usuarioLog = $listaUsuarios[0];
         }
-        print_r($usuarioLog);
+        //print_r($usuarioLog);
         return $usuarioLog;
     }
 
