@@ -204,19 +204,4 @@ class Session
         session_destroy();
     }
 
-    public function obtener_carrito()
-    {
-
-        if (isset($_SESSION['carrito']['cantidad'])) {
-            $result =  $_SESSION['carrito'];
-        } else {
-            $result = false;
-        }
-
-        return $result;
-    }
-
-    public function obtener_compra_relacionada_a_session(){
-       return $_SESSION['compra'];
-    }
 }

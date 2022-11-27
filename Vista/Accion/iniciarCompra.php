@@ -2,39 +2,45 @@
 include_once('../Common/Header.php');
 
 $usuario = $sesion->getUsuario();
-$compra = $sesion->obtener_compra_relacionada_a_session();
 
+$obj_compra = new C_Compra();
+$obj_estado = new C_Compraestado();
+$obj_compra_item = new C_Compraitem();
+$compra_borrador = $obj_compra->obtener_compra_borrador_de_usuario($sesion->getIdUser());
 
-$objCompraEstado = new C_Compraestado();
-$estado = $objCompraEstado->buscar(['idcompra'=>$compra[0]->getIdcompra()]);
+if($compra_borrador != null){
+$estado = $obj_estado->buscar(array('idcompra' => $compra_borrador[0]->getIdcompra() ));
 
-$param = array(
-        'idcompraestado' => $estado[0]->getidcompraestado(),
-        'idcompra' => $compra[0]->getIdcompra(),
-        'idcompraestadotipo' => 1,
-        'cefechaini' =>  $compra[0]->getCofecha,
-        'cefechafin' => NULL,
+$param_estado_anterior = array(
+        'idcompraestado' => NULL,
+        'idcompra' =>  $compra_borrador[0]->getIdcompra(),
+        'idcompraestadotipo' => 0,
+        'cefechaini' => $estado[0]->getCefechaini(),
+        'cefechafin' => date('Y-m-d H:i:s')
 );
 
-$objCompraEstado->modificacion($param);
+$obj_estado->alta($param_estado_anterior);
+//es un update
+$param_estado_nuevo = array(
+    'idcompraestado' => $estado[0]->getIdcompraestado(),
+    'idcompra' => $compra_borrador[0]->getIdcompra(),
+    'idcompraestadotipo' => 1,
+    'cefechaini' => $estado[0]->getCefechaini(),
+    'cefechafin' => NULL
+);
+
+$obj_estado->modificacion($param_estado_nuevo);
+
 //2) Actualizo el stock 
+$productos_compra = $obj_compra_item->buscar(array('idcompra' => $compra_borrador[0]->getIdcompra()));
 
-$objProducto = new C_Producto();
-$arrayProductos = $sesion->obtener_carrito()['productos'];
+foreach($productos_compra as $indice => $prd){
 
-foreach ($arrayProductos as $key => $value) {
-        $cantidad = $sesion->obtener_carrito()['productos'][$key]['cantidad'];
-        //key es el id del producto
-        $producto = $objProducto->buscar(['idproducto' => $key])[0];
-        $producto->setProcantstock($producto->getProcantstock()-$cantidad);
+        $obj_producto = new C_Producto();
+        $producto = $prd->getIdproducto();
+
+        $producto->setProcantstock($producto->getProcantstock()-$prd->getCicantidad());
         //modifico el stock
         $producto->modificar();
-
-        //creo objeto compraItem
-       
 }
-
-//3) Vacio el carrito
-
-
-//4) Redirect a Mis Compras (?)
+}
