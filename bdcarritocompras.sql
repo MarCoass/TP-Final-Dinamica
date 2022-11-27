@@ -251,7 +251,8 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
 (1, 'Administrador', 'admin123', 'admin@mail.com', '0000-00-00 00:00:00'),
 (2, '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '0000-00-00 00:00:00'),
-(3, 'marty', '5fa9db2e335ef69a4eeb9fe7974d61f4', 'mar', '0000-00-00 00:00:00');
+(3, 'marty', '5fa9db2e335ef69a4eeb9fe7974d61f4', 'mar', '0000-00-00 00:00:00'),
+(4, 'marmarlis','1a1233cfb69d7f27211e36aff9ec373a', 'marmarlis@gmail.com', '0000-00-00 00:00:00' );
 
 -- --------------------------------------------------------
 
@@ -276,7 +277,10 @@ INSERT INTO `usuariorol` (`idusuariorol`, `idusuario`, `idrol`) VALUES
 (52, 3, 1),
 (59, 1, 1),
 (60, 1, 2),
-(61, 1, 3);
+(61, 1, 3),
+(62, 4, 1),
+(63, 4, 2),
+(64, 4, 3);
 
 --
 -- Índices para tablas volcadas

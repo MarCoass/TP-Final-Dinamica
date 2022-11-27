@@ -1,6 +1,7 @@
 <?php
 include_once("Common/Header.php");
-if ($sesion->esAdmin()) {
+$pagina="Admin";
+if ($sesion->tienePermisos($pagina)){
 
         //obtengo todos los usuarios 
         $objC_Usuario = new C_Usuario();

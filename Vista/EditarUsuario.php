@@ -1,7 +1,7 @@
 <?php
 include('Common/Header.php');
-
-if ($sesion->esAdmin()) {
+$pagina="Admin";
+if ($sesion->tienePermisos($pagina)){
     $datos = data_submitted();
     $objUsuario = new C_Usuario();
     $objUsuarioRol = new C_UsuarioRol();

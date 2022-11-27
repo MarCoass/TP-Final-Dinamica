@@ -1,7 +1,8 @@
 <?php include_once('Common/Header.php');
-
-$objProducto = new C_Producto();
-$arrayProductos = $objProducto->buscar([]);
+$pagina="Deposito";
+if ($sesion->tienePermisos($pagina)){
+    $objProducto = new C_Producto();
+    $arrayProductos = $objProducto->buscar([]);
 ?>
 
 <div class="container-fluid" style="margin-bottom: 19%">
@@ -59,4 +60,12 @@ $arrayProductos = $objProducto->buscar([]);
 </div>
 
 
-<?php include_once('Common/Footer.php'); ?>
+<?php include_once('Common/Footer.php'); 
+} else {
+    ?><script>
+            window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
+        </script>
+    <?php
+    
+    }
+    ?>
