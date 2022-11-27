@@ -26,14 +26,12 @@ while ($i < $cantidadProductos) {
         ?>
                 <div class="card m-4" style="width: 18rem;" id="formulario">
                         <form id="formulario" name="formulario" method="post" action="cart.php">
-                                <input name="precio" type="hidden" id="precio" value="<?php echo $arrayProductos[$i]->getProprecio(); ?>" />
-                                <input name="nombre" type="hidden" id="nombre" value="<?php echo $arrayProductos[$i]->getPronombre(); ?>" />
                                 <input name="id_producto" id="id_producto" type="hidden" value="<?php echo $arrayProductos[$i]->getIdproducto(); ?>" />
                                 <img src="<?php echo $arrayProductos[$i]->getProimagen() ?>" class="card-img-top mt-3" alt="Foto del producto">
 
                                 <div class="card-body">
                                         <h5 class="card-title"><?php echo $arrayProductos[$i]->getPronombre() ?></h5>
-                                        <p class="card-text"><b>Descripci&oacute;n:</b> <?php echo $arrayProductos[$i]->getProdetalle() ?> - Precio: $<?php echo $arrayProductos[$i]->getProprecio() ?></p>
+                                        <p class="card-text"><b>Descripci&oacute;n:</b> <?php echo $arrayProductos[$i]->getProdetalle() ?> - Precio: $<?php echo $arrayProductos[$i]->getProprecio() ?> - Stock Disponible: <?php echo $arrayProductos[$i]->getProcantstock(); ?></p>
                                         <input name="cantidad" type="number" id="cantidad" value="1" min="1" max="<?php echo $arrayProductos[$i]->getProcantstock() ?>" class="pl-2 form-control" />
 
                                 </div>
