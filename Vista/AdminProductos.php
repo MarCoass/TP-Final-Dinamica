@@ -154,21 +154,25 @@ $(document).ready(function () {
                     <input type="text" class="form-control" placeholder="detalle" name="prodetalle" id="prodetalle" value="" required>
                 </div>
                 <div class="col-10 col-lg-7">
-                    <label for="uspass" class="form-label mt-2">Stock:</label>
+                    <label for="" class="form-label mt-2">Stock:</label>
                     <input type="number" class="form-control" id="procantstock" name="procantstock" value="">
                 </div>
                 <div class="col-10 col-lg-7">
-                    <label for="uspass" class="form-label mt-2">URL Imagen:</label>
+                    <label for="" class="form-label mt-2">Tipo:</label>
+                    <input type="text" class="form-control" id="protipo" name="protipo" value="">
+                </div>
+                <div class="col-10 col-lg-7">
+                    <label for="" class="form-label mt-2">URL Imagen:</label>
                     <input type="text" class="form-control" id="proimagen" name="proimagen" value="">
                 </div>
                 <div class="col-10 col-lg-7">
-                    <label for="uspass" class="form-label mt-2">Precio:</label>
+                    <label for="" class="form-label mt-2">Precio:</label>
                     <input type="number" class="form-control" id="proprecio" name="proprecio" value="">
                 </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" id="botonModal" class="btn btn-primary">Save changes</button>
+        <button type="submit" id="botonModal" class="btn btn-primary">Guardar</button>
       </div>
       </form>
     </div>
