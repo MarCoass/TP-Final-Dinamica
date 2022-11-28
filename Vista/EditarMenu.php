@@ -29,7 +29,7 @@ if ($sesion->tienePermisos($pagina)){
             </div>
             <div class="col-10 col-lg-7">
                     <label for="floatingInput" class="form-label mt-2">DESCRIPCION</label>
-                    <input type="text" class="form-control" placeholder="Desccipcion" pattern="[a-zA-Z]+\s?[0-9]*" name="medescripcion" id="medescripcion" value="<?php echo $menuModificar->getMedescripcion() ?>" required>
+                    <input type="text" class="form-control" placeholder="Descripcion" pattern="[a-zA-Z]+\s?[0-9]*" name="medescripcion" id="medescripcion" value="<?php echo $menuModificar->getMedescripcion() ?>" required>
                     <div class="invalid-feedback">
                         Porfavor ingrese una descripcion valida.
                     </div>

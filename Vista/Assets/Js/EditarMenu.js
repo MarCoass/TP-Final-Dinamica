@@ -3,7 +3,7 @@ $(document).ready(function() {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: 'Accion/editarUser.php',
+            url: 'Accion/editarMenu.php',
             data: $(this).serialize(),
             success: function(response){
                 location.reload();
