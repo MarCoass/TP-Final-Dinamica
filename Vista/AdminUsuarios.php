@@ -39,9 +39,19 @@ $usuarios = $objUsuario->buscar([]);
                     <th> <?php echo $usuario->getUsmail(); ?> </th>
                     <th> <?php echo $txtRoles; ?> </th>
                     <th> <?php echo $estadoUsuario ?> </th>
-                    <th><form method='post' action='EditarUsuario.php' id="'<?php echo $usuario->getIdUsuario() ?>'">
+                    <th><form method='post' action='EditarUsuario.php' id="'<?php echo $usuario->getIdUsuario() ?>">
                                     <input style="display:none;" name='idusuario' id='idusuario' value='<?php echo $usuario->getIdUsuario() ?>'>
-                                <button type="submit" class="ms-3 mt-3 text-decoration-none btn btn-outline-light">Editar</button></form></th>
+                                    <button type="submit" class="ms-3 mt-3 text-decoration-none btn btn-outline-light"> EDITAR </button>
+                                    <?php echo $usuario->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
+                                        "<button type='button' class='mx-2 mt-1 text-decoration-none btn deshabilitar text-light' id='botonModal'>
+                        DESHABILITAR
+                        </button>" :
+                                        "<button type='button' class='mx-2 mb-1 text-decoration-none btn habilitar' id='botonModal'>
+                        HABILITAR
+                        </button>";
+                                    ?>
+
+                                </form></th>
                 </tr>
             <?php
             } ?>
