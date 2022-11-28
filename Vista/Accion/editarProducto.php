@@ -5,7 +5,3 @@ $objProducto=new C_Producto();
 $productoModificado=$objProducto->modificacion($datos);
 
 ?>
-
-<script>
-window.history.back();
-</script>
