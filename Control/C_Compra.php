@@ -128,6 +128,11 @@ class C_Compra
     public function obtener_compra_borrador_de_usuario($id_usuario){
         $obj_compra = new C_Compra();
         $compra_borrador = null;
+
+        //Respuesta para marti, no se usaar el listar si vos sabes usarlo y esta segura de que va a andar cambialo xd
+        // yo lo hice como pude sin entender nwn
+
+
         //acá querés encontrar un array de compras? no te convendría usar listar("idusuario = '$id_usuario'") para que te retorne un array con todas las compras del usuario?
         $compras_usuario = $obj_compra->buscar(array('idusuario' =>$id_usuario));
 

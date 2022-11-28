@@ -36,7 +36,6 @@ $productos_compra = $obj_compra_item->buscar(array('idcompra' => $compra_borrado
 
 foreach($productos_compra as $indice => $prd){
 
-        $obj_producto = new C_Producto();
         $producto = $prd->getIdproducto();
 
         $producto->setProcantstock($producto->getProcantstock()-$prd->getCicantidad());

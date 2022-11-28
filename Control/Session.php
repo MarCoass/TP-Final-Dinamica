@@ -29,7 +29,10 @@ class Session
     /** GETS Y SETS **/
     public function getIdUser()
     {
-        return $_SESSION['idusuario'];
+        if(isset($_SESSION['idusuario'])){
+            return $_SESSION['idusuario'];
+        }
+        return null;
     }
 
     public function setIdUser($idUser)
