@@ -7,7 +7,7 @@ $(document).ready(function() {
             url: 'Accion/editarProducto.php',
             data: $(this).serialize(),
             success: function(response){
-                location.reload();
+                window.history.back();
            }
        });
     });
