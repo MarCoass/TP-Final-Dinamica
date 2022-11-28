@@ -3,6 +3,7 @@ include('Common/Header.php');
 $pagina="Admin";
 if ($sesion->tienePermisos($pagina)){
     $datos = data_submitted();
+    print_r($datos);
     $objMenu = new C_Menu();
     $objMenuRol = new C_MenuRol();
     $objRol = new C_Rol();
@@ -67,12 +68,12 @@ if ($sesion->tienePermisos($pagina)){
                     }
                     ?>
                 </div>
-                <button class="btn btn-lg btn-success my-3 col-10 col-lg-7 mt-4">MODIFICAR</button>
+                <button class="btn btn-lg my-3 col-10 col-lg-7 mt-4 text-light" id="botonModal">MODIFICAR</button>
           
         </form>
     </main>
 </div>
-
+<script src="Assets/Js/EditarMenu.js"></script>
 <?php
     include('Common/Footer.php');
 } else {

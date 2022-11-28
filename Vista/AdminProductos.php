@@ -9,14 +9,14 @@ if ($sesion->tienePermisos($pagina)){
 
 <div class="container bg-dark col-md-10 text-white mt-5">
 <br/>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarProducto">
+<button type="button" class="btn btn-primary" data-toggle="modal" id="botonModal" data-target="#agregarProducto">
  Agregar Producto
 </button>
 <br/><br/>
     <h3 class="text-light">Admin productos</h3>
         <div class="mb-3">
             <div class="mt-3 mb-3 d-none">
-                <a class="btn text-decoration-none btn btn-outline-light" href="cargarProducto.php" id="botonModal">AGREGAR PRODUCTO</a>
+                <a class="btn text-decoration-none btn btn-outline-light text-light" href="cargarProducto.php" id="botonModal">AGREGAR PRODUCTO</a>
             </div>
             <?php
             if ($arrayProductos != null) {
@@ -136,7 +136,7 @@ $(document).ready(function () {
     ?>
 <div class="modal fade" id="agregarProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content bg-dark text-light">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

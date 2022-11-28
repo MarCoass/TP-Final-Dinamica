@@ -123,7 +123,7 @@ class C_Menu
         if ($param <> NULL) {
             $where .= '';
             if (isset($param['idmenu']))
-                $where .= " and idmenu ='" . $param['idMenu'] . "'";
+                $where .= " and idmenu ='" . $param['idmenu'] . "'";
             if (isset($param['menombre']))
                 $where .= " and menombre ='" . $param['menombre'] . "'";
             if (isset($param['medescripcion']))

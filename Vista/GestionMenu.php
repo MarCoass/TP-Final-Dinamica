@@ -12,7 +12,7 @@ if ($sesion->tienePermisos($pagina)){
 ?>
 
 <div class="container">
-        <div class="display-1 text-light  text-center mt-3" id="titulo"><h3>Gesti&oacute;n de men&uacute;</h3></div>
+        <div class="display-1 text-light  text-center mt-3 bg-dark" id="titulo"><h3>Gesti&oacute;n de men&uacute;</h3></div>
         <div class="rounded p-3 mb-2 bg-dark text-white">
             <table class="table table-dark table-hover p-5">
                 <thead class="text-center">
@@ -46,11 +46,11 @@ if ($sesion->tienePermisos($pagina)){
                                         <form method='post' action='EditarMenu.php' id="'<?php echo $menues[$i]->getIdmenu() ?>">
                                         <input style="display:none;" name='idmenu' id='idmenu' value='<?php echo $menues[$i]->getIdmenu() ?>'>
                                         <button type="submit" class="ms-3 mt-3 text-decoration-none btn btn-outline-light"> EDITAR </button>
-                                        <?php echo $usuarios[$i]->getMedeshabilitado() == "NULL" ?
+                                        <?php echo $menues[$i]->getMedeshabilitado() == "NULL" ?
                                                 "<button type='button' class='mx-2 mt-1 text-decoration-none btn deshabilitar text-light' id='botonModal'>
                                 DESHABILITAR
                                 </button>" :
-                                                "<button type='button' class='mx-2 mb-1 text-decoration-none btn habilitar' id='botonModal'>
+                                                "<button type='button' class='mx-2 mb-1 text-decoration-none btn habilitar text-light' id='botonModal'>
                                 HABILITAR
                                 </button>";
                                         ?>
