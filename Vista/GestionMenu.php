@@ -20,6 +20,7 @@ if ($sesion->tienePermisos($pagina)){
                         <th scope="col-4"><MENU></MENU></th>
                         <th scope="col-4">NOMBRE</th>
                         <th scope="col-4">DESCRIPCION</th>
+                        <th scope="col-4">ROLES</th>
                         <th scope="col-6">ESTADO</th>
                         <th scope="col-6">OPCIONES</th>
                     </tr>
