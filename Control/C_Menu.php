@@ -142,6 +142,36 @@ class C_Menu
     }
 
     
+     //Cambiar roles
+     public function modificarRoles($param){
+        $resp = false;
+        //busco el menu con el id que recibe la funcion
+        $objMenuRol = new C_MenuRol();
+        //busco los roles el menu
+        $rolesMenu = $objMenuRol->buscar(['idmenu'=>$param['idmenu']]);
+        //roles recibidos por parametro
+        $rolesNuevos = $param['rol'];
+
+        //agrega roles, parece funcionar
+        foreach($rolesNuevos as $rolAgregar){
+            if($objMenuRol->buscar(['idmenu'=>$param['idmenu'], 'idrol'=>$rolAgregar]) == null){
+                $idMenu = $param['idmenu'];
+                $menuRol = new MenuRol();
+                $menuRol->cargar(NULL, $idMenu, $rolAgregar);
+                $menuRol->insertar(); 
+            }
+        }
+
+        //elimina roles, no funciona
+        foreach($rolesMenu as $rolEliminar){
+            if(!in_array($rolEliminar->getIdrol()->getIdrol(),$rolesNuevos)){
+                $idMenu = $param['idmenu'];
+                $rolEliminar->eliminar(); 
+            }
+        }
+        return $resp;
+    }
+
 
     
 }
