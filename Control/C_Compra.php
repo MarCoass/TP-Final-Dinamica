@@ -138,7 +138,7 @@ class C_Compra
                 //tal vez las comillas no estén del todo bien, me basé en cómo usé el listar en el tp final de ipoo jeje 
 				$estado_borrador = $estado->buscar(array('idcompra' => $compra->getIdcompra(), 'idcompraestadotipo' => 0,'cefechafin' => NULL ));
 	
-				if($estado_borrador[0]->getCefechafin() == '0000-00-00 00:00:00' && $estado_borrador != null){
+				if( $estado_borrador != null && $estado_borrador[0]->getCefechafin() == '0000-00-00 00:00:00'){
 					$compra_borrador = $obj_compra->buscar(array('idcompra' =>$compra->getIdcompra(),'idusuario' =>$id_usuario));
 				}
 			}
