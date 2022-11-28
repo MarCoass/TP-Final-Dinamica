@@ -23,6 +23,10 @@ while ($i < $cantidadProductos) {
 <div class="row" style="justify-content: center;">
         <?php
         while ($i < $cantidadProductos) {
+                if( $arrayProductos[$i]->getProcantstock() == 0){
+                        // si el stock del producto esta en cero quiere decir que no esta activo
+                         continue;
+                 }
         ?>
                 <div class="card m-4" style="width: 18rem;" id="formulario">
                         <form id="formulario" name="formulario" method="post" action="cart.php">
