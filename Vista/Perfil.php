@@ -1,6 +1,9 @@
 <?php
 include_once('../Vista/Common/Header.php');
+$obj_roles = new C_Usuariorol();
+
 $usuario = $sesion->getUsuario();
+$tiene_rol_admi = $obj_roles->buscar(array('idusuario' => $usuario->getidusuario(),'idrol' => 1));
 ?>
 
 <div class="container mx-auto" style="margin:30px;height:80vh;">
@@ -17,7 +20,9 @@ $usuario = $sesion->getUsuario();
       </div>
       <div id="ContenedorBotones m-5">
         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_editar"><button class="btn btn-outline-light mt-2">Editar</button></a>
+        <?php if($tiene_rol_admi != null){ ?>
         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_borrar"><button class="btn btn-danger mt-2">Borrar cuenta</button></a>
+      <?php } ?>
       </div>
     </div>
   </div>
@@ -33,16 +38,17 @@ $usuario = $sesion->getUsuario();
       <form name="form" action="Accion/editarPerfil.php" method="post">
       <div class="modal-body">
         <form name="form" class="needs-validation" action="Accion/editarPerfil.php" method="post" novalidate>
+          <input name="idusuario" type="hidden" value="<?php echo $usuario->getidusuario(); ?>" />
           <div class="col-lg-7 col-12">Username:
-            <input value='<?php echo $usuario->getUsnombre() ?>' class="form-control" type="text" style="width: 150px;"  name="usnombre" required></input>
+            <input value="<?php echo $usuario->getUsnombre() ?>" class="form-control" type="text" style="width: 150px;"  name="usnombre" required></input>
           </div>
           <div class="col-lg-7 col-12">Mail:
-            <input value='<?php echo $usuario->getUsmail() ?>' class="form-control" type="text" style="width: 150px;"  name="usmail" required></input>
+            <input value="<?php echo $usuario->getUsmail() ?>" class="form-control" type="text" style="width: 150px;"  name="usmail" required></input>
           </div>
-          <div class="col-lg-7 col-12">Contraseña:
-            <input value='<?php echo $usuario->getUspass() ?>' class="form-control" type="password" style="width: 150px;" name="uspass" required></input>
+          <div class="col-lg-7 col-12">Nueva Contraseña:
+            <input value="<?php echo $usuario->getUspass() ?>" class="form-control" type="password" style="width: 150px;" name="uspass" required></input>
           </div>
-          <button type="submit" class="btn editar text-light mt-2" id="botonModal" href="">Guardar</button>
+          <button type="submit" class="btn text-light mt-2" id="botonModal">Guardar</button>
           <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">Volver</button>
         </form>
       </div>
