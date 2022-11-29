@@ -192,11 +192,19 @@ class Session
 
     public function tienePermisos($pagina){
        $tienePermisos = false;
+       if ($this->activa()){
+        $tienePermisos=true;
+       } else {
+        $tienePermisos=false;
+       }
        if($this->esAdmin() && $pagina=="Admin"){
         $tienePermisos=true;
        } elseif ($this->esDeposito() && $pagina="Deposito"){
         $tienePermisos=true;
+       } else {
+        $tienePermisos=false;
        }
+
        return $tienePermisos;    
     }
 

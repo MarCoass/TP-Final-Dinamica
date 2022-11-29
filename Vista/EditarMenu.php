@@ -57,7 +57,7 @@ if ($sesion->tienePermisos($pagina)){
                         } else {
                         ?>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" checked disabled>
+                                <input class="form-check-input" type="checkbox">
                                 <label class="form-check-label" for="user">
                                     Cliente
                                 </label>
