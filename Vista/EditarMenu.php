@@ -3,7 +3,6 @@ include('Common/Header.php');
 $pagina="Admin";
 if ($sesion->tienePermisos($pagina)){
     $datos = data_submitted();
-    print_r($datos);
     $objMenu = new C_Menu();
     $objMenuRol = new C_MenuRol();
     $objRol = new C_Rol();
