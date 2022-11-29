@@ -9,7 +9,7 @@ if ($sesion->tienePermisos($pagina)){
     $roles = $objRol->buscar(null);
     $menuModificar = $objMenu->buscar($datos)[0];
     $rolesMenu = $objMenuRol->buscar(['idmenu' => $menuModificar->getIdmenu()]);
-//FALTA TESTEAR ESTE CODIGO, COPIE EL DE EDITAR USUARIO Y CAMBIE TODAS LAS VARIABLES A MENU
+//NO FUNCIONA EL HABILITAR Y TENGO QUE VER PQ NO ME MANDA LOS DATOS DE EDITAR A LA BD
 ?>
 
 <div class="container-md mb-5">
