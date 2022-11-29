@@ -142,8 +142,21 @@ class C_Menu
     }
 
     
+    function habilitar($param)
+    {
+        $resp = false;
+        $arrayObjMenues = $this->buscar($param);
+        $objMenu = $arrayObjMenues[0];
+        $objMenu->setMeDeshabilitado('NULL');
+        if ($objMenu != null and $objMenu->modificar()) {
+            $resp = true;
+        }
+        return $resp;
+    }
+
+
      //Cambiar roles
-     public function modificarRoles($param){
+    public function modificarRoles($param){
         $resp = false;
         //busco el menu con el id que recibe la funcion
         $objMenuRol = new C_MenuRol();
