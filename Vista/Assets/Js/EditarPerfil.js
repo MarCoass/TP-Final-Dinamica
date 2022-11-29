@@ -1,17 +1,7 @@
 $(document).on('click', '.editar', function() {
     const form=$(this.parentNode);
-    console.log(form);
-    //editarPerfil(form);
+    enviarFormulario(form, 'Accion/editarPerfil.php');
 }
 )
 
-function editarPerfil(form){
-    $.ajax({
-        type: "POST",
-        url: 'Accion/editarPerfil.php',
-        data: form.serialize(),
-        success: function(response){
-            location.reload();
-       }
-   });
-}
+

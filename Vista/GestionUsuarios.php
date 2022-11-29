@@ -1,53 +1,48 @@
 <?php
+
+/**este es usando data table */
 include_once('Common/Header.php');
-$pagina="Admin";
+//obtengo todos los usuarios
+$objUsuario = new C_Usuario();
+$usuarios = $objUsuario->buscar([]);
 
-if ($sesion->tienePermisos($pagina)){
-
-    //obtengo todos los usuarios 
-    $objC_Usuario = new C_Usuario();
-    $usuarios = $objC_Usuario->buscar(NULL);
-    $cantidadUsuarios = count($usuarios);
-    $i = 0;
 ?>
+<div class="container-fluid bg-dark ">
 
-    <div class="container">
-        <div class="display-1 text-light bg-dark text-center mt-3" id="titulo"><h3>Gesti&oacute;n de usuarios</h3></div>
+    <table id="lista_usuarios" class="text-light table table-bordered nowrap  table-condensed" style="width:100%">
+        <thead>
+            <tr>
+                
+                <th class="text" data-priority="1"> Nombre </th>
+                <th class="text" data-priority="1"> Mail </th>
+                <th class="text" data-priority="1"> Rol </th>
+                <th class="text" data-priority="1"> Estado </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="text-light">
+            <?php foreach ($usuarios as $usuario) {
 
-        <div class="rounded p-3 mb-2 bg-dark text-white">
-            <table class="table table-dark table-hover p-5">
-                <thead class="text-center">
-                    <tr>
-                        <th scope="col-4">USUARIO</th>
-                        <th scope="col-4">NOMBRE</th>
-                        <th scope="col-4">MAIL</th>
-                        <th scope="col-4">ROL</th>
-                        <th scope="col-6">ESTADO</th>
-                        <th scope="col-6">OPCIONES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    while ($i < $cantidadUsuarios) {
-                    ?>
-                        <tr>
-                            <th scope="row" class="text-center"><?php echo $i + 1 ?></th>
-                            <td><?php echo $usuarios[$i]->getUsNombre() ?></td>
-                            <td> <?php echo $usuarios[$i]->getUsMail() ?> </td>
-                            <td> <?php
-                                    $objUsRol = new C_Usuariorol();
-                                    $rolesUsuario = $objUsRol->buscar(['idusuario' => $usuarios[$i]->getIdusuario()]);
-                                    foreach ($rolesUsuario as $rolUsuario) {
-                                        echo $rolUsuario->getIdrol()->getRodescripcion() . " ";
-                                    }
-                                    ?>
-                            </td>
-                            <td class="text-center"> <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ? "Habilitado" : "Deshabilitado"; ?> </td>
-                            <td>
-                                <form method='post' action='EditarUsuario.php' id="'<?php echo $usuarios[$i]->getIdUsuario() ?>">
-                                    <input style="display:none;" name='idusuario' id='idusuario' value='<?php echo $usuarios[$i]->getIdUsuario() ?>'>
+                $estadoUsuario = $usuario->getUsdeshabilitado() == '0000-00-00 00:00:00' ? "Habilitado" : "Deshabilitado";
+                //busco los roles
+                $objUsuarioRol = new C_UsuarioRol();
+                //busco los roles el usuario
+                $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $usuario->getIdusuario()]);
+                $txtRoles = "";
+                foreach ($rolesUsuario as $rol) {
+                    $txtRoles = $txtRoles . " " . $rol->getIdrol()->getRodescripcion();
+                } ?>
+
+                <tr>
+                    
+                    <th> <?php echo $usuario->getUsnombre(); ?> </th>
+                    <th> <?php echo $usuario->getUsmail(); ?> </th>
+                    <th> <?php echo $txtRoles; ?> </th>
+                    <th> <?php echo $estadoUsuario ?> </th>
+                    <th><form method='post' action='EditarUsuario.php' id="'<?php echo $usuario->getIdUsuario() ?>">
+                                    <input style="display:none;" name='idusuario' id='idusuario' value='<?php echo $usuario->getIdUsuario() ?>'>
                                     <button type="submit" class="ms-3 mt-3 text-decoration-none btn btn-outline-light"> EDITAR </button>
-                                    <?php echo $usuarios[$i]->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
+                                    <?php echo $usuario->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
                                         "<button type='button' class='mx-2 mt-1 text-decoration-none btn deshabilitar text-light' id='botonModal'>
                         DESHABILITAR
                         </button>" :
@@ -56,30 +51,79 @@ if ($sesion->tienePermisos($pagina)){
                         </button>";
                                     ?>
 
-                                </form>
-                            </td>
-                        </tr>
-                    <?php
-                        $i++;
-                    } ?>
-                </tbody>
-            </table>
-        </div>
+                                </form></th>
+                </tr>
+            <?php
+            } ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                
+                <th> Nombre </th>
+                <th> Mail </th>
+                <th> Rol </th>
+                <th> Estado </th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
 
-    </div>
+</div>
 
-    <script src="Assets/Js/GestionUsuarios.js"></script>
-<?php
+<form action="ACA VA EL ACTION" enctype="multipart/form-data" method="post" id="form_editarUsuario">
+    <input type="hidden" name="idUsuario" id="idUsuario" />
+</form>
 
-    include_once('Common/Footer.php');
-} else {
-?>
-    <script>
-        window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-    </script>
-
-<?php
-}
-
-
-?>
+<script>
+    $(document).ready(function () {
+ $('#lista_usuarios').DataTable( {			
+    processing : true,
+    responsive: true,
+    "language": {
+        "decimal": ",",
+        "thousands": ".",
+        "search": "Buscar: ",
+        "processing": "Obteniendo datos...",
+        "lengthMenu": "Mostrar MENU elementos por página",
+        "zeroRecords": "Sin resultados",
+        "info": "Mostrando PAGE de PAGES páginas",
+        "infoEmpty": "No se encontraron elementos",
+        "infoFiltered": "(filtrado de MAX total elementos)",
+        "paginate": {
+            "first": "Primera",
+            "last": "Última",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+    "lengthMenu": [[10,50,-1], [10, 50, "Todos"]],
+    dom: 'frtipB',
+    buttons: [
+              {
+                  extend: 'pageLength',
+                  text:      '<i class="fa fa-eye"></i> Elementos',
+                  className: 'buttons-excel buttons-html5 btn red btn-outline',                      
+                  
+              },     
+              {
+                  extend: 'excelHtml5',
+                  text:      '<i class="fa fa-file-excel-o"></i> Excel',
+                  className: 'buttons-excel buttons-html5 btn red btn-outline',
+                  title: 'Exportar_excel'
+              }                                             
+    ],
+    columnDefs: [ 	             
+          {   'targets': 0,
+              'checkboxes': {
+                 'selectRow': true
+              }
+          }                   
+    ],
+    'select': {
+        'style': 'single'
+     }	            
+  } );
+});
+</script>
+<script src="Assets/Js/GestionUsuarios.js"></script>
+<?php include_once('Common/Footer.php'); ?>

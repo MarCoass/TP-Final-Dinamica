@@ -42,6 +42,7 @@ if ($sesion->tienePermisos($pagina)){
     </div>
 
     <script src="Assets/Js/EditarProducto.js"></script>
+    <script src="Assets/Js/enviarFormulario.js"></script>
 <?php
     include('Common/Footer.php');
 } else {
