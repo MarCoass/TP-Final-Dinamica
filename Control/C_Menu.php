@@ -123,7 +123,7 @@ class C_Menu
         if ($param <> NULL) {
             $where .= '';
             if (isset($param['idmenu']))
-                $where .= " and idmenu ='" . $param['idMenu'] . "'";
+                $where .= " and idmenu ='" . $param['idmenu'] . "'";
             if (isset($param['menombre']))
                 $where .= " and menombre ='" . $param['menombre'] . "'";
             if (isset($param['medescripcion']))
@@ -142,6 +142,49 @@ class C_Menu
     }
 
     
+    function habilitar($param)
+    {
+        $resp = false;
+        $arrayObjMenues = $this->buscar($param);
+        $objMenu = $arrayObjMenues[0];
+        $objMenu->setMeDeshabilitado('NULL');
+        if ($objMenu != null and $objMenu->modificar()) {
+            $resp = true;
+        }
+        return $resp;
+    }
+
+
+     //Cambiar roles
+    public function modificarRoles($param){
+        $resp = false;
+        //busco el menu con el id que recibe la funcion
+        $objMenuRol = new C_MenuRol();
+        //busco los roles el menu
+        $rolesMenu = $objMenuRol->buscar(['idmenu'=>$param['idmenu']]);
+        //roles recibidos por parametro
+        $rolesNuevos = $param['rol'];
+
+        //agrega roles, parece funcionar
+        foreach($rolesNuevos as $rolAgregar){
+            if($objMenuRol->buscar(['idmenu'=>$param['idmenu'], 'idrol'=>$rolAgregar]) == null){
+                $idMenu = $param['idmenu'];
+                $menuRol = new MenuRol();
+                $menuRol->cargar(NULL, $idMenu, $rolAgregar);
+                $menuRol->insertar(); 
+            }
+        }
+
+        //elimina roles, no funciona
+        foreach($rolesMenu as $rolEliminar){
+            if(!in_array($rolEliminar->getIdrol()->getIdrol(),$rolesNuevos)){
+                $idMenu = $param['idmenu'];
+                $rolEliminar->eliminar(); 
+            }
+        }
+        return $resp;
+    }
+
 
     
 }

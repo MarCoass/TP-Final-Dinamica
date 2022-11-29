@@ -9,7 +9,7 @@ if ($sesion->tienePermisos($pagina)){
     $roles = $objRol->buscar(null);
     $menuModificar = $objMenu->buscar($datos)[0];
     $rolesMenu = $objMenuRol->buscar(['idmenu' => $menuModificar->getIdmenu()]);
-//FALTA TESTEAR ESTE CODIGO, COPIE EL DE EDITAR USUARIO Y CAMBIE TODAS LAS VARIABLES A MENU
+//NO FUNCIONA EL HABILITAR Y TENGO QUE VER PQ NO ME MANDA LOS DATOS DE EDITAR A LA BD
 ?>
 
 <div class="container-md mb-5">
@@ -28,7 +28,7 @@ if ($sesion->tienePermisos($pagina)){
             </div>
             <div class="col-10 col-lg-7">
                     <label for="floatingInput" class="form-label mt-2">DESCRIPCION</label>
-                    <input type="text" class="form-control" placeholder="Desccipcion" pattern="[a-zA-Z]+\s?[0-9]*" name="medescripcion" id="medescripcion" value="<?php echo $menuModificar->getMedescripcion() ?>" required>
+                    <input type="text" class="form-control" placeholder="Descripcion" pattern="[a-zA-Z]+\s?[0-9]*" name="medescripcion" id="medescripcion" value="<?php echo $menuModificar->getMedescripcion() ?>" required>
                     <div class="invalid-feedback">
                         Porfavor ingrese una descripcion valida.
                     </div>
@@ -67,12 +67,12 @@ if ($sesion->tienePermisos($pagina)){
                     }
                     ?>
                 </div>
-                <button class="btn btn-lg btn-success my-3 col-10 col-lg-7 mt-4">MODIFICAR</button>
+                <button class="btn btn-lg my-3 col-10 col-lg-7 mt-4 text-light" id="botonModal">MODIFICAR</button>
           
         </form>
     </main>
 </div>
-
+<script src="Assets/Js/EditarMenu.js"></script>
 <?php
     include('Common/Footer.php');
 } else {

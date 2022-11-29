@@ -1,13 +1,12 @@
 $(document).ready(function() {
     $('form').submit(function(e) {
         e.preventDefault();
-        
         $.ajax({
             type: "POST",
-            url: 'Accion/editarProducto.php',
+            url: 'Accion/editarMenu.php',
             data: $(this).serialize(),
             success: function(response){
-                window.history.back();
+                location.reload();
            }
        });
     });

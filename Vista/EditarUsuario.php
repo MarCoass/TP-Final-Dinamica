@@ -78,7 +78,7 @@ if ($sesion->tienePermisos($pagina)){
                     ?>
                 </div>
 
-                <button class="btn btn-lg btn-success my-3 col-10 col-lg-7 mt-4">MODIFICAR</button>
+                <button class="btn btn-lg my-3 col-10 col-lg-7 mt-4 text-light" id="botonModal">MODIFICAR</button>
             </form>
         </main>
     </div>
