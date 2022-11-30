@@ -186,7 +186,7 @@ class Menu
         $idmenu = $this->getIdmenu();
         $menombre = $this->getMenombre();
         $medescripcion = $this->getMedescripcion();
-        $idpadre = $this->getIdpadre();
+        $idpadre = $this->getIdpadre()->getIdmenu();
         $medeshabilitado = $this->getMedeshabilitado();
         $script = $this->getScript();
 

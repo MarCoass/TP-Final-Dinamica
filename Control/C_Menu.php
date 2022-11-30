@@ -15,7 +15,7 @@ class C_Menu
 
             if (isset($param['idpadre'])) {
                 $padre = new Menu();
-                $padre->buscar(['idmenu' => $param['idpadre']]);
+                $padre->buscar($param['idpadre']);
             } else {
                 $padre = null;
             }

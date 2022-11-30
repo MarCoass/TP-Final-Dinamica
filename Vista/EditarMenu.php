@@ -56,9 +56,9 @@ if ($sesion->tienePermisos($pagina)){
                     ?>
                 </div>
                 <button class="btn btn-lg my-3 col-10 col-lg-7 mt-4 text-light" id="botonModal">MODIFICAR</button>
-                <input type="hidden"  name="script"><?php $menuModificar->getScript() ?>
-                <input type="hidden" name="medeshabilitado"> <?php $menuModificar->getMedeshabilitado() ?>
-                <input type="hidden" name="idpadre"> <?php $menuModificar->getIdpadre() ?>
+                <input class="d-none"  name="script" value="<?  echo $menuModificar->getScript(); ?>">
+                <input class="d-none" name="medeshabilitado" value=" <?php echo $menuModificar->getMedeshabilitado(); ?>">
+                <input class="d-none" name="idpadre" value="<?php echo $menuModificar->getIdpadre() ?>"> 
         </form>
     </main>
 </div>
