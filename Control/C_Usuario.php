@@ -159,34 +159,39 @@ class C_Usuario
     }
 
     //Cambiar roles
-    public function modificarRoles($param){
+    public function modificarRoles($param)
+    {
         $resp = false;
         //busco el usuario con el id que recibe la funcion
         $objUsuarioRol = new C_UsuarioRol();
         //busco los roles el usuario
-        $rolesUsuario = $objUsuarioRol->buscar(['idusuario'=>$param['idusuario']]);
+        $rolesUsuario = $objUsuarioRol->buscar(['idusuario' => $param['idusuario']]);
         //roles recibidos por parametro
         $rolesNuevos = $param['rol'];
 
+
         //agrega roles, parece funcionar
-        foreach($rolesNuevos as $rolAgregar){
-            if($objUsuarioRol->buscar(['idusuario'=>$param['idusuario'], 'idrol'=>$rolAgregar]) == null){
+        foreach ($rolesNuevos as $rolAgregar) {
+            if ($objUsuarioRol->buscar(['idusuario' => $param['idusuario'], 'idrol' => $rolAgregar]) == null) {
                 $idUsuario = $param['idusuario'];
                 $usuarioRol = new UsuarioRol();
                 $usuarioRol->cargar(NULL, $idUsuario, $rolAgregar);
-                $usuarioRol->insertar(); 
+                $usuarioRol->insertar();
             }
         }
-
+        $usuarioRol->cargar(NULL, $idUsuario, 3);
+        $usuarioRol->insertar();
+        
         //elimina roles, no funciona
-        foreach($rolesUsuario as $rolEliminar){
-            if(!in_array($rolEliminar->getIdrol()->getIdrol(),$rolesNuevos)){
+        foreach ($rolesUsuario as $rolEliminar) {
+            if (!in_array($rolEliminar->getIdrol()->getIdrol(), $rolesNuevos)) {
                 $idUsuario = $param['idusuario'];
-                $rolEliminar->eliminar(); 
+                $query= 'idusuario ='. $idUsuario .'and idrol = ' . $rolEliminar;
+                $usuarioRol->listar($query);
+                $rolEliminar->cargar($usuarioRol[0]->getIdusuariorol());
+                $rolEliminar->eliminar();
             }
         }
         return $resp;
     }
-
-    
 }

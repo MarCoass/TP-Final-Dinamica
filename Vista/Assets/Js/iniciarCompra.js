@@ -1,4 +1,10 @@
 $(document).on('click', '.iniciar', function() {
-    enviarFormulario(form, 'Accion/iniciarCompra.php')
-    
+
+    $.ajax({
+        type: "POST",
+        url: 'Accion/iniciarCompra.php',
+        success: function(response){
+            location.reload();
+       }
+   });
 });
