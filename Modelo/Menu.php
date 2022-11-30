@@ -195,11 +195,19 @@ class Menu
         $idmenu = $this->getIdmenu();
         $menombre = $this->getMenombre();
         $medescripcion = $this->getMedescripcion();
-        $idpadre = $this->getIdpadre()->getIdmenu();
+        if($this->getIdpadre() == null){
+            $idpadre = $this->getIdpadre();
+        }else{
+            $idpadre = $this->getIdpadre()->getIdmenu();
+        }
         $medeshabilitado = $this->getMedeshabilitado();
         $script = $this->getScript();
 
-        $sql = "UPDATE menu SET menombre = '{$menombre}', medescripcion = '{$medescripcion}', idpadre = '{$idpadre}', medeshabilitado = '{$medeshabilitado}', script = '{$script}' WHERE idmenu = '{$idmenu}'";
+        if( $idpadre == null){
+            $sql = "UPDATE menu SET menombre = '{$menombre}', medescripcion = '{$medescripcion}', medeshabilitado = '{$medeshabilitado}', script = '{$script}' WHERE idmenu = '{$idmenu}'";
+        }else{
+            $sql = "UPDATE menu SET menombre = '{$menombre}', medescripcion = '{$medescripcion}', idpadre = '{$idpadre}', medeshabilitado = '{$medeshabilitado}', script = '{$script}' WHERE idmenu = '{$idmenu}'";
+        }
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
