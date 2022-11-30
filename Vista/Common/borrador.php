@@ -70,3 +70,5 @@ public function tienePermisos($pagina){
         print_r($roles);
         return $roles;
     }
+
+    window.history.back();

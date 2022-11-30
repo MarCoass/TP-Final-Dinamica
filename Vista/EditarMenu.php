@@ -56,10 +56,14 @@ if ($sesion->tienePermisos($pagina)){
                     ?>
                 </div>
                 <button class="btn btn-lg my-3 col-10 col-lg-7 mt-4 text-light" id="botonModal">MODIFICAR</button>
-          
+                <input type="hidden"><?php $menuModificar->getScript() ?>
+                <input type="hidden"> <?php $menuModificar->getMedeshabilitado() ?>
+                <input type="hidden"> <?php $menuModificar->getIdpadre() ?>
         </form>
     </main>
 </div>
+
+
 <script src="Assets/Js/EditarMenu.js"></script>
 <?php
     include('Common/Footer.php');
