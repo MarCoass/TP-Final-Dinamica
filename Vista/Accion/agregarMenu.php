@@ -6,7 +6,7 @@ $datos = data_submitted();
 $name = $datos['menombre'];
 $desc = $datos['medescripcion'];
 $padre = $datos['padre'];
-if (isset($datos['padre'])){
+if ($datos['padre']=="no"){
     $padre=null;
 } else {
     $padre= $datos['idpadre'];
@@ -16,7 +16,7 @@ $roles = $datos['rol'];
 $obj_Menu = new C_Menu();
 $existe_menu = $obj_Menu->buscar(array('menombre' => $name,'medescripcion' => $desc));
 
-if(isset($existe_menu)){
+if(!isset($existe_menu)){
 
 $obj_Menu->alta(array('menombre' => $name,'medescripcion' => $desc,'idpadre'=>$padre, 'script'=>$script));
 

@@ -159,13 +159,13 @@ if ($sesion->tienePermisos($pagina)){
                     <input type="text" class="form-control" placeholder="descripcion" name="medescripcion" id="medescripcion" value="" required>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" value="false" name="padre" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" value="si" name="padre" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Tiene men&uacute; padre
                     </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" value="true" name="padre" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" value="no" name="padre" id="flexRadioDefault2" checked>
                     <label class="form-check-label" for="flexRadioDefault2">
                         No tiene men&uacute; padre
                     </label>
