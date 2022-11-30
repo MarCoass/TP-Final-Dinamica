@@ -3,7 +3,6 @@ include_once("../Common/Header.php");
 include_once("../../configuracion.php");
 
 $datos = data_submitted();
-print_r($datos);
 $name = $datos['menombre'];
 $desc = $datos['medescripcion'];
 $padre = $datos['padre'];
