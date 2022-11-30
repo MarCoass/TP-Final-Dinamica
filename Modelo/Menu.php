@@ -159,7 +159,12 @@ class Menu
         $idmenu = $this->getIdmenu();
         $menombre = $this->getMenombre();
         $medescripcion = $this->getMedescripcion();
-        $idpadre = $this->getIdpadre()->getIdmenu();
+
+        if($this->getIdpadre() == null){
+            $idpadre = $this->getIdpadre();
+        }else{
+            $idpadre = $this->getIdpadre()->getIdmenu();
+        }
         $medeshabilitado = $this->getMedeshabilitado();
         $script = $this->getScript();
 
