@@ -6,3 +6,5 @@ $usuarioModificado=$objUsuario->modificacion($datos);
 
 
 $rolAgregado=$objUsuario->modificarRoles($datos);
+
+?>

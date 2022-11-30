@@ -27,7 +27,6 @@ $obj_UsuarioRol = new UsuarioRol();
 $obj_UsuarioRol->cargar(null, $usuario[0]->getidusuario(), '3');
 $obj_UsuarioRol->insertar();
 
-//falta registrar el rol del usuario.
 ?>
 
 
