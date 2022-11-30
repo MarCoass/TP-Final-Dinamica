@@ -12,6 +12,10 @@ if ($sesion->activa()) {
     $htmlCompleto = '';
     foreach ($menues as $itemMenu) {
         $htmlHijos = [];
+        if ($itemMenu->getMedeshabilitado() != NULL && $itemMenu->getMedeshabilitado() != '0000-00-00 00:00:00') {
+            continue;
+        }
+
         if ($itemMenu->getIdpadre() == NULL) { // Si no tiene padre crea el li y revisa si tiene hijos
 
             //Recorro los menus y busco los hijos de este menu
