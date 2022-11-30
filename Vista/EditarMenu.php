@@ -9,7 +9,7 @@ if ($sesion->tienePermisos($pagina)){
     $roles = $objRol->buscar(null);
     $menuModificar = $objMenu->buscar($datos)[0];
     $rolesMenu = $objMenuRol->buscar(['idmenu' => $menuModificar->getIdmenu()]);
-//NO FUNCIONA EL HABILITAR Y TENGO QUE VER PQ NO ME MANDA LOS DATOS DE EDITAR A LA BD
+//TENGO QUE VER PQ NO ME MANDA LOS DATOS DE EDITAR A LA BD
 ?>
 
 <div class="container-md mb-5">
@@ -39,7 +39,6 @@ if ($sesion->tienePermisos($pagina)){
 
                     <?php
                     foreach ($roles as $rol) {
-                        if ($rol->getRodescripcion() != 'Cliente') {
                     ?>
                             <div class="form-check">
                                 <input class='form-check-input' type='checkbox' name='rol[]' value='<?php echo $rol->getIdrol() ?>' <?php
@@ -53,17 +52,6 @@ if ($sesion->tienePermisos($pagina)){
                                 <label class='form-check-label' for='admin'><?php echo $rol->getRodescripcion() ?> </label>
                             </div>
                         <?php
-
-                        } else {
-                        ?>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label" for="user">
-                                    Cliente
-                                </label>
-                            </div>
-                    <?php
-                        }
                     }
                     ?>
                 </div>
