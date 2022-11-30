@@ -1,7 +1,7 @@
 <?php
 include_once("Common/Header.php");
 $i = 0;
-$pagina="Admin";
+$pagina="Deposito";
 
 //obtengo todas las compras del usuario
 $objCompra = new C_Compra();

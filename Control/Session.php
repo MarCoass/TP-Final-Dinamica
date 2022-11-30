@@ -213,9 +213,9 @@ class Session
        }
        if($this->esAdmin() && $pagina=="Admin"){
         $tienePermisos=true;
-       } elseif ($this->esDeposito() && $pagina="Deposito"){
+       } elseif ($this->esDeposito() && $pagina=="Deposito"){
         $tienePermisos=true;
-       } elseif ($this->esCliente() && $pagina="Cliente"){
+       } elseif ($this->esCliente() && $pagina=="Cliente"){
         $tienePermisos=true;
        }else {
         $tienePermisos=false;

@@ -2,6 +2,9 @@
 
 /**este es usando data table */
 include_once('Common/Header.php');
+$pagina="Admin";
+if ($sesion->tienePermisos($pagina)){
+
 ?>
 <script src="../Vista/Assets/Js/enviarFormulario.js"></script>
 <?php
@@ -135,7 +138,15 @@ $usuarios = $objUsuario->buscar([]);
 });
 </script>
 <script src="Assets/Js/GestionUsuarios.js"></script>
-<?php include_once('Common/Footer.php'); ?>
+<?php include_once('Common/Footer.php');
+} else {
+    ?><script>
+            window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
+        </script>
+    <?php
+    
+    }
+?>
 
 <div class="modal fade" id="agregarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
