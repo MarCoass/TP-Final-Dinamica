@@ -5,3 +5,4 @@ $objMenu=new C_Menu();
 $menuModificado=$objMenu->modificacion($datos);
 
 $rolAgregado=$objMenu->modificarRoles($datos);
+?>
