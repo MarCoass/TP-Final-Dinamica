@@ -159,13 +159,17 @@ class Menu
         $idmenu = $this->getIdmenu();
         $menombre = $this->getMenombre();
         $medescripcion = $this->getMedescripcion();
-        $idpadre = $this->getIdpadre();
+        $idpadre = $this->getIdpadre()->getIdmenu();
         $medeshabilitado = $this->getMedeshabilitado();
         $script = $this->getScript();
 
 
         //Creo la consulta 
-        $sql = "INSERT INTO menu (idmenu, menombre, medescripcion, idpadre, medeshabilitado, script) VALUES ('{$idmenu}', '{$menombre}', '{$medescripcion}', '{$idpadre}', '{$medeshabilitado}', '{$script}')";
+        if($idpadre==null){
+            $sql = "INSERT INTO menu (idmenu, menombre, medescripcion, medeshabilitado, script) VALUES ('{$idmenu}', '{$menombre}', '{$medescripcion}', '{$medeshabilitado}', '{$script}')";
+        } else {
+            $sql = "INSERT INTO menu (idmenu, menombre, medescripcion, idpadre, medeshabilitado, script) VALUES ('{$idmenu}', '{$menombre}', '{$medescripcion}', '{$idpadre}', '{$medeshabilitado}', '{$script}')";
+        }
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;

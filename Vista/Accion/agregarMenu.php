@@ -19,7 +19,6 @@ $existe_menu = $obj_Menu->buscar(array('menombre' => $name,'medescripcion' => $d
 if(!isset($existe_menu)){
 
 $obj_Menu->alta(array('menombre' => $name,'medescripcion' => $desc,'idpadre'=>$padre, 'script'=>$script));
-
 $param = array();
 $param['menombre'] = $name;
 $param['medescripcion'] = $desc;
