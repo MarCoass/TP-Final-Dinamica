@@ -22,7 +22,7 @@ class C_Menu
 
             $obj = new Menu();
             $obj->cargar(
-                $param['idMenu'],
+                $param['idmenu'],
                 $param['menombre'],
                 $param['medescripcion'],
                 $padre,
@@ -42,9 +42,9 @@ class C_Menu
     private function cargarObjetoConClave($param)
     {
         $obj = null;
-        if (isset($param['idMenu'])) {
+        if (isset($param['idmenu'])) {
             $obj = new Menu();
-            $obj->cargar($param['idMenu'], null, null, null, null, null);
+            $obj->cargar($param['idmenu'], null, null, null, null, null);
         }
         return $obj;
     }
@@ -142,12 +142,26 @@ class C_Menu
     }
 
     
+    function deshabilitar($param)
+    {
+        $resp = false;
+        $arrayObjMenues = $this->buscar($param);
+        $fecha = new DateTime();
+        $fechaStamp = $fecha->format('Y-m-d H:i:s');
+        $objMenu = $arrayObjMenues[0];
+        $objMenu->setMeDeshabilitado($fechaStamp);
+        if ($objMenu != null and $objMenu->modificar()) {
+            $resp = true;
+        }
+        return $resp;
+    }
+
     function habilitar($param)
     {
         $resp = false;
         $arrayObjMenues = $this->buscar($param);
         $objMenu = $arrayObjMenues[0];
-        $objMenu->setMeDeshabilitado('NULL');
+        $objMenu->setMeDeshabilitado(NULL);
         if ($objMenu != null and $objMenu->modificar()) {
             $resp = true;
         }

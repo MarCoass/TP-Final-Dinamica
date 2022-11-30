@@ -455,8 +455,8 @@ ALTER TABLE `menu`
 -- Filtros para la tabla `menurol`
 --
 ALTER TABLE `menurol`
-  ADD CONSTRAINT `menurol_ibfk_1` FOREIGN KEY (`idmenu`) REFERENCES `menu` (`idmenu`),
-  ADD CONSTRAINT `menurol_ibfk_2` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`);
+  ADD CONSTRAINT `menurol_ibfk_1` FOREIGN KEY (`idmenu`) REFERENCES `menu` (`idmenu`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `menurol_ibfk_2` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuariorol`

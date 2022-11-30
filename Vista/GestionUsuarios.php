@@ -2,13 +2,22 @@
 
 /**este es usando data table */
 include_once('Common/Header.php');
+?>
+<script src="../Vista/Assets/Js/enviarFormulario.js"></script>
+<?php
 //obtengo todos los usuarios
 $objUsuario = new C_Usuario();
+$obj_roles = new C_Rol();
+$roles = $obj_roles->buscar([]);
 $usuarios = $objUsuario->buscar([]);
 
 ?>
 <div class="container-fluid bg-dark ">
-
+<br/>
+<button type="button" class="btn btn-primary" data-toggle="modal" id="botonModal" data-target="#agregarUsuario">
+ Agregar Usuario
+</button>
+<br/><br/>
     <table id="lista_usuarios" class="text-light table table-bordered nowrap  table-condensed" style="width:100%">
         <thead>
             <tr>
@@ -127,3 +136,44 @@ $usuarios = $objUsuario->buscar([]);
 </script>
 <script src="Assets/Js/GestionUsuarios.js"></script>
 <?php include_once('Common/Footer.php'); ?>
+
+<div class="modal fade" id="agregarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+      <form name="form" action="Accion/agregarUsuario.php" method="post">
+         <div class="modal-body">
+                <div class="col-10 col-lg-7">
+                    <label for="floatingInput" class="form-label mt-2">Nombre: </label>
+                    <input type="text" class="form-control" placeholder="nombre" minlength="3" name="nombre" id="nombre" value="" required>
+                </div>
+                <div class="col-10 col-lg-7">
+                    <label for="" class="form-label mt-2">email: </label>
+                    <input type="text" class="form-control" placeholder="usuario@gmail.com" name="email" id="email" value="" required>
+                </div>
+                <div class="col-10 col-lg-7">
+                    <label for="" class="form-label mt-2">pass:</label>
+                    <input type="password" class="form-control" id="password" name="password" value="">
+                </div>
+                <div class="col-10 col-lg-7">
+                <label for="" class="form-label mt-2">Rol:</label>
+                <select name="rol" class="form-select" aria-label="Default select example">
+                    <?php foreach ($roles as $rol){ ?>
+                    <option value="<?php echo $rol->getIdrol() ?>"><?php echo $rol->getRodescripcion() ?></option>
+                    <?php } ?>
+                </select>
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" id="botonModal" class="btn btn-primary">Guardar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
