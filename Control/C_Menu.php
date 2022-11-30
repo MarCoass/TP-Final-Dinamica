@@ -161,7 +161,7 @@ class C_Menu
         $resp = false;
         $arrayObjMenues = $this->buscar($param);
         $objMenu = $arrayObjMenues[0];
-        $objMenu->setMeDeshabilitado('NULL');
+        $objMenu->setMeDeshabilitado(NULL);
         if ($objMenu != null and $objMenu->modificar()) {
             $resp = true;
         }

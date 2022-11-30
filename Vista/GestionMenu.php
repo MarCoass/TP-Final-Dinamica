@@ -42,12 +42,12 @@ if ($sesion->tienePermisos($pagina)){
                                                 }
                                                 ?>
                                         </td>
-                                <td class="text-center"> <?php echo $menues[$i]->getMedeshabilitado() == "NULL" ? "Habilitado" : "Deshabilitado"; ?> </td>
+                                <td class="text-center"> <?php echo $menues[$i]->getMedeshabilitado() == NULL || $menues[$i]->getMedeshabilitado() == '0000-00-00 00:00:00' ? "Habilitado" : "Deshabilitado"; ?> </td>
                                 <td>
                                         <form method='post' action='EditarMenu.php' id="'<?php echo $menues[$i]->getIdmenu() ?>">
                                         <input style="display:none;" name='idmenu' id='idmenu' value='<?php echo $menues[$i]->getIdmenu() ?>'>
                                         <button type="submit" class="ms-3 mt-3 text-decoration-none btn btn-outline-light"> EDITAR </button>
-                                        <?php echo $menues[$i]->getMedeshabilitado() == "NULL" ?
+                                        <?php echo $menues[$i]->getMedeshabilitado() == NULL || $menues[$i]->getMedeshabilitado() == '0000-00-00 00:00:00' ?
                                                 "<button type='button' class='mx-2 mt-1 text-decoration-none btn deshabilitar text-light' id='botonModal'>
                                 DESHABILITAR
                                 </button>" :
@@ -69,6 +69,7 @@ if ($sesion->tienePermisos($pagina)){
 
 </div>
 
+<script src="Assets/Js/GestionMenu.js"></script>
 <?php
 include_once("Common/Footer.php");
 } else {
