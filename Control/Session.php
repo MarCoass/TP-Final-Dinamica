@@ -190,6 +190,20 @@ class Session
         return $esDepo;
     }
 
+    public function esCliente(){
+        $arrayRoles = $this->getRoles();
+        $esCliente = false;
+        $i = 0;
+        
+        while ($i < count($arrayRoles) && !$esCliente) {
+            if ($arrayRoles[$i]->getIdrol()->getIdrol() == 3) {
+                $esCliente = true;
+            }
+            $i++;
+        }
+        return $esCliente;
+    }
+
     public function tienePermisos($pagina){
        $tienePermisos = false;
        if ($this->activa()){
@@ -201,7 +215,9 @@ class Session
         $tienePermisos=true;
        } elseif ($this->esDeposito() && $pagina="Deposito"){
         $tienePermisos=true;
-       } else {
+       } elseif ($this->esCliente() && $pagina="Cliente"){
+        $tienePermisos=true;
+       }else {
         $tienePermisos=false;
        }
 
