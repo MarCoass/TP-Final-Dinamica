@@ -9,6 +9,7 @@ $obj_producto = new C_Producto();
 $producto = $obj_producto->buscar(array( 'idproducto' => $datos['id_producto']));
 
 if($producto != null){
+	//aca se valida el stock de productos, no se donde mas se debe validar
 	if($producto[0]->getProcantstock() >= $datos['cantidad'] || $producto[0]->getProcantstock() <= $datos['cantidad']){
 		$obj_compra = new C_Compra();
 		$compra_borrador = $obj_compra->obtener_compra_borrador_de_usuario($sesion->getIdUser());
