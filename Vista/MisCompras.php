@@ -18,6 +18,7 @@ if(is_array($arrayCompras) && count($arrayCompras)>0){
 //$cantidadCompras = count($arrayCompras);
 ?>
 
+<div style="margin:30px;height:80vh;">
 <div class="container bg-dark mt-3 mb-3">
 <h3 class="text-light">Mis Compras</h3>
     <div class="rounded p-3 mb-2 bg-dark text-white">
@@ -91,6 +92,7 @@ if(is_array($arrayCompras) && count($arrayCompras)>0){
             </tbody>
         </table>
     </div>
+</div>
 </div>
 <script>
 $(document).ready(function () {

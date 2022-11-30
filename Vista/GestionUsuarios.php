@@ -15,6 +15,7 @@ $roles = $obj_roles->buscar([]);
 $usuarios = $objUsuario->buscar([]);
 
 ?>
+<div style="margin:30px;">
 <div class="container-fluid bg-dark ">
 <br/>
 <button type="button" class="btn btn-primary" data-toggle="modal" id="botonModal" data-target="#agregarUsuario">
@@ -54,6 +55,7 @@ $usuarios = $objUsuario->buscar([]);
                     <th><form method='post' action='EditarUsuario.php' id="'<?php echo $usuario->getIdUsuario() ?>">
                                     <input style="display:none;" name='idusuario' id='idusuario' value='<?php echo $usuario->getIdUsuario() ?>'>
                                     <button type="submit" class="ms-3 mt-3 text-decoration-none btn btn-outline-light"> EDITAR </button>
+                                    <br/>
                                     <?php echo $usuario->getUsdeshabilitado() == "0000-00-00 00:00:00" ?
                                         "<button type='button' class='mx-2 mt-1 text-decoration-none btn deshabilitar text-light' id='botonModal'>
                         DESHABILITAR
@@ -81,7 +83,7 @@ $usuarios = $objUsuario->buscar([]);
     </table>
 
 </div>
-
+</div>
 <form action="ACA VA EL ACTION" enctype="multipart/form-data" method="post" id="form_editarUsuario">
     <input type="hidden" name="idUsuario" id="idUsuario" />
 </form>
