@@ -37,6 +37,10 @@ if(is_array($arrayCompras) && count($arrayCompras)>0){
                     $objCompraEstado = new C_Compraestado();
                     $objCompraEstado = $objCompraEstado->buscar(['idcompra' => $arrayCompras[$i]->getIdcompra()])[0];
                     $estado = $objCompraEstado->getIdcompraestadotipo();
+
+                    if($estado->getIdcompraestadotipo() == 0){
+                        continue;
+                    }
                     $idcompra = $arrayCompras[$i]->getIdcompra();
                     //Obtengo los productos
                     $objCompraItem = new C_Compraitem();
@@ -97,7 +101,6 @@ $(document).ready(function () {
         "processing": "Obteniendo datos...",
         "lengthMenu": "Mostrar MENU elementos por página",
         "zeroRecords": "Sin resultados",
-        "info": "Mostrando PAGE de PAGES páginas",
         "infoEmpty": "No se encontraron elementos",
         "infoFiltered": "(filtrado de MAX total elementos)",
         "paginate": {
