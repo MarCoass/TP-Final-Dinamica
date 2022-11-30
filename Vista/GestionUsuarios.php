@@ -7,6 +7,15 @@ if ($sesion->tienePermisos($pagina)){
 
 ?>
 <script src="../Vista/Assets/Js/enviarFormulario.js"></script>
+<style>
+    #lista_usuarios_filter{
+        color:white;
+    }
+
+    #lista_usuarios_filter input{
+        color:white;
+    }
+</style>
 <?php
 //obtengo todos los usuarios
 $objUsuario = new C_Usuario();

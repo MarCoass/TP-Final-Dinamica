@@ -16,7 +16,11 @@ if ($sesion->tienePermisos($pagina)) {
         $cantidadUsuarios = count($usuarios);
         $i = 0;
 ?>
-
+<style>
+  #compras_filter input{
+      color:white;
+  }
+</style>
 <div class="container bg-dark mt-3 mb-3">
     <h3 class="text-light">Gestion Compras</h3>
     <div class="rounded p-3 mb-2 bg-dark text-white">

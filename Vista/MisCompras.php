@@ -2,7 +2,14 @@
 include_once("Common/Header.php");
 $pagina="Cliente";
 if ($sesion->tienePermisos($pagina)){
+?>
 
+<style>
+    #mis_compras_filter input{
+        color:white;
+    }
+</style>
+<?php
 $i = 0;
 $usuario = $sesion->getUsuario();
 //obtengo todas las compras del usuario

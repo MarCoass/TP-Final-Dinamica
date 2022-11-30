@@ -4,7 +4,11 @@ if ($sesion->tienePermisos($pagina)){
     $objProducto = new C_Producto();
     $arrayProductos = $objProducto->buscar([]);
 ?>
-
+<style>
+  #lista_productos_filter input{
+      color:white;
+  }
+</style>
 <div class="container-fluid" style="margin-bottom: 19%">
 
 <div class="container bg-dark col-md-10 text-white mt-5">

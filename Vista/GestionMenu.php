@@ -12,7 +12,12 @@ if ($sesion->tienePermisos($pagina)){
         $i = 0;
         //FALTA TESTEAR ESTE CODIGO, COPIE EL DE EDITAR USUARIO Y CAMBIE TODAS LAS VARIABLES A MENU
 ?>
-
+<style>
+  
+    #lista_menues_filter input{
+        color:white;
+    }
+</style>
 <div class="container-fluid mb-5">
 <div class="container bg-dark col-md-10 text-white mt-5">
 <br/>
