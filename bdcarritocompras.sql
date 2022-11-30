@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2022 a las 22:03:33
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 30-11-2022 a las 03:58:34
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `compra` (
   `idcompra` bigint(20) NOT NULL,
   `cofecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `idusuario` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `compra`
@@ -53,7 +53,7 @@ CREATE TABLE `compraestado` (
   `idcompraestadotipo` int(11) NOT NULL,
   `cefechaini` timestamp NOT NULL DEFAULT current_timestamp(),
   `cefechafin` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `compraestado`
@@ -73,7 +73,7 @@ CREATE TABLE `compraestadotipo` (
   `idcompraestadotipo` int(11) NOT NULL,
   `cetdescripcion` varchar(50) NOT NULL,
   `cetdetalle` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `compraestadotipo`
@@ -97,7 +97,7 @@ CREATE TABLE `compraitem` (
   `idproducto` bigint(20) NOT NULL,
   `idcompra` bigint(20) NOT NULL,
   `cicantidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `compraitem`
@@ -121,7 +121,7 @@ CREATE TABLE `menu` (
   `idpadre` bigint(20) DEFAULT NULL COMMENT 'Referencia al id del menu que es subitem',
   `medeshabilitado` timestamp NULL DEFAULT NULL COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez',
   `script` varchar(200) DEFAULT NULL COMMENT 'Script que hace referencia a la vista del menu.'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `menu`
@@ -138,7 +138,8 @@ INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabi
 (18, 'Administrar Compras', 'Vista de Administrar compras', 12, NULL, 'AdminCompras.php'),
 (19, 'Gestion de Usuarios', 'Vista de gestion de usuarios', 13, NULL, 'GestionUsuarios.php'),
 (20, 'Gestion de Menu', 'Vista de gestion de menu', 13, NULL, 'GestionMenu.php'),
-(21, 'Administrar Productos', 'Vista admin productos', 1, NULL, 'AdminProductos.php');
+(21, 'Administrar Productos', 'Vista admin productos', 1, NULL, 'AdminProductos.php'),
+(22, 'Gestion de Compras', 'Vista de Compras', 12, NULL, 'GestionCompras.php');
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,7 @@ CREATE TABLE `menurol` (
   `idmenurol` bigint(20) NOT NULL,
   `idmenu` bigint(20) NOT NULL,
   `idrol` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `menurol`
@@ -164,7 +165,6 @@ INSERT INTO `menurol` (`idmenurol`, `idmenu`, `idrol`) VALUES
 (5, 15, 3),
 (6, 16, 3),
 (7, 21, 2),
-(8, 18, 2),
 (9, 18, 1),
 (10, 19, 1),
 (11, 20, 1),
@@ -173,7 +173,9 @@ INSERT INTO `menurol` (`idmenurol`, `idmenu`, `idrol`) VALUES
 (14, 16, 1),
 (15, 12, 3),
 (16, 17, 3),
-(17, 13, 1);
+(17, 13, 1),
+(18, 22, 2),
+(19, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -189,7 +191,7 @@ CREATE TABLE `producto` (
   `procantstock` int(11) NOT NULL,
   `protipo` varchar(512) NOT NULL,
   `proimagen` varchar(512) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -219,7 +221,7 @@ INSERT INTO `producto` (`idproducto`, `pronombre`, `prodetalle`, `proprecio`, `p
 CREATE TABLE `rol` (
   `idrol` bigint(20) NOT NULL,
   `rodescripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -242,7 +244,7 @@ CREATE TABLE `usuario` (
   `uspass` varchar(150) NOT NULL,
   `usmail` varchar(50) NOT NULL,
   `usdeshabilitado` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -252,7 +254,8 @@ INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabili
 (1, 'Administrador', 'admin123', 'admin@mail.com', '0000-00-00 00:00:00'),
 (2, '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '0000-00-00 00:00:00'),
 (3, 'marty', '5fa9db2e335ef69a4eeb9fe7974d61f4', 'mar', '0000-00-00 00:00:00'),
-(4, 'marmarlis','1a1233cfb69d7f27211e36aff9ec373a', 'marmarlis@gmail.com', '0000-00-00 00:00:00' );
+(4, 'marmarlis', '1a1233cfb69d7f27211e36aff9ec373a', 'marmarlis@gmail.com', '0000-00-00 00:00:00'),
+(5, 'pato', '259823af837e251e560ca1158a4e77c7', 'pato@gmail.com', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -264,7 +267,7 @@ CREATE TABLE `usuariorol` (
   `idusuariorol` bigint(20) NOT NULL,
   `idusuario` bigint(20) NOT NULL,
   `idrol` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuariorol`
@@ -280,7 +283,8 @@ INSERT INTO `usuariorol` (`idusuariorol`, `idusuario`, `idrol`) VALUES
 (61, 1, 3),
 (62, 4, 1),
 (63, 4, 2),
-(64, 4, 3);
+(64, 4, 3),
+(65, 5, 2);
 
 --
 -- Índices para tablas volcadas
@@ -389,13 +393,13 @@ ALTER TABLE `compraitem`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `idmenu` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idmenu` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `menurol`
 --
 ALTER TABLE `menurol`
-  MODIFY `idmenurol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idmenurol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -413,13 +417,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuariorol`
 --
 ALTER TABLE `usuariorol`
-  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- Restricciones para tablas volcadas
