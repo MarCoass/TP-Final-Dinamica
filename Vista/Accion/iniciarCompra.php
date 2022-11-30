@@ -36,10 +36,14 @@ $productos_compra = $obj_compra_item->buscar(array('idcompra' => $compra_borrado
 
 foreach($productos_compra as $indice => $prd){
 
+       
         $producto = $prd->getIdproducto();
 
+        if($producto->getProcantstock() >= $prd->getCicantidad() || $producto->getProcantstock() <= $prd->getCicantidad()){
+	
         $producto->setProcantstock($producto->getProcantstock()-$prd->getCicantidad());
         //modifico el stock
         $producto->modificar();
+        }
 }
 }
