@@ -31,6 +31,7 @@ $usuarios = $objUsuario->buscar([]);
  Agregar Usuario
 </button>
 <br/><br/>
+<h3 class="text-light">Gestionar Usuarios</h3>
     <table id="lista_usuarios" class="text-light table table-bordered nowrap  table-condensed" style="width:100%">
         <thead>
             <tr>
