@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2022 a las 03:58:34
+-- Tiempo de generación: 01-12-2022 a las 19:43:47
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -39,7 +39,12 @@ CREATE TABLE `compra` (
 
 INSERT INTO `compra` (`idcompra`, `cofecha`, `idusuario`) VALUES
 (18, '2022-11-25 11:56:40', 3),
-(19, '2022-11-25 14:29:17', 3);
+(19, '2022-11-25 14:29:17', 3),
+(20, '2022-11-30 07:10:24', 6),
+(21, '2022-11-30 07:17:54', 7),
+(22, '2022-11-30 07:18:26', 7),
+(23, '2022-12-01 22:00:53', 9),
+(24, '2022-12-01 22:18:17', 10);
 
 -- --------------------------------------------------------
 
@@ -61,7 +66,21 @@ CREATE TABLE `compraestado` (
 
 INSERT INTO `compraestado` (`idcompraestado`, `idcompra`, `idcompraestadotipo`, `cefechaini`, `cefechafin`) VALUES
 (9, 18, 4, '2022-11-25 15:15:19', '0000-00-00 00:00:00'),
-(10, 19, 1, '2022-11-25 23:22:36', '0000-00-00 00:00:00');
+(10, 19, 1, '2022-11-25 23:22:36', '0000-00-00 00:00:00'),
+(11, 20, 4, '2022-11-30 07:10:24', '0000-00-00 00:00:00'),
+(12, 20, 0, '2022-11-30 07:10:24', '2022-11-30 07:10:33'),
+(13, 20, 1, '2022-11-30 07:10:24', '2022-11-30 07:12:24'),
+(14, 20, 4, '2022-11-30 07:10:24', '2022-11-30 07:12:59'),
+(15, 21, 1, '2022-11-30 07:17:54', '0000-00-00 00:00:00'),
+(16, 21, 0, '2022-11-30 07:17:54', '2022-11-30 07:18:16'),
+(17, 22, 0, '2022-11-30 07:18:26', '2022-11-30 07:18:56'),
+(18, 20, 1, '2022-11-30 07:10:24', '2022-11-30 07:24:34'),
+(19, 23, 3, '2022-12-01 22:00:53', '0000-00-00 00:00:00'),
+(20, 23, 0, '2022-12-01 22:00:53', '2022-12-01 22:03:12'),
+(21, 24, 1, '2022-12-01 22:18:17', '0000-00-00 00:00:00'),
+(22, 24, 0, '2022-12-01 22:18:17', '2022-12-01 22:18:27'),
+(23, 23, 1, '2022-12-01 22:00:53', '2022-12-01 22:33:51'),
+(24, 23, 2, '2022-12-01 22:00:53', '2022-12-01 22:34:35');
 
 -- --------------------------------------------------------
 
@@ -106,7 +125,14 @@ CREATE TABLE `compraitem` (
 INSERT INTO `compraitem` (`idcompraitem`, `idproducto`, `idcompra`, `cicantidad`) VALUES
 (3, 6, 18, 3),
 (4, 5, 19, 1),
-(5, 4, 19, 3);
+(5, 4, 19, 3),
+(6, 8, 20, 7),
+(7, 6, 21, 1),
+(8, 11, 21, 1),
+(9, 7, 22, 1),
+(10, 6, 23, 2),
+(11, 7, 23, 1),
+(12, 4, 24, 1);
 
 -- --------------------------------------------------------
 
@@ -138,7 +164,10 @@ INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabi
 (19, 'Gestion de Usuarios', 'Vista de gestion de usuarios', 13, NULL, 'GestionUsuarios.php'),
 (20, 'Gestion de Menu', 'Vista de gestion de menu', 13, NULL, 'GestionMenu.php'),
 (21, 'Administrar Productos', 'Vista admin productos', 1, NULL, 'AdminProductos.php'),
-(22, 'Gestion de Compras', 'Vista de Compras', 12, NULL, 'GestionCompras.php');
+(22, 'Gestion de Compras', 'Vista de Compras', 12, NULL, 'GestionCompras.php'),
+(23, 'PATO', 'para patos', NULL, '2022-12-01 22:43:07', 'home.php'),
+(24, 'patito', 'para patitoz', 23, '0000-00-00 00:00:00', 'home.php'),
+(25, 'MICHAa', 'para michis', NULL, '2022-12-01 01:29:10', '<?  echo $menuModificar->getScript(); ?>');
 
 -- --------------------------------------------------------
 
@@ -173,7 +202,10 @@ INSERT INTO `menurol` (`idmenurol`, `idmenu`, `idrol`) VALUES
 (16, 17, 3),
 (17, 13, 1),
 (18, 22, 2),
-(19, 12, 2);
+(19, 12, 2),
+(20, 23, 1),
+(21, 24, 1),
+(22, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -199,14 +231,14 @@ INSERT INTO `producto` (`idproducto`, `pronombre`, `prodetalle`, `proprecio`, `p
 (1, 'Aros Hito Hito no mi', 'Aros impresos 3D de One Piece', 800, 14, '', 'Assets/Img/Accesorios/Aritos Hito Hito no mi.jpeg'),
 (2, 'Llaveros varios', 'Llaveros de acrílico con una imagen dentro', 300, 100, '', 'Assets/Img/Accesorios/Llaveros.jpeg'),
 (3, 'Pins varios', 'Pins de pla con una imagen a elecci&oacute;n dentro', 300, 344, 'Accesorio', 'Assets/Img/Accesorios/Pins.jpeg'),
-(4, 'Stickers surtidos', 'Stickers de varios animes, juegos, etc. Se venden de a 3 unidades', 100, 1042, '2D', 'Assets/Img/P2D/Stickers.jpeg'),
+(4, 'Stickers surtidos', 'Stickers de varios animes, juegos, etc. Se venden de a 3 unidades', 100, 1041, '2D', 'Assets/Img/P2D/Stickers.jpeg'),
 (5, 'Tarjetas Genshin Impact', 'Tarjetas del juego Genshin Impact, vienen con un soporte impreso 3D de color surtido', 300, 144, '2D', 'Assets/Img/P2D/Tarjetas Genshin.jpeg'),
-(6, 'Anya', 'Figura 3D de Anya Forger, 10cm de alto', 1500, 7, '3D', 'Assets/Img/P3D/Anya.jpeg'),
-(7, 'Bo', 'Figura 3D de Bo, de Studio Ghibli, 10cm de alto', 1200, 1, '3D', 'Assets/Img/P3D/Bo.jpeg'),
+(6, 'Anya', 'Figura 3D de Anya Forger, 10cm de alto', 1500, 4, '3D', 'Assets/Img/P3D/Anya.jpeg'),
+(7, 'Bo', 'Figura 3D de Bo, de Studio Ghibli, 10cm de alto', 1200, 0, '3D', 'Assets/Img/P3D/Bo.jpeg'),
 (8, 'Bulbasaur', 'Figura 3D de Bulbasaur, 8cm de alto. Puede pedirse Shiny', 1200, 18, '3D', 'Assets/Img/P3D/Bulbasaur.jpeg'),
 (9, 'Chopper', 'Figura 3D de Chopper, 15cm de alto', 2000, 4, '3D', 'Assets/Img/P3D/Chopper.jpeg'),
 (10, 'Eevee', 'Figura 3D de Eevee, 8cm de alto. Puede pedirse Shiny', 1200, 12, '3D', 'Assets/Img/P3D/Eevee.jpeg'),
-(11, 'Gengar', 'Figura 3D de Gengar, 8cm de alto', 1200, 8, '3D', 'Assets/Img/P3D/Gengar.jpeg'),
+(11, 'Gengar', 'Figura 3D de Gengar, 8cm de alto', 1200, 7, '3D', 'Assets/Img/P3D/Gengar.jpeg'),
 (12, 'Eva 01', 'Figura 3D del Eva 01, 15cm de alto', 2500, 3, '3D', 'Assets/Img/P3D/Eva 01.jpeg'),
 (13, 'Totoro', 'Figura 3D de Totoro, 15cm de alto', 2000, 7, '3D', 'Assets/Img/P3D/Totoro.jpeg');
 
@@ -253,7 +285,12 @@ INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabili
 (2, '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', '0000-00-00 00:00:00'),
 (3, 'marty', '5fa9db2e335ef69a4eeb9fe7974d61f4', 'mar', '0000-00-00 00:00:00'),
 (4, 'marmarlis', '1a1233cfb69d7f27211e36aff9ec373a', 'marmarlis@gmail.com', '0000-00-00 00:00:00'),
-(5, 'pato', '259823af837e251e560ca1158a4e77c7', 'pato@gmail.com', '0000-00-00 00:00:00');
+(5, 'pato', '259823af837e251e560ca1158a4e77c7', 'pato@gmail.com', '2022-11-30 21:52:03'),
+(6, 'cliente', '4983a0ab83ed86e0e7213c8783940193', 'cliente@gmail.com', '0000-00-00 00:00:00'),
+(7, 'nuevo', 'e26c062fedf6b32834e4de93f9c8b644', 'nuevo@gmail.com', '0000-00-00 00:00:00'),
+(8, 'pato1', '92b9cf943c1ddd0fe6214a01fb0fb855', 'pato1@gmail.com', '0000-00-00 00:00:00'),
+(9, 'micaela', 'aea2c5e8317b1eeab8a6c4e6f6ef8299', 'micaela@gmail.com', '0000-00-00 00:00:00'),
+(10, 'qwerty', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'qwerty@gmail.com', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -282,7 +319,12 @@ INSERT INTO `usuariorol` (`idusuariorol`, `idusuario`, `idrol`) VALUES
 (62, 4, 1),
 (63, 4, 2),
 (64, 4, 3),
-(65, 5, 2);
+(65, 5, 1),
+(66, 6, 3),
+(67, 7, 3),
+(68, 8, 1),
+(69, 9, 1),
+(70, 10, 2);
 
 --
 -- Índices para tablas volcadas
@@ -373,31 +415,31 @@ ALTER TABLE `usuariorol`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idcompra` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idcompra` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `compraestado`
 --
 ALTER TABLE `compraestado`
-  MODIFY `idcompraestado` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idcompraestado` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `compraitem`
 --
 ALTER TABLE `compraitem`
-  MODIFY `idcompraitem` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idcompraitem` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `idmenu` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idmenu` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `menurol`
 --
 ALTER TABLE `menurol`
-  MODIFY `idmenurol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idmenurol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -415,13 +457,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idusuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuariorol`
 --
 ALTER TABLE `usuariorol`
-  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `idusuariorol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- Restricciones para tablas volcadas
