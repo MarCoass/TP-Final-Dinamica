@@ -92,6 +92,58 @@ if($compra != null){
                     }
             }
         }
+
+        //aceptada
+        
+    if($datos["idcompraestadotipo"] == 2){
+        $param_estado_anterior = array(
+            'idcompraestado' => NULL,
+            'idcompra' =>   $datos["idcompra"],
+            'idcompraestadotipo' => 1,
+            'cefechaini' => $estado[0]->getCefechaini(),
+            'cefechafin' => date('Y-m-d H:i:s')
+        );
+        
+        $obj_estado->alta($param_estado_anterior);
+
+        $param_estado_nuevo = array(
+            'idcompraestado' => $estado[0]->getIdcompraestado(),
+            'idcompra' => $datos["idcompra"],
+            'idcompraestadotipo' => $datos["idcompraestadotipo"] ,
+            'cefechaini' => $estado[0]->getCefechaini(),
+            'cefechafin' => NULL
+        );
+
+        
+        $obj_estado->modificacion($param_estado_nuevo);
+
+    }
+
+    //Enviada
+
+    if($datos["idcompraestadotipo"] == 3){
+        $param_estado_anterior = array(
+            'idcompraestado' => NULL,
+            'idcompra' =>   $datos["idcompra"],
+            'idcompraestadotipo' => 2,
+            'cefechaini' => $estado[0]->getCefechaini(),
+            'cefechafin' => date('Y-m-d H:i:s')
+        );
+        
+        $obj_estado->alta($param_estado_anterior);
+
+        $param_estado_nuevo = array(
+            'idcompraestado' => $estado[0]->getIdcompraestado(),
+            'idcompra' => $datos["idcompra"],
+            'idcompraestadotipo' => $datos["idcompraestadotipo"] ,
+            'cefechaini' => $estado[0]->getCefechaini(),
+            'cefechafin' => NULL
+        );
+
+        
+        $obj_estado->modificacion($param_estado_nuevo);
+
+    }
    
 }
 ?>

@@ -68,6 +68,23 @@ if ($sesion->tienePermisos($pagina)) {
                                 <input type="hidden" name='idcompraestadotipo' id='idcompraestadotipo' value='4'>
                                 <button class="btn btn-outline-light" type="submit" <?php if ($estado->getIdcompraestadotipo() != 1) { ?> disabled <?php  } ?>>Cancelar</button>
                             </form>
+
+                            <form name="form" action="Accion/cambiarEstado.php" method="post">
+                                <input type="hidden" name='idcompraestado' id='idcompraestado' value='<?php echo $objCompraEstado->getIdcompraestado();  ?>'>
+                                <input type="hidden" name='idcompra' id='idcompra' value='<?php echo $idcompra ?>'>
+                                <input type="hidden" name='idcompraestadotipo' id='idcompraestadotipo' value='2'>
+                                <button class="btn btn-outline-light" type="submit">Aceptar</button>
+                            </form>
+                        <?php } ?>
+
+                        <?php if($estado->getIdcompraestadotipo() == 2){ ?>
+                            
+                            <form name="form" action="Accion/cambiarEstado.php" method="post">
+                                <input type="hidden" name='idcompraestado' id='idcompraestado' value='<?php echo $objCompraEstado->getIdcompraestado();  ?>'>
+                                <input type="hidden" name='idcompra' id='idcompra' value='<?php echo $idcompra ?>'>
+                                <input type="hidden" name='idcompraestadotipo' id='idcompraestadotipo' value='3'>
+                                <button class="btn btn-outline-light" type="submit">Enviar</button>
+                            </form>
                         <?php } ?>
 
                         </td>
