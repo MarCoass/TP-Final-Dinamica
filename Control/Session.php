@@ -250,7 +250,7 @@ class Session
 
         $existeEnBD = isset($objMenuActual);
         
-        if ($this->activa() && $existeEnBD && $nombrePagina != 'Home.php') {
+        if ($this->activa() && $existeEnBD && $nombrePagina != 'Home.php' && $nombrePagina != 'Login.php') {
 
             //busco el objMenu con el script = nombrePagina
             $objC_Menu = new C_Menu();
@@ -265,21 +265,17 @@ class Session
 
             //recorro los roles del usuario
             $encontrado = false;
-            $i = 0;
-            $j = 0;
-            $cantidadRolesUsuario = count($rolesUsuario);
-            $cantidadRolesMenu = count($rolesMenu);
-            while (!$encontrado && $i < $cantidadRolesUsuario) {
-                while (!$encontrado && $j < $cantidadRolesMenu) {
-                    if ($rolesUsuario[$i]->getIdrol()->getIdrol() == $rolesMenu[$j]->getIdrol()->getIdrol()) {
+            
+            foreach($rolesUsuario as $rolUsuario){
+                foreach($rolesMenu as $rolMenu){
+                    if($rolUsuario->getIdrol()->getIdrol() == $rolMenu->getIdrol()->getIdrol()){
                         $encontrado = true;
                     }
-                    $j++;
                 }
-                $i++;
             }
+            
         } else {
-            if ($nombrePagina != 'Home.php') {
+            if ($nombrePagina != 'Home.php' && $nombrePagina != 'Login.php') {
                 $encontrado = false;
             } else {
                 $encontrado = true;
