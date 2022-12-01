@@ -1,6 +1,6 @@
 <?php include_once('Common/Header.php');
-$pagina="Deposito";
-if ($sesion->tienePermisos($pagina)){
+
+
     $objProducto = new C_Producto();
     $arrayProductos = $objProducto->buscar([]);
 ?>
@@ -130,13 +130,7 @@ $(document).ready(function () {
 </script>
 
 <?php include_once('Common/Footer.php'); 
-} else {
-    ?><script>
-            window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-        </script>
-    <?php
-    
-    }
+
     ?>
 <div class="modal fade" id="agregarProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

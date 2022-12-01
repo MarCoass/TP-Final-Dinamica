@@ -75,5 +75,6 @@ if($compra_borrador != null ){
 </footer>
 <script src="Assets/Js/enviarFormulario.js"></script>
 <script src="Assets/Js/iniciarCompra.js"></script>
+
 </body>
 </html>

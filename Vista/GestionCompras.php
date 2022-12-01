@@ -8,7 +8,7 @@ $objCompra = new C_Compra();
 $arrayCompras = $objCompra->buscar([]);
 $cantidadCompras = count($arrayCompras);
 
-if ($sesion->tienePermisos($pagina)) {
+if ($sesion->tienePermiso()) {
 
         //obtengo todos los usuarios 
         $objC_Usuario = new C_Usuario();

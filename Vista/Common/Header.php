@@ -36,8 +36,10 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
 <body background="../Assets/Img/fondo.png">
     <?php
     $sesion = new Session();
+
     $obj_compra = new C_Compra();
     $totalcantidad = $obj_compra->contarCarrito($sesion->getIdUser());
+    
     ?>
     <header id="navbar ">
         <nav class="navbar navbar-expand-lg">
@@ -56,7 +58,10 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
                     </ul>
                 </div>
 
-                <?php include_once('Menu.php') ?>
+                <?php 
+                
+                include_once('Menu.php') 
+                ?>
                 
 
 
@@ -64,5 +69,11 @@ include_once("/xampp/htdocs/TP-Final-Dinamica/configuracion.php");
         </nav>
 
     </header>
-    
+    <?php if (!$sesion->tienePermiso()){ ?>
+        <script>
+            window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
+        </script>
+        <?php
+        
+    } ?>
     <!-- MODAL CARRITO -->

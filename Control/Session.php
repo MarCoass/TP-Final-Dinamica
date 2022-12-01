@@ -204,6 +204,7 @@ class Session
         return $esCliente;
     }
 
+    
     public function tienePermisos($pagina){
        $tienePermisos = false;
        if ($this->activa()){
@@ -231,4 +232,48 @@ class Session
         session_destroy();
     }
 
+
+    /**
+     * basename($_SERVER['PHP_SELF']); <-- retorna el nombre, por ejemplo Productos3D.php
+     */
+    public function tienePermiso(){
+        
+        $nombrePagina = basename($_SERVER['PHP_SELF']);
+        if ($this->activa() && $nombrePagina != 'Home.php'){
+            
+        //obtengo el nombre de la pagina
+        
+        //busco el objMenu con el script = nombrePagina
+        $objC_Menu = new C_Menu();
+        $objMenuActual = $objC_Menu->buscar(['script'=>$nombrePagina])[0];
+
+        //busco los roles de esa pagina
+        $objC_MenuRoles = new C_Menurol();
+        $rolesMenu = $objC_MenuRoles->buscar(['idmenu'=>$objMenuActual->getIdmenu()]);
+
+        //obtengo los roles del usuario
+        $rolesUsuario = $this->getRoles();
+
+        //recorro los roles del usuario
+        $encontrado = false;
+        $i = 0; 
+        $j = 0;
+        $cantidadRolesUsuario = count($rolesUsuario);
+        $cantidadRolesMenu = count($rolesMenu);
+        while(!$encontrado && $i<$cantidadRolesUsuario){
+            while(!$encontrado && $j<$cantidadRolesMenu){
+                if($rolesUsuario[$i]->getIdrol()->getIdrol() == $rolesMenu[$j]->getIdrol()->getIdrol()){
+                    $encontrado = true;
+                }
+                $j++;
+            }
+            $i++;
+        }
+    } else {
+        if ($nombrePagina != 'Home.php'){
+         $encontrado = false;
+       }else {  $encontrado = true;}
+    }
+        return $encontrado;
+    }
 }
