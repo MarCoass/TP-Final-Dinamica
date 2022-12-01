@@ -1,7 +1,5 @@
 <?php
 include_once("Common/Header.php");
-$pagina="Admin";
-if ($sesion->tienePermisos($pagina)){
 
         //obtengo todos los menues
         $objC_Menu = new C_Menu();
@@ -230,13 +228,5 @@ if ($sesion->tienePermisos($pagina)){
 <?php
 include_once("Common/Footer.php");
 
-} else {
-        ?>
-            <script>
-                window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-            </script>
-        
-        <?php
-        }
 
         ?>        

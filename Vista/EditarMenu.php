@@ -1,7 +1,6 @@
 <?php
 include('Common/Header.php');
-$pagina="Admin";
-if ($sesion->tienePermisos($pagina)){
+
     $datos = data_submitted();
     $objMenu = new C_Menu();
     $objMenuRol = new C_MenuRol();
@@ -67,11 +66,5 @@ if ($sesion->tienePermisos($pagina)){
 <script src="Assets/Js/EditarMenu.js"></script>
 <?php
     include('Common/Footer.php');
-} else {
-?><script>
-        window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-    </script>
-<?php
 
-}
 ?>

@@ -1,14 +1,12 @@
 <?php
 include_once("Common/Header.php");
 $i = 0;
-$pagina="Deposito";
 
 //obtengo todas las compras del usuario
 $objCompra = new C_Compra();
 $arrayCompras = $objCompra->buscar([]);
 $cantidadCompras = count($arrayCompras);
 
-if ($sesion->tienePermiso()) {
 
         //obtengo todos los usuarios 
         $objC_Usuario = new C_Usuario();
@@ -144,13 +142,4 @@ $(document).ready(function () {
 </script>
 <?php
 include_once("Common/Footer.php");
-} else {
-        ?>
-            <script>
-                window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-            </script>
-        
-        <?php
-        }
-
         ?> 

@@ -1,7 +1,6 @@
 <?php
 include('Common/Header.php');
-$pagina="Admin";
-if ($sesion->tienePermisos($pagina)){
+
     $datos = data_submitted();
     $objUsuario = new C_Usuario();
     $objUsuarioRol = new C_UsuarioRol();
@@ -86,11 +85,5 @@ if ($sesion->tienePermisos($pagina)){
     <script src="Assets/Js/EditarUsuario.js"></script>
 <?php
     include('Common/Footer.php');
-} else {
-?><script>
-        window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-    </script>
-<?php
 
-}
 ?>

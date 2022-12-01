@@ -1,7 +1,6 @@
 <?php
 include('Common/Header.php');
-$pagina="Deposito";
-if ($sesion->tienePermisos($pagina)){
+
     $datos = data_submitted();
     $objProducto = new C_Producto();
     $productoModificar = $objProducto->buscar($datos)[0];
@@ -45,10 +44,5 @@ if ($sesion->tienePermisos($pagina)){
     <script src="Assets/Js/enviarFormulario.js"></script>
 <?php
     include('Common/Footer.php');
-} else {
-?><script>
-        window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-    </script>
-<?php
-}
+
 ?>

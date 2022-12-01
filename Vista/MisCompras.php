@@ -1,7 +1,6 @@
 <?php
 include_once("Common/Header.php");
-$pagina="Cliente";
-if ($sesion->tienePermisos($pagina)){
+
 ?>
 
 <style>
@@ -149,10 +148,3 @@ $(document).ready(function () {
 </script>
 <?php
 include_once("Common/Footer.php");
-} else {
-    ?><script>
-            window.location.href = "/TP-Final-Dinamica/Vista/Home.php";
-        </script>
-    <?php
-    
-    }

@@ -29,7 +29,7 @@ class Session
     /** GETS Y SETS **/
     public function getIdUser()
     {
-        if(isset($_SESSION['idusuario'])){
+        if (isset($_SESSION['idusuario'])) {
             return $_SESSION['idusuario'];
         }
         return null;
@@ -155,18 +155,18 @@ class Session
         $listaRoles = $objC_UsuarioRol->buscar($param);
         //echo "ROL: " . $listaRoles[0];
         //print_r($listaRoles);
-        foreach ($listaRoles as $unRol){
-           // print($unRol->getIdRol());
+        foreach ($listaRoles as $unRol) {
+            // print($unRol->getIdRol());
         }
         return $listaRoles;
     }
 
-   public function esAdmin()
+    public function esAdmin()
     {
         $arrayRoles = $this->getRoles();
         $esAdmin = false;
         $i = 0;
-        
+
         while ($i < count($arrayRoles) && !$esAdmin) {
             if ($arrayRoles[$i]->getIdrol()->getIdrol() == 1) {
                 $esAdmin = true;
@@ -176,11 +176,12 @@ class Session
         return $esAdmin;
     }
 
-    public function esDeposito(){
+    public function esDeposito()
+    {
         $arrayRoles = $this->getRoles();
         $esDepo = false;
         $i = 0;
-        
+
         while ($i < count($arrayRoles) && !$esDepo) {
             if ($arrayRoles[$i]->getIdrol()->getIdrol() == 2) {
                 $esDepo = true;
@@ -190,11 +191,12 @@ class Session
         return $esDepo;
     }
 
-    public function esCliente(){
+    public function esCliente()
+    {
         $arrayRoles = $this->getRoles();
         $esCliente = false;
         $i = 0;
-        
+
         while ($i < count($arrayRoles) && !$esCliente) {
             if ($arrayRoles[$i]->getIdrol()->getIdrol() == 3) {
                 $esCliente = true;
@@ -204,25 +206,26 @@ class Session
         return $esCliente;
     }
 
-    
-    public function tienePermisos($pagina){
-       $tienePermisos = false;
-       if ($this->activa()){
-        $tienePermisos=true;
-       } else {
-        $tienePermisos=false;
-       }
-       if($this->esAdmin() && $pagina=="Admin"){
-        $tienePermisos=true;
-       } elseif ($this->esDeposito() && $pagina=="Deposito"){
-        $tienePermisos=true;
-       } elseif ($this->esCliente() && $pagina=="Cliente"){
-        $tienePermisos=true;
-       }else {
-        $tienePermisos=false;
-       }
 
-       return $tienePermisos;    
+    public function tienePermisos($pagina)
+    {
+        $tienePermisos = false;
+        if ($this->activa()) {
+            $tienePermisos = true;
+        } else {
+            $tienePermisos = false;
+        }
+        if ($this->esAdmin() && $pagina == "Admin") {
+            $tienePermisos = true;
+        } elseif ($this->esDeposito() && $pagina == "Deposito") {
+            $tienePermisos = true;
+        } elseif ($this->esCliente() && $pagina == "Cliente") {
+            $tienePermisos = true;
+        } else {
+            $tienePermisos = false;
+        }
+
+        return $tienePermisos;
     }
 
     /** CERRAR **/
@@ -236,44 +239,52 @@ class Session
     /**
      * basename($_SERVER['PHP_SELF']); <-- retorna el nombre, por ejemplo Productos3D.php
      */
-    public function tienePermiso(){
-        
-        $nombrePagina = basename($_SERVER['PHP_SELF']);
-        if ($this->activa() && $nombrePagina != 'Home.php'){
-            
+    public function tienePermiso()
+    {
         //obtengo el nombre de la pagina
-        
+        $nombrePagina = basename($_SERVER['PHP_SELF']);
+
         //busco el objMenu con el script = nombrePagina
         $objC_Menu = new C_Menu();
-        $objMenuActual = $objC_Menu->buscar(['script'=>$nombrePagina])[0];
+        $objMenuActual = $objC_Menu->buscar(['script' => $nombrePagina]);
 
-        //busco los roles de esa pagina
-        $objC_MenuRoles = new C_Menurol();
-        $rolesMenu = $objC_MenuRoles->buscar(['idmenu'=>$objMenuActual->getIdmenu()]);
+        $existeEnBD = isset($objMenuActual);
+        
+        if ($this->activa() && $existeEnBD && $nombrePagina != 'Home.php') {
 
-        //obtengo los roles del usuario
-        $rolesUsuario = $this->getRoles();
+            //busco el objMenu con el script = nombrePagina
+            $objC_Menu = new C_Menu();
+            $objMenuActual = $objC_Menu->buscar(['script' => $nombrePagina])[0];
 
-        //recorro los roles del usuario
-        $encontrado = false;
-        $i = 0; 
-        $j = 0;
-        $cantidadRolesUsuario = count($rolesUsuario);
-        $cantidadRolesMenu = count($rolesMenu);
-        while(!$encontrado && $i<$cantidadRolesUsuario){
-            while(!$encontrado && $j<$cantidadRolesMenu){
-                if($rolesUsuario[$i]->getIdrol()->getIdrol() == $rolesMenu[$j]->getIdrol()->getIdrol()){
-                    $encontrado = true;
+            //busco los roles de esa pagina
+            $objC_MenuRoles = new C_Menurol();
+            $rolesMenu = $objC_MenuRoles->buscar(['idmenu' => $objMenuActual->getIdmenu()]);
+
+            //obtengo los roles del usuario
+            $rolesUsuario = $this->getRoles();
+
+            //recorro los roles del usuario
+            $encontrado = false;
+            $i = 0;
+            $j = 0;
+            $cantidadRolesUsuario = count($rolesUsuario);
+            $cantidadRolesMenu = count($rolesMenu);
+            while (!$encontrado && $i < $cantidadRolesUsuario) {
+                while (!$encontrado && $j < $cantidadRolesMenu) {
+                    if ($rolesUsuario[$i]->getIdrol()->getIdrol() == $rolesMenu[$j]->getIdrol()->getIdrol()) {
+                        $encontrado = true;
+                    }
+                    $j++;
                 }
-                $j++;
+                $i++;
             }
-            $i++;
+        } else {
+            if ($nombrePagina != 'Home.php') {
+                $encontrado = false;
+            } else {
+                $encontrado = true;
+            }
         }
-    } else {
-        if ($nombrePagina != 'Home.php'){
-         $encontrado = false;
-       }else {  $encontrado = true;}
-    }
         return $encontrado;
     }
 }
