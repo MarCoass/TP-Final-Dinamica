@@ -250,7 +250,7 @@ class Session
 
         $existeEnBD = isset($objMenuActual);
         
-        if ($this->activa() && $existeEnBD && $nombrePagina != 'Home.php' && $nombrePagina != 'Login.php') {
+        if ($this->activa() && $existeEnBD) {
 
             //busco el objMenu con el script = nombrePagina
             $objC_Menu = new C_Menu();
@@ -275,7 +275,7 @@ class Session
             }
             
         } else {
-            if ($nombrePagina != 'Home.php' && $nombrePagina != 'Login.php') {
+            if ($nombrePagina != 'Home.php' && $nombrePagina != 'Login.php' && $nombrePagina != 'Perfil.php') {
                 $encontrado = false;
             } else {
                 $encontrado = true;
