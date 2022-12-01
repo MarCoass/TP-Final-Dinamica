@@ -19,7 +19,7 @@ while ($i < $cantidadProductos) {
         ?>
 <div class="container">
 
-<div class="display-1 text-light  text-center" id="titulo"><h1>Productos 2D</h1></div>
+<div class="display-1 text-light  text-center" id="titulo"><h1>Productos 3D</h1></div>
 <div class="row" style="justify-content: center;">
         <?php
         while ($i < $cantidadProductos) {
